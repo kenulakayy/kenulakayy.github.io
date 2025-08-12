@@ -19,34 +19,30 @@ header {
   z-index: 1000;
 }
 
+:root {
+  --nav-top-padding: 15px;
+  --scroll-arrow-size: 30px;
+  --scroll-arrow-color: white;
+  --scroll-arrow-speed: 1.5s;
+}
+
+/* Navbar */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: var(--nav-top-padding) 2rem 1rem 2rem; /* top padding adjustable here */
 }
 
-.logo {
-  font-weight: bold;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-}
-
-.nav-links li {
-  margin-left: 1.5rem;
+.logo img {
+  height: 40px; /* adjust small logo size */
 }
 
 .nav-links a {
   text-decoration: none;
   color: white;
+  text-transform: uppercase; /* makes all links uppercase */
   transition: color 0.3s;
-}
-
-.nav-links a:hover {
-  color: #00adee;
 }
 
 .burger {
@@ -79,6 +75,46 @@ nav {
 .hero-content h1 {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 4rem;
+}
+
+/* Hero Section */
+.hero-content img.hero-logo {
+  max-width: 250px; /* adjust big logo size */
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+/* Scroll Down Arrow */
+.scroll-down {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.scroll-down span {
+  display: block;
+  width: var(--scroll-arrow-size);
+  height: var(--scroll-arrow-size);
+  border-bottom: 2px solid var(--scroll-arrow-color);
+  border-right: 2px solid var(--scroll-arrow-color);
+  transform: rotate(45deg);
+  animation: scrollArrow var(--scroll-arrow-speed) infinite;
+}
+
+@keyframes scrollArrow {
+  0% {
+    transform: rotate(45deg) translateY(0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: rotate(45deg) translateY(8px);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(45deg) translateY(0);
+    opacity: 0.8;
+  }
 }
 
 section {
@@ -153,3 +189,4 @@ h2 {
     display: block;
   }
 }
+
