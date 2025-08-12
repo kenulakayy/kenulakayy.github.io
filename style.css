@@ -187,18 +187,23 @@ h2 {
     flex-direction: column;
     background: rgba(0,0,0,0.9);
     position: absolute;
-    top: 60px;
+    top: 60px; /* aligns under the navbar */
     right: 0;
-    width: 200px;
-    padding: 1rem;
+    width: 100%; /* full width for better tap targets */
+    padding: 1rem 0;
+    text-align: center; /* center links */
   }
+
+  .nav-links li {
+    margin: 0.5rem 0; /* space between each item */
+  }
+
   .nav-links.active {
     display: flex;
   }
+
   .burger {
     display: block;
   }
 }
-
-
 
