@@ -90,6 +90,17 @@ nav {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 3; /* keeps arrow above overlay */
+  text-decoration: none;
+  opacity: 0; /* hidden at first */
+  animation: arrowFadeIn 1s ease forwards;
+  animation-delay: 1.2s; /* delay before showing */
+}
+
+@keyframes arrowFadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
 .scroll-down span {
@@ -102,19 +113,10 @@ nav {
   animation: scrollArrow var(--scroll-arrow-speed) infinite;
 }
 
-@keyframes scrollArrow {
-  0% {
-    transform: rotate(45deg) translateY(0);
-    opacity: 0.8;
-  }
-  50% {
-    transform: rotate(45deg) translateY(8px);
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(45deg) translateY(0);
-    opacity: 0.8;
-  }
+.scroll-down.hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
 section {
@@ -189,4 +191,5 @@ h2 {
     display: block;
   }
 }
+
 
