@@ -1,6 +1,9 @@
 // Mobile menu toggle
-document.querySelector('.burger').addEventListener('click', () => {
-  document.querySelector('.nav-links').classList.toggle('active');
+const burger = document.querySelector(".burger");
+const navLinks = document.querySelector(".nav-links");
+
+burger.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
 });
 
 // === EASY EDIT SECTION ===
@@ -101,3 +104,4 @@ window.addEventListener("scroll", function () {
 document.querySelector(".scroll-down").addEventListener("click", function () {
   this.classList.add("hide");
 });
+
