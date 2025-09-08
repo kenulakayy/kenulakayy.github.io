@@ -41,8 +41,19 @@ nav {
 .nav-links a {
   text-decoration: none;
   color: white;
-  text-transform: uppercase; /* makes all links uppercase */
+  text-transform: uppercase;
   transition: color 0.3s;
+}
+
+/* Hover effect */
+.nav-links a:hover {
+  color: #FFBB2B;
+}
+
+/* Active section highlight */
+.nav-links a.active {
+  color: #FFBB2B;
+  font-weight: bold; /* optional, makes it stand out more */
 }
 
 .nav-links {
@@ -215,6 +226,7 @@ h2 {
   object-fit: cover; /* covers full section */
   z-index: -1; /* behind overlay and content */
 }
+
 
 
 
