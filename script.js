@@ -119,4 +119,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+// Smooth scroll to very top when logo is clicked
+document.querySelector(".logo-link").addEventListener("click", function(e) {
+  e.preventDefault();
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
 
