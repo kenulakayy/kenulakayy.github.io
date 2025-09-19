@@ -112,7 +112,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(this.getAttribute("href"));
     if (target) {
       window.scrollTo({
-        top: target.offsetTop - 60, // offset for navbar height
+        top: target.offsetTop - 80, // offset for navbar height
         behavior: "smooth"
       });
     }
@@ -177,6 +177,7 @@ function animateAboutLines() {
 
 window.addEventListener("scroll", animateAboutLines);
 window.addEventListener("load", animateAboutLines); // <-- run also on page load
+
 
 
 
