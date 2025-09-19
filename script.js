@@ -157,19 +157,27 @@ const aboutLines = document.querySelectorAll(".about-text p");
 let aboutPlayed = false;
 
 function animateAboutLines() {
+  if (!aboutSection) return;
+
   const sectionTop = aboutSection.getBoundingClientRect().top;
+  const sectionBottom = aboutSection.getBoundingClientRect().bottom;
   const triggerBottom = window.innerHeight * 0.8;
 
-  if (sectionTop < triggerBottom && !aboutPlayed) {
+  // Check if section is visible in viewport
+  if (sectionTop < triggerBottom && sectionBottom > 0 && !aboutPlayed) {
     aboutLines.forEach((line, index) => {
       setTimeout(() => {
         line.classList.add("show");
-      }, index * 250); // stagger effect (250ms between lines)
+      }, index * 250); // stagger effect
     });
-    aboutPlayed = true; // only run once
+    aboutPlayed = true; // run once
+    console.log("About animation triggered ✅");
   }
 }
 
 window.addEventListener("scroll", animateAboutLines);
+window.addEventListener("load", animateAboutLines); // <-- run also on page load
+
+
 
 
