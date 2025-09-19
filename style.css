@@ -291,7 +291,14 @@ h2 {
   transform: translateY(0);
 }
 
+/* DEBUG MODE - temporary outlines */
+.about-text p {
+  border: 1px dashed red; /* outline around paragraphs */
+}
 
+.animate-heading {
+  border: 1px dashed lime; /* outline around heading */
+}
 
 
 
