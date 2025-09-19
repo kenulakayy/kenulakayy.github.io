@@ -256,7 +256,15 @@ h2 {
 .about-content h2 {
   font-size: 4rem;
   margin-bottom: 2rem;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', sans-serif; /* heading font */
+  font-weight: 700;
+}
+
+.about-text p {
+  font-family: 'JetBrains Mono', monospace; /* body font */
+  font-weight: 300; /* light */
+  line-height: 1.6; /* makes it easier to read */
+  margin-bottom: 1.2rem;
 }
 
 /* Animation base state */
@@ -272,6 +280,16 @@ h2 {
   transform: translateY(0);
 }
 
+.animate-heading {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-heading.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 
 
