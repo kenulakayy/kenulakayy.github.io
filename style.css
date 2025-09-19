@@ -293,12 +293,14 @@ h2 {
 
 /* DEBUG MODE - temporary outlines */
 .about-text p {
-  border: 1px dashed red; /* outline around paragraphs */
+  opacity: 1 !important; /* force visible */
+  border: 1px dashed red; /* debug */
 }
 
 .animate-heading {
   border: 1px dashed lime; /* outline around heading */
 }
+
 
 
 
