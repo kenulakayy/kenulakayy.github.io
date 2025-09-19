@@ -151,4 +151,25 @@ window.addEventListener("scroll", () => {
   });
 });
 
+// Line-by-line About animation
+const aboutSection = document.querySelector("#about");
+const aboutLines = document.querySelectorAll(".about-text p");
+let aboutPlayed = false;
+
+function animateAboutLines() {
+  const sectionTop = aboutSection.getBoundingClientRect().top;
+  const triggerBottom = window.innerHeight * 0.8;
+
+  if (sectionTop < triggerBottom && !aboutPlayed) {
+    aboutLines.forEach((line, index) => {
+      setTimeout(() => {
+        line.classList.add("show");
+      }, index * 250); // stagger effect (250ms between lines)
+    });
+    aboutPlayed = true; // only run once
+  }
+}
+
+window.addEventListener("scroll", animateAboutLines);
+
 
