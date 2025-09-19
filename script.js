@@ -158,13 +158,20 @@ const aboutLines = document.querySelectorAll(".about-text p");
 let aboutPlayed = false;
 
 function animateAboutLines() {
-  if (!aboutSection) return;
+  if (!aboutSection) {
+    console.log("❌ About section not found");
+    return;
+  }
 
   const sectionTop = aboutSection.getBoundingClientRect().top;
   const sectionBottom = aboutSection.getBoundingClientRect().bottom;
   const triggerBottom = window.innerHeight * 0.8;
 
+  console.log("📍 SectionTop:", sectionTop, " TriggerBottom:", triggerBottom);
+
   if (sectionTop < triggerBottom && sectionBottom > 0 && !aboutPlayed) {
+    console.log("✅ About animation triggered");
+
     // Show heading first
     aboutHeading.classList.add("show");
 
@@ -172,6 +179,7 @@ function animateAboutLines() {
     aboutLines.forEach((line, index) => {
       setTimeout(() => {
         line.classList.add("show");
+        console.log("➡️ Showing line", index + 1);
       }, 500 + index * 250); // wait 0.5s before text starts
     });
 
@@ -181,6 +189,8 @@ function animateAboutLines() {
 
 window.addEventListener("scroll", animateAboutLines);
 window.addEventListener("load", animateAboutLines);
+
+
 
 
 
