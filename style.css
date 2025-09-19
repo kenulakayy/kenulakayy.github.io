@@ -227,7 +227,50 @@ h2 {
   z-index: -1; /* behind overlay and content */
 }
 
+.about-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  background: url('images/about-bg.jpg') no-repeat center center/cover;
+  text-align: center;
+}
 
+.about-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 0;
+}
+
+.about-content {
+  position: relative;
+  max-width: 800px;
+  z-index: 1;
+  color: white;
+}
+
+.about-content h2 {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Animation base state */
+.about-text p {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Active state */
+.about-text p.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 
 
