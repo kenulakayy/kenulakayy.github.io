@@ -151,8 +151,9 @@ window.addEventListener("scroll", () => {
   });
 });
 
-// Line-by-line About animation
+// About section animation (heading first, then text)
 const aboutSection = document.querySelector("#about");
+const aboutHeading = document.querySelector(".animate-heading");
 const aboutLines = document.querySelectorAll(".about-text p");
 let aboutPlayed = false;
 
@@ -163,20 +164,24 @@ function animateAboutLines() {
   const sectionBottom = aboutSection.getBoundingClientRect().bottom;
   const triggerBottom = window.innerHeight * 0.8;
 
-  // Check if section is visible in viewport
   if (sectionTop < triggerBottom && sectionBottom > 0 && !aboutPlayed) {
+    // Show heading first
+    aboutHeading.classList.add("show");
+
+    // Then stagger text lines
     aboutLines.forEach((line, index) => {
       setTimeout(() => {
         line.classList.add("show");
-      }, index * 250); // stagger effect
+      }, 500 + index * 250); // wait 0.5s before text starts
     });
+
     aboutPlayed = true; // run once
-    console.log("About animation triggered ✅");
   }
 }
 
 window.addEventListener("scroll", animateAboutLines);
-window.addEventListener("load", animateAboutLines); // <-- run also on page load
+window.addEventListener("load", animateAboutLines);
+
 
 
 
