@@ -234,17 +234,32 @@ h2 {
   align-items: center;
   justify-content: center;
   padding: 6rem 2rem;
-  background: url('images/ABOUT-COVER_PAGE.png') no-repeat center center/cover;
   text-align: center;
+  overflow: hidden; /* important for parallax */
+}
+
+.about-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%; /* a bit taller for smoother movement */
+  background: url('images/ABOUT-COVER PAGE.png') no-repeat center center/cover;
+  transform: translateY(0);
+  transition: transform 0.1s linear;
+  z-index: -2; /* behind overlay */
 }
 
 .about-overlay {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
-  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45); /* slightly darker */
+  z-index: -1; /* sits above bg but below text */
 }
+
 
 .about-content {
   position: relative;
@@ -284,6 +299,7 @@ h2 {
   transform: translateY(0);
   filter: blur(0); /* blur clears */
 }
+
 
 
 
