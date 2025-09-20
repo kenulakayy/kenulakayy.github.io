@@ -171,6 +171,9 @@ function animateAbout() {
     // Parallax + zoom
     aboutBg.style.transform = `translateY(${offset}px) scale(${scale})`;
 
+    // Fade-out as progress increases
+    aboutBg.style.opacity = 1 - progress * 0.4; // goes from 1 → 0.6
+
     // Trigger animations once inside view
     if (!aboutHeading.classList.contains("show")) {
       aboutHeading.classList.add("show");
@@ -183,8 +186,9 @@ function animateAbout() {
       });
     }
   } else {
-    // Reset when out of view (so it can replay)
+    // Reset when out of view
     aboutBg.style.transform = `translateY(0) scale(1)`;
+    aboutBg.style.opacity = 1;
     aboutHeading.classList.remove("show");
     aboutLines.forEach(line => line.classList.remove("show"));
   }
@@ -192,6 +196,7 @@ function animateAbout() {
 
 window.addEventListener("scroll", animateAbout);
 window.addEventListener("load", animateAbout);
+
 
 
 
