@@ -189,6 +189,22 @@ aboutLines.forEach((line, index) => {
 window.addEventListener("scroll", animateAboutLines);
 window.addEventListener("load", animateAboutLines);
 
+// === Parallax background for About section ===
+const aboutBg = document.querySelector(".about-bg");
+
+window.addEventListener("scroll", () => {
+  if (!aboutBg) return;
+
+  let scrollY = window.scrollY;
+  let sectionTop = aboutSection.offsetTop;
+  let sectionHeight = aboutSection.offsetHeight;
+
+  if (scrollY + window.innerHeight > sectionTop && scrollY < sectionTop + sectionHeight) {
+    let offset = (scrollY - sectionTop) * 0.3; // 0.3 = parallax speed
+    aboutBg.style.transform = `translateY(${offset}px)`;
+  }
+});
+
 
 
 
