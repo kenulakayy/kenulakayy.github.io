@@ -234,7 +234,7 @@ h2 {
   align-items: center;
   justify-content: center;
   padding: 6rem 2rem;
-  background: url('images/ABOUT-COVER PAGE.png') no-repeat center center/cover;
+  background: url('images/ABOUT-COVER_PAGE.png') no-repeat center center/cover;
   text-align: center;
 }
 
@@ -300,6 +300,7 @@ h2 {
 .animate-heading {
   border: 1px dashed lime; /* outline around heading */
 }
+
 
 
 
