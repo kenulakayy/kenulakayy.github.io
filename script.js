@@ -200,13 +200,18 @@ window.addEventListener("scroll", () => {
   let sectionHeight = aboutSection.offsetHeight;
 
   if (scrollY + window.innerHeight > sectionTop && scrollY < sectionTop + sectionHeight) {
-    let offset = (scrollY - sectionTop) * 0.3; // vertical shift
+    let offset = (scrollY - sectionTop) * 0.3; // vertical parallax shift
     let progress = (scrollY - sectionTop) / sectionHeight;
-    let scale = 1 + progress * 0.1; // zoom up to 1.1x
+    let scale = 1 + progress * 0.1; // smoothly zooms from 1 → 1.1
 
+    // Apply transform
     aboutBg.style.transform = `translateY(${offset}px) scale(${scale})`;
+  } else {
+    // Reset when out of view
+    aboutBg.style.transform = `translateY(0) scale(1)`;
   }
 });
+
 
 
 
