@@ -257,7 +257,7 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.45); /* slightly darker */
+  background: rgba(0,0,0,0.7); /* slightly darker */
   z-index: -1; /* sits above bg but below text */
 }
 
@@ -307,6 +307,7 @@ h2 {
   opacity: 1;
   transform: translateY(0);
 }
+
 
 
 
