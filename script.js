@@ -151,66 +151,48 @@ window.addEventListener("scroll", () => {
   });
 });
 
-// About section animation (heading first, then text)
-const aboutSection = document.querySelector("#about");
+// === About section animation + parallax ===
+const aboutBg = document.querySelector(".about-bg");
 const aboutHeading = document.querySelector(".animate-heading");
 const aboutLines = document.querySelectorAll(".about-text p");
-let aboutPlayed = false;
 
-function animateAboutLines() {
-  if (!aboutSection) {
-    console.log("❌ About section not found");
-    return;
-  }
-
-  const sectionTop = aboutSection.getBoundingClientRect().top;
-  const sectionBottom = aboutSection.getBoundingClientRect().bottom;
-  const triggerBottom = window.innerHeight * 0.8;
-
-  console.log("📍 SectionTop:", sectionTop, " TriggerBottom:", triggerBottom);
-
-  if (sectionTop < triggerBottom && sectionBottom > 0 && !aboutPlayed) {
-    console.log("✅ About animation triggered");
-
-// Show heading first
-aboutHeading.classList.add("show");
-
-// Then stagger text lines after heading is visible
-aboutLines.forEach((line, index) => {
-  setTimeout(() => {
-    line.classList.add("show");
-  }, 800 + index * 300); // heading shows, then text follows
-});
-
-    aboutPlayed = true; // run once
-  }
-}
-
-window.addEventListener("scroll", animateAboutLines);
-window.addEventListener("load", animateAboutLines);
-
-// === Parallax + Zoom effect for About section ===
-const aboutBg = document.querySelector(".about-bg");
-
-window.addEventListener("scroll", () => {
-  if (!aboutBg) return;
+function animateAbout() {
+  if (!aboutSection || !aboutBg) return;
 
   let scrollY = window.scrollY;
   let sectionTop = aboutSection.offsetTop;
   let sectionHeight = aboutSection.offsetHeight;
 
   if (scrollY + window.innerHeight > sectionTop && scrollY < sectionTop + sectionHeight) {
-    let offset = (scrollY - sectionTop) * 0.3; // vertical parallax shift
+    let offset = (scrollY - sectionTop) * 0.3;
     let progress = (scrollY - sectionTop) / sectionHeight;
-    let scale = 1 + progress * 0.1; // smoothly zooms from 1 → 1.1
+    let scale = 1 + progress * 0.1;
 
-    // Apply transform
+    // Parallax + zoom
     aboutBg.style.transform = `translateY(${offset}px) scale(${scale})`;
+
+    // Trigger animations once inside view
+    if (!aboutHeading.classList.contains("show")) {
+      aboutHeading.classList.add("show");
+
+      // Stagger paragraphs
+      aboutLines.forEach((line, index) => {
+        setTimeout(() => {
+          line.classList.add("show");
+        }, 500 + index * 250);
+      });
+    }
   } else {
-    // Reset when out of view
+    // Reset when out of view (so it can replay)
     aboutBg.style.transform = `translateY(0) scale(1)`;
+    aboutHeading.classList.remove("show");
+    aboutLines.forEach(line => line.classList.remove("show"));
   }
-});
+}
+
+window.addEventListener("scroll", animateAbout);
+window.addEventListener("load", animateAbout);
+
 
 
 
