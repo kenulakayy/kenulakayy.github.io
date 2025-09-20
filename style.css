@@ -242,7 +242,7 @@ h2 {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.25);
+  background: rgba(0,0,0,0.6);
   z-index: 0;
 }
 
@@ -254,7 +254,7 @@ h2 {
 }
 
 .about-content h2 {
-  font-size: 4rem;
+  font-size: 6rem;
   margin-bottom: 2rem;
   font-family: 'Poppins', sans-serif; /* heading font */
   font-weight: 700;
@@ -262,43 +262,27 @@ h2 {
 
 .about-text p {
   font-family: 'JetBrains Mono', monospace; /* body font */
+  font-size: 1.2rem; /* default ~1rem */
   font-weight: 300; /* light */
   line-height: 1.6; /* makes it easier to read */
   margin-bottom: 1.2rem;
 }
 
-/* Animation base state */
-.about-text p {
+/* Base state */
+.about-text p, 
+.animate-heading {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 1s ease, transform 1s ease;
+  filter: blur(8px); /* add blur */
+  transition: opacity 1s ease, transform 1s ease, filter 1s ease;
 }
 
 /* Active state */
-.about-text p.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.animate-heading {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1s ease, transform 1s ease;
-}
-
+.about-text p.show, 
 .animate-heading.show {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* DEBUG MODE - temporary outlines */
-.about-text p {
-  opacity: 1 !important; /* force visible */
-  border: 1px dashed red; /* debug */
-}
-
-.animate-heading {
-  border: 1px dashed lime; /* outline around heading */
+  filter: blur(0); /* blur clears */
 }
 
 
