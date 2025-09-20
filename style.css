@@ -283,25 +283,29 @@ h2 {
   margin-bottom: 1.2rem;
 }
 
-/* Base state */
-.about-text p, 
+/* Heading animation */
 .animate-heading {
   opacity: 0;
   transform: translateY(40px);
-  filter: blur(8px); /* add blur */
-  transition: opacity 1s ease, transform 1s ease, filter 1s ease;
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-/* Active state */
-.about-text p.show, 
 .animate-heading.show {
   opacity: 1;
   transform: translateY(0);
-  filter: blur(0); /* blur clears */
 }
 
+/* Paragraphs staggered */
+.about-text p {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
 
-
+.about-text p.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 
 
