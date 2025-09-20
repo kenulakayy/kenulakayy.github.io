@@ -172,16 +172,15 @@ function animateAboutLines() {
   if (sectionTop < triggerBottom && sectionBottom > 0 && !aboutPlayed) {
     console.log("✅ About animation triggered");
 
-    // Show heading first
-    aboutHeading.classList.add("show");
+// Show heading first
+aboutHeading.classList.add("show");
 
-    // Then stagger text lines
-    aboutLines.forEach((line, index) => {
-      setTimeout(() => {
-        line.classList.add("show");
-        console.log("➡️ Showing line", index + 1);
-      }, 500 + index * 250); // wait 0.5s before text starts
-    });
+// Then stagger text lines after heading is visible
+aboutLines.forEach((line, index) => {
+  setTimeout(() => {
+    line.classList.add("show");
+  }, 800 + index * 300); // heading shows, then text follows
+});
 
     aboutPlayed = true; // run once
   }
@@ -189,6 +188,7 @@ function animateAboutLines() {
 
 window.addEventListener("scroll", animateAboutLines);
 window.addEventListener("load", animateAboutLines);
+
 
 
 
