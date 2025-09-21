@@ -167,38 +167,54 @@ window.addEventListener("scroll", () => {
 // About Section Animation + Parallax (plays once)
 // ===============================
 const aboutSection = document.querySelector("#about");
-const aboutBg = document.querySelector(".about-bg");
+const aboutBgImg = document.querySelector(".about-bg img");
 const aboutHeading = document.querySelector(".animate-heading");
 const aboutLines = document.querySelectorAll(".about-text p");
-let aboutPlayed = false; // ✅ NEW FLAG
 
 function animateAbout() {
-  if (!aboutSection || !aboutBg || aboutPlayed) return;
+  if (!aboutSection || !aboutBgImg) return;
 
   let scrollY = window.scrollY;
   let sectionTop = aboutSection.offsetTop;
   let sectionHeight = aboutSection.offsetHeight;
 
   if (scrollY + window.innerHeight > sectionTop && scrollY < sectionTop + sectionHeight) {
-    // Stronger parallax + zoom
-    let offset = (scrollY - sectionTop) * 0.6;   // move faster
+    let offset = (scrollY - sectionTop) * 0.6;
     let progress = (scrollY - sectionTop) / sectionHeight;
-    let scale = 1 + progress * 0.35;             // zoom more noticeably
+    let scale = 1 + progress * 0.35;
 
-    aboutBg.style.transform = `translateY(${offset}px) scale(${scale})`;
-    aboutBg.style.opacity = 1 - progress * 0.4;
+    // ✅ Parallax + zoom
+    aboutBgImg.style.transform = `translateY(${offset}px) scale(${scale})`;
+    aboutBgImg.style.opacity = 1 - progress * 0.4;
 
-    // Trigger animations once
+    // ✅ Animate in
     if (!aboutHeading.classList.contains("show")) {
+      aboutHeading.classList.remove("hide");
       aboutHeading.classList.add("show");
+
       aboutLines.forEach((line, index) => {
-        setTimeout(() => line.classList.add("show"), 500 + index * 250);
+        setTimeout(() => {
+          line.classList.remove("hide");
+          line.classList.add("show");
+        }, 500 + index * 250);
       });
     }
+  } else {
+    // ✅ Animate out smoothly
+    aboutBgImg.style.transform = `translateY(0) scale(1)`;
+    aboutBgImg.style.opacity = 1;
 
-    aboutPlayed = true; // runs once until reload
+    aboutHeading.classList.remove("show");
+    aboutHeading.classList.add("hide");
+
+    aboutLines.forEach(line => {
+      line.classList.remove("show");
+      line.classList.add("hide");
+    });
   }
 }
+
 window.addEventListener("scroll", animateAbout);
 window.addEventListener("load", animateAbout);
+
 
