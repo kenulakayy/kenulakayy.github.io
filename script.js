@@ -181,7 +181,7 @@ function animateAbout() {
   if (scrollY + window.innerHeight > sectionTop && scrollY < sectionTop + sectionHeight) {
     let offset = (scrollY - sectionTop) * 0.6;
     let progress = (scrollY - sectionTop) / sectionHeight;
-    let scale = 1 + progress * 0.35;
+    let scale = 1.2 + progress * 0.2; // ✅ start zoomed at 1.2 → grow slowly
 
     // ✅ Parallax + zoom
     aboutBgImg.style.transform = `translateY(${offset}px) scale(${scale})`;
@@ -201,7 +201,7 @@ function animateAbout() {
     }
   } else {
     // ✅ Animate out smoothly
-    aboutBgImg.style.transform = `translateY(0) scale(1)`;
+    aboutBgImg.style.transform = `translateY(0) scale(1.2)`; // ✅ reset zoom, no black bars
     aboutBgImg.style.opacity = 1;
 
     aboutHeading.classList.remove("show");
@@ -216,5 +216,6 @@ function animateAbout() {
 
 window.addEventListener("scroll", animateAbout);
 window.addEventListener("load", animateAbout);
+
 
 
