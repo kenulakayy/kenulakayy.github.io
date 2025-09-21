@@ -173,32 +173,32 @@ const aboutLines = document.querySelectorAll(".about-text p");
 let aboutPlayed = false; // ✅ NEW FLAG
 
 function animateAbout() {
-  if (!aboutSection || !aboutBg || aboutPlayed) return; // stop if already played
+  if (!aboutSection || !aboutBg || aboutPlayed) return;
 
   let scrollY = window.scrollY;
   let sectionTop = aboutSection.offsetTop;
   let sectionHeight = aboutSection.offsetHeight;
 
   if (scrollY + window.innerHeight > sectionTop && scrollY < sectionTop + sectionHeight) {
-    let offset = (scrollY - sectionTop) * 0.3;
+    // Stronger parallax + zoom
+    let offset = (scrollY - sectionTop) * 0.6;   // move faster
     let progress = (scrollY - sectionTop) / sectionHeight;
-    let scale = 1 + progress * 0.1;
+    let scale = 1 + progress * 0.35;             // zoom more noticeably
 
-    // Parallax + zoom
     aboutBg.style.transform = `translateY(${offset}px) scale(${scale})`;
     aboutBg.style.opacity = 1 - progress * 0.4;
 
     // Trigger animations once
-    aboutHeading.classList.add("show");
-    aboutLines.forEach((line, index) => {
-      setTimeout(() => {
-        line.classList.add("show");
-      }, 500 + index * 250);
-    });
+    if (!aboutHeading.classList.contains("show")) {
+      aboutHeading.classList.add("show");
+      aboutLines.forEach((line, index) => {
+        setTimeout(() => line.classList.add("show"), 500 + index * 250);
+      });
+    }
 
-    aboutPlayed = true; // ✅ prevents it from replaying
+    aboutPlayed = true; // runs once until reload
   }
 }
-
 window.addEventListener("scroll", animateAbout);
 window.addEventListener("load", animateAbout);
+
