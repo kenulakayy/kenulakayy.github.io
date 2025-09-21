@@ -313,6 +313,23 @@ h2 {
   transform: translateY(0);
 }
 
+/* Smooth transitions for parallax bg */
+.about-bg img {
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+/* Smooth exit for heading + text */
+.animate-heading,
+.about-text p {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-heading.hide,
+.about-text p.hide {
+  opacity: 0;
+  transform: translateY(40px); /* slides down when leaving */
+}
+
 
 
 
