@@ -182,7 +182,7 @@ function updateAboutParallax() {
   let sectionHeight = aboutSection.offsetHeight;
 
   if (scrollY + window.innerHeight > sectionTop && scrollY < sectionTop + sectionHeight) {
-    let offset = (scrollY - sectionTop) * 0.25; // 🔹 smaller = less movement
+    let offset = (scrollY - sectionTop) * 0.15; // 🔹 smaller = less movement
 
     // Apply movement only (no scaling, so no black bars!)
     aboutBg.style.transform = `translateY(${offset}px)`;
@@ -208,6 +208,7 @@ function onScroll() {
 
 window.addEventListener("scroll", onScroll);
 window.addEventListener("load", updateAboutParallax);
+
 
 
 
