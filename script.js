@@ -164,58 +164,51 @@ window.addEventListener("scroll", () => {
 });
 
 // ===============================
-// About Section Animation + Parallax (plays once)
+// About Section Animation + Parallax
 // ===============================
 const aboutSection = document.querySelector("#about");
-const aboutBgImg = document.querySelector(".about-bg img");
+const aboutBg = document.querySelector(".about-bg");
 const aboutHeading = document.querySelector(".animate-heading");
 const aboutLines = document.querySelectorAll(".about-text p");
 
-function animateAbout() {
-  if (!aboutSection || !aboutBgImg) return;
+let aboutPlayed = false; // ✅ only plays once
+let ticking = false; // ✅ for smoother rAF updates
+
+function updateAboutParallax() {
+  if (!aboutSection || !aboutBg) return;
 
   let scrollY = window.scrollY;
   let sectionTop = aboutSection.offsetTop;
   let sectionHeight = aboutSection.offsetHeight;
 
   if (scrollY + window.innerHeight > sectionTop && scrollY < sectionTop + sectionHeight) {
-    let offset = (scrollY - sectionTop) * 0.6;
-    let progress = (scrollY - sectionTop) / sectionHeight;
-    let scale = 1.2 + progress * 0.2; // ✅ start zoomed at 1.2 → grow slowly
+    let offset = (scrollY - sectionTop) * 0.25; // 🔹 smaller = less movement
 
-    // ✅ Parallax + zoom
-    aboutBgImg.style.transform = `translateY(${offset}px) scale(${scale})`;
-    aboutBgImg.style.opacity = 1 - progress * 0.4;
+    // Apply movement only (no scaling, so no black bars!)
+    aboutBg.style.transform = `translateY(${offset}px)`;
 
-    // ✅ Animate in
-    if (!aboutHeading.classList.contains("show")) {
-      aboutHeading.classList.remove("hide");
+    // Trigger animations once
+    if (!aboutPlayed) {
       aboutHeading.classList.add("show");
-
       aboutLines.forEach((line, index) => {
-        setTimeout(() => {
-          line.classList.remove("hide");
-          line.classList.add("show");
-        }, 500 + index * 250);
+        setTimeout(() => line.classList.add("show"), 500 + index * 250);
       });
+      aboutPlayed = true;
     }
-  } else {
-    // ✅ Animate out smoothly
-    aboutBgImg.style.transform = `translateY(0) scale(1.2)`; // ✅ reset zoom, no black bars
-    aboutBgImg.style.opacity = 1;
+  }
+  ticking = false; // reset after frame
+}
 
-    aboutHeading.classList.remove("show");
-    aboutHeading.classList.add("hide");
-
-    aboutLines.forEach(line => {
-      line.classList.remove("show");
-      line.classList.add("hide");
-    });
+function onScroll() {
+  if (!ticking) {
+    window.requestAnimationFrame(updateAboutParallax);
+    ticking = true;
   }
 }
 
-window.addEventListener("scroll", animateAbout);
-window.addEventListener("load", animateAbout);
+window.addEventListener("scroll", onScroll);
+window.addEventListener("load", updateAboutParallax);
+
 
 
 
