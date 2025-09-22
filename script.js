@@ -164,50 +164,39 @@ window.addEventListener("scroll", () => {
 });
 
 // ===============================
-// About Section Animation + Parallax
+// About Section Animation + Subtle Parallax (plays once)
 // ===============================
 const aboutSection = document.querySelector("#about");
 const aboutBg = document.querySelector(".about-bg");
 const aboutHeading = document.querySelector(".animate-heading");
 const aboutLines = document.querySelectorAll(".about-text p");
+let aboutPlayed = false; // prevents replay
 
-let aboutPlayed = false; // ✅ only plays once
-let ticking = false; // ✅ for smoother rAF updates
-
-function updateAboutParallax() {
-  if (!aboutSection || !aboutBg) return;
+function animateAbout() {
+  if (!aboutSection || !aboutBg || aboutPlayed) return;
 
   let scrollY = window.scrollY;
   let sectionTop = aboutSection.offsetTop;
   let sectionHeight = aboutSection.offsetHeight;
 
   if (scrollY + window.innerHeight > sectionTop && scrollY < sectionTop + sectionHeight) {
-    let offset = (scrollY - sectionTop) * 0.15; // 🔹 smaller = less movement
+    // Subtle parallax effect (gentle movement, no black edges)
+    let offset = (scrollY - sectionTop) * 0.05; 
+    aboutBg.style.transform = `translateY(${offset}px) scale(1.2)`; 
 
-    // Apply movement only (no scaling, so no black bars!)
-    aboutBg.style.transform = `translateY(${offset}px)`;
+    // Trigger animations (only once)
+    aboutHeading.classList.add("show");
+    aboutLines.forEach((line, index) => {
+      setTimeout(() => line.classList.add("show"), 500 + index * 250);
+    });
 
-    // Trigger animations once
-    if (!aboutPlayed) {
-      aboutHeading.classList.add("show");
-      aboutLines.forEach((line, index) => {
-        setTimeout(() => line.classList.add("show"), 500 + index * 250);
-      });
-      aboutPlayed = true;
-    }
-  }
-  ticking = false; // reset after frame
-}
-
-function onScroll() {
-  if (!ticking) {
-    window.requestAnimationFrame(updateAboutParallax);
-    ticking = true;
+    aboutPlayed = true; // lock so it won't replay
   }
 }
 
-window.addEventListener("scroll", onScroll);
-window.addEventListener("load", updateAboutParallax);
+window.addEventListener("scroll", animateAbout);
+window.addEventListener("load", animateAbout);
+
 
 
 
