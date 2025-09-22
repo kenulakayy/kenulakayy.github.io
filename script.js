@@ -170,32 +170,34 @@ const aboutSection = document.querySelector("#about");
 const aboutBg = document.querySelector(".about-bg");
 const aboutHeading = document.querySelector(".animate-heading");
 const aboutLines = document.querySelectorAll(".about-text p");
-let aboutPlayed = false; // prevents replay
+let aboutPlayed = false;
 
 function animateAbout() {
-  if (!aboutSection || !aboutBg || aboutPlayed) return;
+  if (!aboutSection || !aboutBg) return;
 
   let scrollY = window.scrollY;
   let sectionTop = aboutSection.offsetTop;
   let sectionHeight = aboutSection.offsetHeight;
 
   if (scrollY + window.innerHeight > sectionTop && scrollY < sectionTop + sectionHeight) {
-    // Subtle parallax effect (gentle movement, no black edges)
-    let offset = (scrollY - sectionTop) * 0.05; 
-    aboutBg.style.transform = `translateY(${offset}px) scale(1.2)`; 
+    // Subtle parallax effect
+    let offset = (scrollY - sectionTop) * 0.15; // much smaller movement
+    aboutBg.style.transform = `translateY(${offset}px) scale(1.2)`; // locked zoom, only moves a bit
 
-    // Trigger animations (only once)
-    aboutHeading.classList.add("show");
-    aboutLines.forEach((line, index) => {
-      setTimeout(() => line.classList.add("show"), 500 + index * 250);
-    });
-
-    aboutPlayed = true; // lock so it won't replay
+    // Trigger animations once
+    if (!aboutPlayed) {
+      aboutHeading.classList.add("show");
+      aboutLines.forEach((line, index) => {
+        setTimeout(() => line.classList.add("show"), 500 + index * 250);
+      });
+      aboutPlayed = true; // only once per reload
+    }
   }
 }
 
 window.addEventListener("scroll", animateAbout);
 window.addEventListener("load", animateAbout);
+
 
 
 
