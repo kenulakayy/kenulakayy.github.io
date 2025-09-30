@@ -325,6 +325,98 @@ h2 {
 }
 
 
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  position: relative;
+  aspect-ratio: 1/1; /* keeps squares */
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  background: white; /* placeholder */
+  transform: scale(1);
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+}
+
+/* Fake album art area */
+.project-img {
+  width: 100%;
+  height: 100%;
+  background: white; /* placeholder */
+}
+
+/* Overlay for hover text */
+.project-card .overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s ease, background 0.4s ease;
+}
+
+.project-card:hover .overlay {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.project-card .overlay p {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.project-card .overlay span {
+  font-size: 0.9rem;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+/* Special View More Card */
+.project-card.view-more {
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-card.view-more .overlay {
+  opacity: 1; /* always visible */
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.project-card.view-more p {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #FFBB2B;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 
 
