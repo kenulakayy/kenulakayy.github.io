@@ -415,7 +415,7 @@ h2 {
 }
 
 .project-card:nth-child(1) .project-img {
-  background: url('Album Arts/BEDROOM - ALBUM ART.jpg') no-repeat center center/cover;
+  background: url('Album Arts/BEDROOM_ALBUM_ART.jpg') no-repeat center center/cover;
 }
 
 .project-card:nth-child(2) .project-img {
@@ -443,6 +443,7 @@ h2 {
   font-weight: 700;
   text-align: center;
 }
+
 
 
 
