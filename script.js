@@ -195,10 +195,24 @@ function animateAbout() {
 window.addEventListener("scroll", animateAbout);
 window.addEventListener("load", animateAbout);
 
+// ===============================
+// Animate Studio Projects Heading (on scroll)
+// ===============================
+const studioHeading = document.querySelector("#studio-projects h2");
+let studioPlayed = false;
 
+function animateStudio() {
+  if (!studioHeading) return;
 
+  let scrollY = window.scrollY;
+  let sectionTop = document.querySelector("#studio-projects").offsetTop;
+  let sectionHeight = document.querySelector("#studio-projects").offsetHeight;
 
+  if (scrollY + window.innerHeight > sectionTop + 100 && !studioPlayed) {
+    studioHeading.classList.add("show");
+    studioPlayed = true; // only once
+  }
+}
 
-
-
-
+window.addEventListener("scroll", animateStudio);
+window.addEventListener("load", animateStudio);
