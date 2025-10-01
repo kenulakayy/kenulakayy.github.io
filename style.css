@@ -414,6 +414,51 @@ h2 {
   color: #FFBB2B;
 }
 
+/* Studio Projects Heading (same as About) */
+#studio-projects h2 {
+  font-size: 6rem;
+  margin-bottom: 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  text-align: center;
+}
+
+.projects-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-slide {
+  display: none; /* hide all */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.project-slide.active {
+  display: grid; /* only current slide shows */
+}
+
+.slider-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.slider-nav button {
+  background: none;
+  border: 2px solid white;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.slider-nav button:hover {
+  background: white;
+  color: black;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .projects-grid {
@@ -426,22 +471,3 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
-
-/* Studio Projects Heading (same as About) */
-#studio-projects h2 {
-  font-size: 6rem;
-  margin-bottom: 2rem;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  text-align: center;
-}
-
-
-
-
-
-
-
-
-
-
