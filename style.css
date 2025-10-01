@@ -282,7 +282,7 @@ h2 {
   font-weight: 300;
   line-height: 1.8; /* more breathing space */
   margin-bottom: 1.2rem;
-  text-align: justify; /* optional: makes edges align neatly */
+  text-align: center;
 }
 
 /* Heading animation */
@@ -435,5 +435,6 @@ h2 {
   font-weight: 700;
   text-align: center;
 }
+
 
 
