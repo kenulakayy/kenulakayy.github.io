@@ -263,7 +263,8 @@ h2 {
 
 .about-content {
   position: relative;
-  max-width: 800px;
+  max-width: 1000px; /* increased from 800px */
+  width: 90%;        /* ensures responsiveness */
   z-index: 1;
   color: white;
 }
@@ -277,10 +278,11 @@ h2 {
 
 .about-text p {
   font-family: 'JetBrains Mono', monospace; /* body font */
-  font-size: 1.2rem; /* default ~1rem */
-  font-weight: 300; /* light */
-  line-height: 1.6; /* makes it easier to read */
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.8; /* more breathing space */
   margin-bottom: 1.2rem;
+  text-align: justify; /* optional: makes edges align neatly */
 }
 
 /* Heading animation */
@@ -426,18 +428,3 @@ h2 {
   font-weight: 700;
   text-align: center;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
