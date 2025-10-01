@@ -216,3 +216,26 @@ function animateStudio() {
 
 window.addEventListener("scroll", animateStudio);
 window.addEventListener("load", animateStudio);
+
+// ===============================
+// Animate Studio Projects Grid (staggered)
+// ===============================
+const studioCards = document.querySelectorAll("#studio-projects .project-card");
+let studioGridPlayed = false;
+
+function animateStudioGrid() {
+  const sectionTop = document.querySelector("#studio-projects").offsetTop;
+  const triggerBottom = window.innerHeight * 0.85;
+
+  if (window.scrollY + triggerBottom > sectionTop && !studioGridPlayed) {
+    studioCards.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.add("show");
+      }, index * 200); // stagger 200ms per card
+    });
+    studioGridPlayed = true; // only once
+  }
+}
+
+window.addEventListener("scroll", animateStudioGrid);
+window.addEventListener("load", animateStudioGrid);
