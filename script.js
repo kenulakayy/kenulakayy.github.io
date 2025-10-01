@@ -55,9 +55,6 @@ function renderProjects(containerId, projects) {
     .join("");
 }
 
-// Render grids
-renderProjects("studio-grid", studioProjects);
-renderProjects("creative-grid", creativeProjects);
 
 // ===============================
 // Scroll Fade-in Sections
@@ -197,6 +194,7 @@ function animateAbout() {
 
 window.addEventListener("scroll", animateAbout);
 window.addEventListener("load", animateAbout);
+
 
 
 
