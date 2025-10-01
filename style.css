@@ -418,6 +418,15 @@ h2 {
   }
 }
 
+/* Studio Projects Heading (same as About) */
+#studio-projects h2 {
+  font-size: 6rem;
+  margin-bottom: 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  text-align: center;
+}
+
 
 
 
