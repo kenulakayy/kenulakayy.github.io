@@ -414,14 +414,6 @@ h2 {
   color: #FFBB2B;
 }
 
-.project-card:nth-child(1) .project-img {
-  background: url('Album_Arts/BEDROOM_ALBUM_ART.jpg') no-repeat center center/cover;
-}
-
-.project-card:nth-child(2) .project-img {
-  background: url('images/album2.jpg') no-repeat center center/cover;
-}
-
 /* Responsive */
 @media (max-width: 1024px) {
   .projects-grid {
@@ -443,6 +435,7 @@ h2 {
   font-weight: 700;
   text-align: center;
 }
+
 
 
 
