@@ -332,3 +332,19 @@ prevBtn.addEventListener("click", () => {
 // Start auto-slide on load
 updateSlider(); // show first slide
 startAutoSlide();
+
+function updateSlider() {
+  slides.forEach((slide, i) => {
+    slide.classList.remove("active");
+    dots[i].classList.remove("active");
+  });
+
+  slides[currentSlide].classList.add("active");
+  dots[currentSlide].classList.add("active");
+
+  // Animate cards in current slide
+  const cards = slides[currentSlide].querySelectorAll(".project-card");
+  cards.forEach((card, index) => {
+    setTimeout(() => card.classList.add("show"), index * 150);
+  });
+}
