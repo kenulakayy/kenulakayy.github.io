@@ -533,6 +533,54 @@ h2 {
   background: #FFBB2B;
 }
 
+/* Each slide: 2 rows × 4 cols */
+.project-slide {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: opacity 1s ease;
+}
+
+.project-slide.active {
+  opacity: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* Project card animations */
+.project-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.project-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Arrows */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.4);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 20; /* fix: above slides */
+  transition: background 0.3s ease;
+}
+
+
 /* Responsive */
 @media (max-width: 1024px) {
   .projects-grid {
@@ -545,3 +593,4 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
