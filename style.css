@@ -359,6 +359,7 @@ h2 {
 /* Slider container */
 .projects-slider {
   position: relative;
+  min-height: 600px; /* enough to fit grid rows */
   width: 100%;
   height: auto;
   overflow: hidden;
@@ -368,21 +369,21 @@ h2 {
 .project-slide {
   opacity: 0;
   visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   gap: 1.5rem;
-  transition: opacity 1s ease, visibility 1s ease;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+  position: absolute;   /* stacked on top of each other */
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .project-slide.active {
   opacity: 1;
   visibility: visible;
-  position: relative;
+  position: relative;   /* only active one flows normally */
   z-index: 1;
 }
 
@@ -530,4 +531,5 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
 
