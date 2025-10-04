@@ -366,17 +366,22 @@ h2 {
 
 /* Slides (hidden by default) */
 .project-slide {
-  display: none; /* hide all slides */
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   gap: 1.5rem;
-  opacity: 0;
-  transition: opacity 1s ease;
+  transition: opacity 1s ease, visibility 1s ease;
 }
 
 .project-slide.active {
-  display: grid; /* show only the active one */
   opacity: 1;
+  visibility: visible;
   position: relative;
   z-index: 1;
 }
@@ -525,3 +530,4 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
