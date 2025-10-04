@@ -339,8 +339,3 @@ prevBtn.addEventListener("click", () => {
 // Init on load
 updateSlider(); // show first slide
 startAutoSlide();
-
-// Ensure first slide is active on load
-if (slides.length > 0) {
-  slides[0].classList.add("active");
-}
