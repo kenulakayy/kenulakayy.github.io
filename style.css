@@ -483,35 +483,6 @@ h2 {
   position: relative; /* keep active slide in flow */
 }
 
-/* Slider Arrows */
-.slider-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.4);
-  border: none;
-  color: white;
-  font-size: 2rem;
-  padding: 0.5rem 0.9rem;
-  cursor: pointer;
-  border-radius: 50%;
-  z-index: 10;
-  transition: background 0.3s ease;
-}
-
-.slider-arrow:hover {
-  background: rgba(255,255,255,0.8);
-  color: black;
-}
-
-.slider-arrow.left {
-  left: 15px;
-}
-
-.slider-arrow.right {
-  right: 15px;
-}
-
 /* Slider Dots */
 .slider-dots {
   display: flex;
@@ -623,5 +594,6 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
 
 
