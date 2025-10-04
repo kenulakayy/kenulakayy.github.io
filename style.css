@@ -392,8 +392,8 @@ h2 {
   cursor: pointer;
   background: white;
 
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: none; /* TEMP: no animation */
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
@@ -525,4 +525,5 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
 
