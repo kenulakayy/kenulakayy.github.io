@@ -267,6 +267,7 @@ slides.forEach((_, i) => {
 
 const dots = document.querySelectorAll("#studio-projects .slider-dots button");
 
+// Update slider (handles slides, dots & card animations)
 function updateSlider() {
   slides.forEach((slide, i) => {
     slide.classList.remove("active");
@@ -275,6 +276,12 @@ function updateSlider() {
 
   slides[currentSlide].classList.add("active");
   dots[currentSlide].classList.add("active");
+
+  // Animate cards in current slide
+  const cards = slides[currentSlide].querySelectorAll(".project-card");
+  cards.forEach((card, index) => {
+    setTimeout(() => card.classList.add("show"), index * 150);
+  });
 }
 
 function goToSlide(index) {
@@ -329,22 +336,7 @@ prevBtn.addEventListener("click", () => {
   resetAutoSlide();
 });
 
-// Start auto-slide on load
+// Init on load
 updateSlider(); // show first slide
 startAutoSlide();
 
-function updateSlider() {
-  slides.forEach((slide, i) => {
-    slide.classList.remove("active");
-    dots[i].classList.remove("active");
-  });
-
-  slides[currentSlide].classList.add("active");
-  dots[currentSlide].classList.add("active");
-
-  // Animate cards in current slide
-  const cards = slides[currentSlide].querySelectorAll(".project-card");
-  cards.forEach((card, index) => {
-    setTimeout(() => card.classList.add("show"), index * 150);
-  });
-}
