@@ -526,4 +526,16 @@ h2 {
   }
 }
 
+#studio-projects .project-slide {
+  display: grid !important;
+  opacity: 1 !important;
+}
+
+#studio-projects .project-card {
+  opacity: 1 !important;
+  transform: none !important;
+  background: white !important;
+  border: 1px solid red; /* debug: makes boxes visible */
+  min-height: 200px; /* debug: ensures they take space */
+}
 
