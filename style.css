@@ -375,10 +375,10 @@ h2 {
 }
 
 .project-slide.active {
-  display: grid; /* show only active slide */
+  display: grid; /* show only the active one */
   opacity: 1;
-  z-index: 1;
   position: relative;
+  z-index: 1;
 }
 
 /* Project Cards */
@@ -525,17 +525,3 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
-
-#studio-projects .project-slide {
-  display: grid !important;
-  opacity: 1 !important;
-}
-
-#studio-projects .project-card {
-  opacity: 1 !important;
-  transform: none !important;
-  background: white !important;
-  border: 1px solid red; /* debug: makes boxes visible */
-  min-height: 200px; /* debug: ensures they take space */
-}
-
