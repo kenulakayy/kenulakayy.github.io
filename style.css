@@ -483,7 +483,7 @@ h2 {
 }
 
 /* Slider Arrows */
-.slider-arrow {
+#studio-projects .slider-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -542,4 +542,5 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
 
