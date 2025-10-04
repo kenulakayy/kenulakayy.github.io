@@ -327,98 +327,41 @@ h2 {
 }
 
 
-/* ============================= */
-/* Studio Projects Section       */
-/* ============================= */
-
-#studio-projects {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;   /* vertical center */
-  align-items: center;       /* horizontal center */
-  min-height: 100vh;         /* full viewport height */
-  padding: 3rem 2rem;        /* reduced padding */
-  box-sizing: border-box;
-}
-
-#studio-projects h2 {
-  font-size: 6rem;
-  margin-bottom: 1.2rem;     /* smaller gap under heading */
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  text-align: center;
-}
-
-/* Slider wrapper keeps everything centered */
-.slider-wrapper {
-  position: relative;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-/* Slider container */
-.projects-slider {
-  position: relative;
-  min-height: 600px; /* enough to fit grid rows */
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-}
-
-/* Slides (hidden by default) */
-.project-slide {
-  opacity: 0;
-  visibility: hidden;
+/* Projects Grid */
+.projects-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  justify-items: center;
   gap: 1.5rem;
-  transition: opacity 0.8s ease, visibility 0.8s ease;
-  position: absolute;   /* stacked on top of each other */
-  top: 0;
-  left: 0;
-  width: 100%;
+  margin-top: 2rem;
 }
 
-.project-slide.active {
-  opacity: 1;
-  visibility: visible;
-  position: relative;   /* only active one flows normally */
-  z-index: 1;
-}
-
-/* Project Cards */
 .project-card {
   position: relative;
   aspect-ratio: 1/1;
-  max-width: 220px;
-  margin: 0 auto;
   overflow: hidden;
   border-radius: 8px;
   cursor: pointer;
   background: white;
-
-  opacity: 1;
-  transform: none; /* TEMP: no animation */
+  
+  opacity: 0;
+  transform: scale(1) translateY(30px); /* combine both */
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .project-card.show {
   opacity: 1;
-  transform: translateY(0);
+  transform: scale(1) translateY(0);
 }
 
 .project-card:hover {
-  transform: scale(1.05) translateY(0);
+  transform: scale(1.05) translateY(0); /* hover zoom */
 }
 
-/* Project Image placeholder */
-.project-img {
+.project-img img {
   width: 100%;
   height: 100%;
-  background: white; /* replace with album art */
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
+  background: white; /* placeholder */
 }
 
 /* Overlay for hover text */
@@ -461,7 +404,7 @@ h2 {
 }
 
 .project-card.view-more .overlay {
-  opacity: 1;
+  opacity: 1; /* always visible */
   background: rgba(0, 0, 0, 0.7);
 }
 
@@ -471,30 +414,101 @@ h2 {
   color: #FFBB2B;
 }
 
+/* Studio Projects Heading (same as About) */
+#studio-projects h2 {
+  font-size: 6rem;
+  margin-bottom: 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  text-align: center;
+}
+
+.projects-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-slide {
+  display: none; /* hide all */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.project-slide.active {
+  display: grid; /* only current slide shows */
+}
+
+.slider-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.slider-nav button {
+  background: none;
+  border: 2px solid white;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.slider-nav button:hover {
+  background: white;
+  color: black;
+}
+
+/* Projects Slider (Crossfade) */
+.projects-slider {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.project-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.project-slide.active {
+  opacity: 1;
+  z-index: 1;
+  position: relative; /* keep active slide in flow */
+}
+
 /* Slider Arrows */
 .slider-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: none; /* no circle */
+  background: rgba(0,0,0,0.4);
   border: none;
-  color: white; /* default white */
+  color: white;
   font-size: 2rem;
+  padding: 0.5rem 0.9rem;
   cursor: pointer;
-  z-index: 20;
-  transition: color 0.3s ease;
+  border-radius: 50%;
+  z-index: 10;
+  transition: background 0.3s ease;
 }
 
 .slider-arrow:hover {
-  color: #FFBB2B; /* yellow on hover */
+  background: rgba(255,255,255,0.8);
+  color: black;
 }
 
 .slider-arrow.left {
-  left: -40px; /* just outside grid */
+  left: 15px;
 }
 
 .slider-arrow.right {
-  right: -40px;
+  right: 15px;
 }
 
 /* Slider Dots */
@@ -521,15 +535,13 @@ h2 {
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .project-slide {
+  .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
-  .project-slide {
+  .projects-grid {
     grid-template-columns: 1fr;
   }
 }
-
-
