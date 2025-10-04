@@ -569,17 +569,26 @@ h2 {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.4);
+  background: none;            /* remove the dark circle */
   border: none;
-  color: white;
-  font-size: 2rem;
-  padding: 0.5rem 0.9rem;
+  color: white;                /* default white */
+  font-size: 2.5rem;           /* slightly bigger for visibility */
   cursor: pointer;
-  border-radius: 50%;
-  z-index: 20; /* fix: above slides */
-  transition: background 0.3s ease;
+  z-index: 20;
+  transition: color 0.3s ease; /* smooth hover color change */
 }
 
+.slider-arrow:hover {
+  color: #FFBB2B;              /* yellow on hover */
+}
+
+.slider-arrow.left {
+  left: 15px;
+}
+
+.slider-arrow.right {
+  right: 15px;
+}
 
 /* Responsive */
 @media (max-width: 1024px) {
