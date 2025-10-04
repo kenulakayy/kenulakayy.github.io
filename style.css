@@ -482,30 +482,30 @@ h2 {
   position: relative; /* keep active slide in flow */
 }
 
-/* Slider Arrows */
+/* Studio Projects Slider Arrows */
 #studio-projects .slider-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: none;      /* remove circle background */
-  border: none;          /* no border */
-  color: white;          /* default white */
-  font-size: 2rem;       /* adjust arrow size */
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
   cursor: pointer;
-  z-index: 20;           /* keep above cards */
+  z-index: 20;
   transition: color 0.3s ease;
 }
 
-.slider-arrow:hover {
-  color: #FFBB2B;        /* yellow on hover */
+#studio-projects .slider-arrow:hover {
+  color: #FFBB2B; /* yellow hover */
 }
 
-.slider-arrow.left {
-  left: -40px;           /* position just outside grid */
+#studio-projects .slider-arrow.left {
+  left: -25px;   /* slightly outside grid but still visible */
 }
 
-.slider-arrow.right {
-  right: -40px;
+#studio-projects .slider-arrow.right {
+  right: -25px;  /* slightly outside grid but still visible */
 }
 
 /* Slider Dots */
@@ -542,5 +542,3 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
-
-
