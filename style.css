@@ -423,9 +423,10 @@ h2 {
   text-align: center;
 }
 
-.projects-slider {
+#studio-projects .projects-slider {
+  max-width: 95%;   /* grid won’t stretch edge-to-edge */
+  margin: 0 auto;   /* centers it */
   position: relative;
-  overflow: hidden;
 }
 
 .project-slide {
@@ -497,15 +498,15 @@ h2 {
 }
 
 #studio-projects .slider-arrow:hover {
-  color: #FFBB2B; /* yellow hover */
+  color: #FFBB2B;
 }
 
 #studio-projects .slider-arrow.left {
-  left: -25px;   /* slightly outside grid but still visible */
+  left: -15px;   /* just slightly outside the grid */
 }
 
 #studio-projects .slider-arrow.right {
-  right: -25px;  /* slightly outside grid but still visible */
+  right: -15px;
 }
 
 /* Slider Dots */
@@ -542,3 +543,4 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
