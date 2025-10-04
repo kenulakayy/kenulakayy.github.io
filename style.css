@@ -487,28 +487,25 @@ h2 {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.4);
-  border: none;
-  color: white;
-  font-size: 2rem;
-  padding: 0.5rem 0.9rem;
+  background: none;      /* remove circle background */
+  border: none;          /* no border */
+  color: white;          /* default white */
+  font-size: 2rem;       /* adjust arrow size */
   cursor: pointer;
-  border-radius: 50%;
-  z-index: 10;
-  transition: background 0.3s ease;
+  z-index: 20;           /* keep above cards */
+  transition: color 0.3s ease;
 }
 
 .slider-arrow:hover {
-  background: rgba(255,255,255,0.8);
-  color: black;
+  color: #FFBB2B;        /* yellow on hover */
 }
 
 .slider-arrow.left {
-  left: 15px;
+  left: -40px;           /* position just outside grid */
 }
 
 .slider-arrow.right {
-  right: 15px;
+  right: -40px;
 }
 
 /* Slider Dots */
@@ -545,3 +542,4 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
