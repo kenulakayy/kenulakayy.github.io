@@ -423,13 +423,6 @@ h2 {
   text-align: center;
 }
 
-#studio-projects .slider-wrapper {
-  position: relative;
-  max-width: 95%;
-  margin: 0 auto;
-  overflow: visible; /* ensures arrows aren't cropped */
-}
-
 #studio-projects .projects-slider {
   width: 100%;
   position: relative;
@@ -489,24 +482,6 @@ h2 {
   position: relative; /* keep active slide in flow */
 }
 
-/* Studio Projects Slider Arrows */
-#studio-projects .slider-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: white;
-  font-size: 2rem;
-  cursor: pointer;
-  z-index: 20;
-  transition: color 0.3s ease;
-}
-
-#studio-projects .slider-arrow:hover {
-  color: #FFBB2B;
-}
-
 /* Slider Dots */
 .slider-dots {
   display: flex;
@@ -557,7 +532,8 @@ h2 {
   transform: translateY(-50%) scale(1.15);
 }
 
-/* Arrow positions — slightly outside the grid but visible */
+/* Arrow positions —
+slightly outside the grid but visible */
 #studio-projects .slider-arrow.left {
   left: -70px;
 }
@@ -598,6 +574,18 @@ h2 {
   transition: opacity 0.3s ease;
 }
 
+@keyframes scrollArrow {
+  0% {
+    transform: rotate(45deg) translate(0, 0);
+  }
+  50% {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  100% {
+    transform: rotate(45deg) translate(0, 0);
+  }
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .projects-grid {
@@ -610,11 +598,3 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
-
-
-
-
-
-
-
-
