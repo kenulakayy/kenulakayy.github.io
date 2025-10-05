@@ -535,11 +535,11 @@ h2 {
 /* Arrow positions —
 slightly outside the grid but visible */
 #studio-projects .slider-arrow.left {
-  left: -65px;
+  left: -55px;
 }
 
 #studio-projects .slider-arrow.right {
-  right: -65px;
+  right: -55px;
 }
 
 /* Fade-in arrows only when user hovers near the grid */
@@ -598,4 +598,5 @@ slightly outside the grid but visible */
     grid-template-columns: 1fr;
   }
 }
+
 
