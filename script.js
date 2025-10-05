@@ -282,8 +282,12 @@ function updateSlider() {
     card.classList.remove("show");
     setTimeout(() => {
       card.classList.add("show");
-    }, index * 150); // delay for stagger effect
+    }, index * 150);
   });
+
+  // 🔸 Disable arrows when needed
+  if (prevBtn) prevBtn.classList.toggle("disabled", currentSlide === 0);
+  if (nextBtn) nextBtn.classList.toggle("disabled", currentSlide === slides.length - 1);
 }
 
 function goToSlide(index) {
@@ -292,14 +296,21 @@ function goToSlide(index) {
 }
 
 function nextSlide() {
-  currentSlide = (currentSlide + 1) % slides.length;
-  updateSlider();
+  if (currentSlide < slides.length - 1) {
+    currentSlide++;
+    updateSlider();
+  }
 }
 
 function prevSlide() {
-  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-  updateSlider();
+  if (currentSlide > 0) {
+    currentSlide--;
+    updateSlider();
+  }
 }
+// REMOVE or comment these lines:
+// currentSlide = (currentSlide + 1) % slides.length;
+// currentSlide = (currentSlide - 1 + slides.length) % slides.length;
 
 // Auto-slide logic
 function startAutoSlide() {
@@ -341,4 +352,5 @@ prevBtn.addEventListener("click", () => {
 // Start auto-slide on load
 updateSlider(); // show first slide
 startAutoSlide();
+
 
