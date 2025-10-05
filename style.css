@@ -545,18 +545,19 @@ h2 {
   overflow: visible; /* ensure arrows aren't clipped */
 }
 
-/* Arrows styling */
+/* Studio Projects Slider Arrows */
 #studio-projects .slider-arrow {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateX(0);
   background: none;
   border: none;
   color: white;
-  font-size: 2.5rem;
+  font-size: 2rem;
   cursor: pointer;
-  z-index: 50; /* ensure it's above the grid */
-  transition: color 0.3s ease, transform 0.2s ease;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s ease;
 }
 
 #studio-projects .slider-arrow:hover {
@@ -579,8 +580,10 @@ h2 {
   transition: opacity 0.4s ease, color 0.3s ease, transform 0.3s ease;
 }
 
+/* Fade + slide in on hover */
 #studio-projects .slider-wrapper:hover .slider-arrow {
-  opacity: 1; /* fade in on hover */
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
 }
 
 /* Subtle appear + lift for each project card */
@@ -607,6 +610,7 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
