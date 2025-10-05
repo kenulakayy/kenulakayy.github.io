@@ -282,7 +282,7 @@ function updateSlider() {
     card.classList.remove("show");
     setTimeout(() => {
       card.classList.add("show");
-    }, index * 150);
+    }, index * 100);
   });
 
   // Disable arrows visually
@@ -360,3 +360,4 @@ prevBtn.addEventListener("click", () => {
 // Start auto-slide on load
 updateSlider();
 startAutoSlide();
+
