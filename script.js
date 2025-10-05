@@ -308,9 +308,6 @@ function prevSlide() {
     updateSlider();
   }
 }
-// REMOVE or comment these lines:
-// currentSlide = (currentSlide + 1) % slides.length;
-// currentSlide = (currentSlide - 1 + slides.length) % slides.length;
 
 // Auto-slide logic
 function startAutoSlide() {
@@ -352,5 +349,6 @@ prevBtn.addEventListener("click", () => {
 // Start auto-slide on load
 updateSlider(); // show first slide
 startAutoSlide();
+
 
 
