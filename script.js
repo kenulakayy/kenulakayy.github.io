@@ -275,6 +275,15 @@ function updateSlider() {
 
   slides[currentSlide].classList.add("active");
   dots[currentSlide].classList.add("active");
+
+  // Animate cards in this slide (staggered)
+  const currentCards = slides[currentSlide].querySelectorAll(".project-card");
+  currentCards.forEach((card, index) => {
+    card.classList.remove("show");
+    setTimeout(() => {
+      card.classList.add("show");
+    }, index * 150); // delay for stagger effect
+  });
 }
 
 function goToSlide(index) {
@@ -332,3 +341,4 @@ prevBtn.addEventListener("click", () => {
 // Start auto-slide on load
 updateSlider(); // show first slide
 startAutoSlide();
+
