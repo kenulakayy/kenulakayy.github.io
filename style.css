@@ -531,6 +531,42 @@ h2 {
   background: #FFBB2B;
 }
 
+/* Make sure the arrows are positioned relative to this wrapper */
+#studio-projects .slider-wrapper {
+  position: relative;
+  max-width: 95%;
+  margin: 0 auto;
+  overflow: visible; /* ensure arrows aren't clipped */
+}
+
+/* Arrows styling */
+#studio-projects .slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 50; /* ensure it's above the grid */
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+#studio-projects .slider-arrow:hover {
+  color: #FFBB2B;
+  transform: translateY(-50%) scale(1.15);
+}
+
+/* Arrow positions — slightly outside the grid but visible */
+#studio-projects .slider-arrow.left {
+  left: -40px;
+}
+
+#studio-projects .slider-arrow.right {
+  right: -40px;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .projects-grid {
@@ -543,4 +579,5 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
 
