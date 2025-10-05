@@ -566,11 +566,11 @@ h2 {
 
 /* Arrow positions — slightly outside the grid but visible */
 #studio-projects .slider-arrow.left {
-  left: -50px;
+  left: -30px;
 }
 
 #studio-projects .slider-arrow.right {
-  right: -50px;
+  right: -30px;
 }
 
 /* Fade-in arrows only when user hovers near the grid */
@@ -587,7 +587,7 @@ h2 {
 #studio-projects .project-card {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 #studio-projects .project-card.show {
@@ -607,6 +607,7 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
