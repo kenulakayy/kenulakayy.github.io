@@ -285,12 +285,13 @@ function updateSlider() {
     }, index * 150);
   });
 
-  // 🔸 Disable arrows when needed
-  if (prevBtn) prevBtn.classList.toggle("disabled", currentSlide === 0);
-  if (nextBtn) nextBtn.classList.toggle("disabled", currentSlide === slides.length - 1);
+  // Disable arrows visually
+  prevBtn.classList.toggle("disabled", currentSlide === 0);
+  nextBtn.classList.toggle("disabled", currentSlide === slides.length - 1);
 }
 
 function goToSlide(index) {
+  if (index < 0 || index >= slides.length) return; // block invalid moves
   currentSlide = index;
   updateSlider();
 }
@@ -309,10 +310,16 @@ function prevSlide() {
   }
 }
 
-// Auto-slide logic
+// --- Auto-slide logic (stop at last slide)
 function startAutoSlide() {
   stopAutoSlide(); // prevent duplicates
-  autoSlideInterval = setInterval(nextSlide, 10000); // 10s per slide
+  autoSlideInterval = setInterval(() => {
+    if (currentSlide < slides.length - 1) {
+      nextSlide();
+    } else {
+      stopAutoSlide(); // stop at last slide
+    }
+  }, 10000); // 10s per slide
 }
 
 function stopAutoSlide() {
@@ -337,18 +344,19 @@ sliderWrapper.addEventListener("mouseleave", () => {
 
 // Button controls
 nextBtn.addEventListener("click", () => {
-  nextSlide();
-  resetAutoSlide();
+  if (currentSlide < slides.length - 1) {
+    nextSlide();
+    resetAutoSlide();
+  }
 });
 
 prevBtn.addEventListener("click", () => {
-  prevSlide();
-  resetAutoSlide();
+  if (currentSlide > 0) {
+    prevSlide();
+    resetAutoSlide();
+  }
 });
 
 // Start auto-slide on load
-updateSlider(); // show first slide
+updateSlider();
 startAutoSlide();
-
-
-
