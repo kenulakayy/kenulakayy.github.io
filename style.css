@@ -598,6 +598,14 @@ h2 {
   transform: translateY(0);
 }
 
+/* Dim + disable inactive arrows */
+#studio-projects .slider-arrow.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: default;
+  transition: opacity 0.3s ease;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .projects-grid {
@@ -610,6 +618,7 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
