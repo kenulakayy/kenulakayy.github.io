@@ -566,11 +566,33 @@ h2 {
 
 /* Arrow positions — slightly outside the grid but visible */
 #studio-projects .slider-arrow.left {
-  left: -40px;
+  left: -50px;
 }
 
 #studio-projects .slider-arrow.right {
-  right: -40px;
+  right: -50px;
+}
+
+/* Fade-in arrows only when user hovers near the grid */
+#studio-projects .slider-arrow {
+  opacity: 0;
+  transition: opacity 0.4s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+#studio-projects .slider-wrapper:hover .slider-arrow {
+  opacity: 1; /* fade in on hover */
+}
+
+/* Subtle appear + lift for each project card */
+#studio-projects .project-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#studio-projects .project-card.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Responsive */
@@ -585,6 +607,7 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
