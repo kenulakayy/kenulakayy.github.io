@@ -357,11 +357,19 @@ h2 {
   transform: scale(1.05) translateY(0); /* hover zoom */
 }
 
-.project-img{
+.project-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  background: transparent; /* placeholder */
+  background-size: cover;        /* fills the square */
+  background-position: center;   /* keeps image centered */
+  background-repeat: no-repeat;
+  border-radius: 8px;            /* matches card corners */
+  overflow: hidden;              /* hides any bleed */
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.05);
+  transition: transform 0.4s ease;
 }
 
 /* Overlay for hover text */
@@ -598,6 +606,7 @@ slightly outside the grid but visible */
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
