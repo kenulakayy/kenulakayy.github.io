@@ -359,5 +359,27 @@ prevBtn.addEventListener("click", () => {
 
 // Start auto-slide on load
 updateSlider();
-startAutoSlide();
 
+// Wait until Studio Projects is visible to start auto-slide
+let autoStarted = false;
+
+function startAutoWhenVisible() {
+  const studioSection = document.querySelector("#studio-projects");
+  const sectionTop = studioSection.getBoundingClientRect().top;
+  const sectionBottom = studioSection.getBoundingClientRect().bottom;
+
+  // Start when visible in viewport
+  if (sectionTop < window.innerHeight && sectionBottom > 0 && !autoStarted) {
+    startAutoSlide();
+    autoStarted = true;
+  }
+
+  // Stop auto-slide if section leaves view (optional)
+  if ((sectionBottom <= 0 || sectionTop >= window.innerHeight) && autoStarted) {
+    stopAutoSlide();
+    autoStarted = false;
+  }
+}
+
+window.addEventListener("scroll", startAutoWhenVisible);
+window.addEventListener("load", startAutoWhenVisible);
