@@ -357,7 +357,7 @@ h2 {
   transform: scale(1.05) translateY(0); /* hover zoom */
 }
 
-.project-img img {
+.project-img{
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -598,6 +598,7 @@ slightly outside the grid but visible */
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
