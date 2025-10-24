@@ -358,8 +358,6 @@ h2 {
 }
 
 .project-img {
-  position: relative;
-  z-index: 1;
   width: 100%;
   height: 100%;
   background-size: cover;        /* fills the square */
@@ -436,23 +434,16 @@ h2 {
 #studio-projects .projects-slider {
   width: 100%;
   position: relative;
-  min-height: 800px; /* keeps layout steady during fade transitions */
 }
 
 .project-slide {
-  display: none;
-  grid-template-columns: repeat(4, minmax(180px, 1fr));
-  gap: 1rem;
-  justify-items: center;
-  opacity: 0;
-  transition: opacity 0.8s ease;
+  display: none; /* hide all */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
 }
 
 .project-slide.active {
-  display: grid;
-  opacity: 1;
-  position: relative; /* allow active slide to take up space */
-  z-index: 2;
+  display: grid; /* only current slide shows */
 }
 
 .slider-nav {
@@ -474,6 +465,29 @@ h2 {
 .slider-nav button:hover {
   background: white;
   color: black;
+}
+
+/* Projects Slider (Crossfade) */
+.projects-slider {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.project-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.project-slide.active {
+  opacity: 1;
+  z-index: 1;
+  position: relative; /* keep active slide in flow */
 }
 
 /* Slider Dots */
@@ -580,44 +594,6 @@ slightly outside the grid but visible */
   }
 }
 
-/* Clickable zones on left and right edges */
-#studio-projects .arrow-zone {
-  position: absolute;
-  top: 0;
-  width: 15%; /* how wide the corner hover area is */
-  height: 100%;
-  cursor: pointer;
-  z-index: 10;
-  background: transparent; /* invisible */
-}
-
-#studio-projects .arrow-zone.left {
-  left: 0;
-}
-
-#studio-projects .arrow-zone.right {
-  right: 0;
-}
-
-/* Make arrows visible when hovering anywhere in their zone */
-#studio-projects .arrow-zone:hover ~ .slider-arrow.left,
-#studio-projects .arrow-zone:hover ~ .slider-arrow.right {
-  opacity: 1;
-}
-
-/* Always keep 'View More' card in the top-left of its grid */
-.project-slide:has(.view-more):not(:has(.project-card:not(.view-more))) {
-  justify-items: start;
-  align-items: start;
-  min-height: 600px; /* maintain consistent height */
-}
-
-/* Optional: fix grid spacing consistency even for 1 item */
-.project-slide:has(.view-more) {
-  grid-template-columns: repeat(4, minmax(180px, 1fr));
-  grid-auto-rows: 1fr;
-}
-
 /* Responsive */
 @media (max-width: 1024px) {
   .projects-grid {
@@ -630,13 +606,3 @@ slightly outside the grid but visible */
     grid-template-columns: 1fr;
   }
 }
-
-
-
-
-
-
-
-
-
-
