@@ -310,6 +310,16 @@ function prevSlide() {
   }
 }
 
+document.querySelector(".arrow-zone.left").addEventListener("click", () => {
+  if (currentSlide > 0) prevSlide();
+  resetAutoSlide();
+});
+
+document.querySelector(".arrow-zone.right").addEventListener("click", () => {
+  if (currentSlide < slides.length - 1) nextSlide();
+  resetAutoSlide();
+});
+
 // --- Auto-slide logic (stop at last slide)
 function startAutoSlide() {
   stopAutoSlide(); // prevent duplicates
@@ -383,3 +393,4 @@ function startAutoWhenVisible() {
 
 window.addEventListener("scroll", startAutoWhenVisible);
 window.addEventListener("load", startAutoWhenVisible);
+
