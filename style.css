@@ -437,14 +437,19 @@ h2 {
 }
 
 .project-slide {
-  display: none; /* hide all */
-  grid-template-columns: repeat(4, minmax(180px, 1fr)); /* smaller width */
-  gap: 1rem; /* tighter spacing */
-  justify-items: center; /* keeps centered nicely */
+  display: none;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
 }
 
 .project-slide.active {
-  display: grid; /* only current slide shows */
+  display: grid;
+  opacity: 1;
+  position: relative; /* allow active slide to take up space */
+  z-index: 2;
 }
 
 .slider-nav {
@@ -466,23 +471,6 @@ h2 {
 .slider-nav button:hover {
   background: white;
   color: black;
-}
-
-/* Projects Slider (Crossfade) */
-.projects-slider {
-  position: relative;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-}
-
-.project-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 0;
-  transition: opacity 1s ease;
 }
 
 .project-slide.active {
@@ -645,6 +633,7 @@ slightly outside the grid but visible */
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
