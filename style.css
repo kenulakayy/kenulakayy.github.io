@@ -490,6 +490,14 @@ h2 {
   position: relative; /* keep active slide in flow */
 }
 
+#studio-projects .project-slide {
+  min-height: 600px; /* adjust based on how tall your 2-row grid normally is */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
 /* Slider Dots */
 .slider-dots {
   display: flex;
@@ -606,3 +614,4 @@ slightly outside the grid but visible */
     grid-template-columns: 1fr;
   }
 }
+
