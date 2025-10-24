@@ -434,6 +434,7 @@ h2 {
 #studio-projects .projects-slider {
   width: 100%;
   position: relative;
+  min-height: 800px; /* keeps layout steady during fade transitions */
 }
 
 .project-slide {
@@ -471,12 +472,6 @@ h2 {
 .slider-nav button:hover {
   background: white;
   color: black;
-}
-
-.project-slide.active {
-  opacity: 1;
-  z-index: 1;
-  position: relative; /* keep active slide in flow */
 }
 
 /* Slider Dots */
@@ -633,6 +628,7 @@ slightly outside the grid but visible */
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
