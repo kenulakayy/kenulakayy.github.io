@@ -310,16 +310,22 @@ function prevSlide() {
   }
 }
 
-document.querySelector(".arrow-zone.left").addEventListener("click", () => {
-  if (currentSlide > 0) prevSlide();
-  resetAutoSlide();
-});
+const leftZone = document.querySelector(".arrow-zone.left");
+const rightZone = document.querySelector(".arrow-zone.right");
 
-document.querySelector(".arrow-zone.right").addEventListener("click", () => {
-  if (currentSlide < slides.length - 1) nextSlide();
-  resetAutoSlide();
-});
+if (leftZone) {
+  leftZone.addEventListener("click", () => {
+    if (currentSlide > 0) prevSlide();
+    resetAutoSlide();
+  });
+}
 
+if (rightZone) {
+  rightZone.addEventListener("click", () => {
+    if (currentSlide < slides.length - 1) nextSlide();
+    resetAutoSlide();
+  });
+}
 // --- Auto-slide logic (stop at last slide)
 function startAutoSlide() {
   stopAutoSlide(); // prevent duplicates
@@ -393,4 +399,5 @@ function startAutoWhenVisible() {
 
 window.addEventListener("scroll", startAutoWhenVisible);
 window.addEventListener("load", startAutoWhenVisible);
+
 
