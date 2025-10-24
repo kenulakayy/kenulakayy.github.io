@@ -620,6 +620,19 @@ slightly outside the grid but visible */
   opacity: 1;
 }
 
+/* Always keep 'View More' card in the top-left of its grid */
+.project-slide:has(.view-more):not(:has(.project-card:not(.view-more))) {
+  justify-items: start;
+  align-items: start;
+  min-height: 600px; /* maintain consistent height */
+}
+
+/* Optional: fix grid spacing consistency even for 1 item */
+.project-slide:has(.view-more) {
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  grid-auto-rows: 1fr;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .projects-grid {
@@ -632,6 +645,7 @@ slightly outside the grid but visible */
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
