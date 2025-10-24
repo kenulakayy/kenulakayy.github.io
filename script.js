@@ -398,7 +398,37 @@ function startAutoWhenVisible() {
 }
 
 window.addEventListener("scroll", startAutoWhenVisible);
+
+// ===============================
+// DEBUG: Check if Studio Projects grid is being detected
+// ===============================
+console.log("🔍 Debug: Script loaded and running");
+
+const studioSectionEl = document.querySelector("#studio-projects");
+const studioCardsEl = document.querySelectorAll("#studio-projects .project-card");
+
+console.log("✅ Found Studio Section:", !!studioSectionEl);
+console.log("✅ Number of project cards found:", studioCardsEl.length);
+
+function debugAnimateStudioGrid() {
+  console.log("🎬 animateStudioGrid() triggered");
+  const sectionTop = studioSectionEl.offsetTop;
+  const triggerBottom = window.innerHeight * 0.85;
+
+  if (window.scrollY + triggerBottom > sectionTop) {
+    console.log("💡 Section in view, adding .show classes");
+    studioCardsEl.forEach((card, index) => {
+      console.log(`➡️ Showing card #${index + 1}`);
+      card.classList.add("show");
+    });
+  }
+}
+
+window.addEventListener("scroll", debugAnimateStudioGrid);
+window.addEventListener("load", debugAnimateStudioGrid);
+
 window.addEventListener("load", startAutoWhenVisible);
 
 window.addEventListener("load", animateStudioGrid);
+
 
