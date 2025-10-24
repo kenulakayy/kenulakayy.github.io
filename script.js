@@ -400,4 +400,5 @@ function startAutoWhenVisible() {
 window.addEventListener("scroll", startAutoWhenVisible);
 window.addEventListener("load", startAutoWhenVisible);
 
+window.addEventListener("load", animateStudioGrid);
 
