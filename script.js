@@ -310,22 +310,6 @@ function prevSlide() {
   }
 }
 
-const leftZone = document.querySelector(".arrow-zone.left");
-const rightZone = document.querySelector(".arrow-zone.right");
-
-if (leftZone) {
-  leftZone.addEventListener("click", () => {
-    if (currentSlide > 0) prevSlide();
-    resetAutoSlide();
-  });
-}
-
-if (rightZone) {
-  rightZone.addEventListener("click", () => {
-    if (currentSlide < slides.length - 1) nextSlide();
-    resetAutoSlide();
-  });
-}
 // --- Auto-slide logic (stop at last slide)
 function startAutoSlide() {
   stopAutoSlide(); // prevent duplicates
@@ -398,37 +382,4 @@ function startAutoWhenVisible() {
 }
 
 window.addEventListener("scroll", startAutoWhenVisible);
-
-// ===============================
-// DEBUG: Check if Studio Projects grid is being detected
-// ===============================
-console.log("🔍 Debug: Script loaded and running");
-
-const studioSectionEl = document.querySelector("#studio-projects");
-const studioCardsEl = document.querySelectorAll("#studio-projects .project-card");
-
-console.log("✅ Found Studio Section:", !!studioSectionEl);
-console.log("✅ Number of project cards found:", studioCardsEl.length);
-
-function debugAnimateStudioGrid() {
-  console.log("🎬 animateStudioGrid() triggered");
-  const sectionTop = studioSectionEl.offsetTop;
-  const triggerBottom = window.innerHeight * 0.85;
-
-  if (window.scrollY + triggerBottom > sectionTop) {
-    console.log("💡 Section in view, adding .show classes");
-    studioCardsEl.forEach((card, index) => {
-      console.log(`➡️ Showing card #${index + 1}`);
-      card.classList.add("show");
-    });
-  }
-}
-
-window.addEventListener("scroll", debugAnimateStudioGrid);
-window.addEventListener("load", debugAnimateStudioGrid);
-
 window.addEventListener("load", startAutoWhenVisible);
-
-window.addEventListener("load", animateStudioGrid);
-
-
