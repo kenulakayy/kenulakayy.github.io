@@ -438,8 +438,9 @@ h2 {
 
 .project-slide {
   display: none; /* hide all */
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(4, minmax(180px, 1fr)); /* smaller width */
+  gap: 1rem; /* tighter spacing */
+  justify-items: center; /* keeps centered nicely */
 }
 
 .project-slide.active {
@@ -594,6 +595,31 @@ slightly outside the grid but visible */
   }
 }
 
+/* Clickable zones on left and right edges */
+#studio-projects .arrow-zone {
+  position: absolute;
+  top: 0;
+  width: 15%; /* how wide the corner hover area is */
+  height: 100%;
+  cursor: pointer;
+  z-index: 10;
+  background: transparent; /* invisible */
+}
+
+#studio-projects .arrow-zone.left {
+  left: 0;
+}
+
+#studio-projects .arrow-zone.right {
+  right: 0;
+}
+
+/* Make arrows visible when hovering anywhere in their zone */
+#studio-projects .arrow-zone:hover ~ .slider-arrow.left,
+#studio-projects .arrow-zone:hover ~ .slider-arrow.right {
+  opacity: 1;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .projects-grid {
@@ -606,6 +632,7 @@ slightly outside the grid but visible */
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
