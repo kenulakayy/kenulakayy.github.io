@@ -436,14 +436,33 @@ h2 {
   position: relative;
 }
 
-.project-slide {
-  display: none; /* hide all */
+#studio-projects .project-slide {
+  display: none;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
+  align-items: start;
+
+  /* Fix shrinking issue on large screens */
+  min-height: calc((25vw - 1.5rem) * 2 + 1.5rem);
 }
 
-.project-slide.active {
-  display: grid; /* only current slide shows */
+#studio-projects .project-slide.active {
+  display: grid;
+}
+
+/* Responsive height adjustments */
+@media (max-width: 1024px) {
+  #studio-projects .project-slide {
+    grid-template-columns: repeat(2, 1fr);
+    min-height: calc((50vw - 1.5rem) * 4 + 3rem);
+  }
+}
+
+@media (max-width: 600px) {
+  #studio-projects .project-slide {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
 }
 
 .slider-nav {
@@ -614,4 +633,5 @@ slightly outside the grid but visible */
     grid-template-columns: 1fr;
   }
 }
+
 
