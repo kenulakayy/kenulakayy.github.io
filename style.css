@@ -327,102 +327,11 @@ h2 {
 }
 
 
-/* Projects Grid */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
+/* ============================= */
+/*    STUDIO PROJECTS SECTION    */
+/* ============================= */
 
-.project-card {
-  position: relative;
-  aspect-ratio: 1/1;
-  overflow: hidden;
-  border-radius: 8px;
-  cursor: pointer;
-  background: transparent;
-  
-  opacity: 0;
-  transform: scale(1) translateY(30px); /* combine both */
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.project-card.show {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
-
-.project-card:hover {
-  transform: scale(1.05) translateY(0); /* hover zoom */
-}
-
-.project-img {
-  width: 100%;
-  height: 100%;
-  background-size: cover;        /* fills the square */
-  background-position: center;   /* keeps image centered */
-  background-repeat: no-repeat;
-  border-radius: 8px;            /* matches card corners */
-  overflow: hidden;              /* hides any bleed */
-}
-
-.project-card:hover .project-img {
-  transform: scale(1.05);
-  transition: transform 0.4s ease;
-}
-
-/* Overlay for hover text */
-.project-card .overlay {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.4s ease, background 0.4s ease;
-}
-
-.project-card:hover .overlay {
-  opacity: 1;
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.project-card .overlay p {
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 400;
-}
-
-.project-card .overlay span {
-  font-size: 0.9rem;
-  font-weight: 300;
-  opacity: 0.8;
-}
-
-/* Special View More Card */
-.project-card.view-more {
-  background: #222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.project-card.view-more .overlay {
-  opacity: 1; /* always visible */
-  background: rgba(0, 0, 0, 0.7);
-}
-
-.project-card.view-more p {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #FFBB2B;
-}
-
-/* Studio Projects Heading (same as About) */
+/* Section heading */
 #studio-projects h2 {
   font-size: 6rem;
   margin-bottom: 2rem;
@@ -431,25 +340,34 @@ h2 {
   text-align: center;
 }
 
-/* ============================= */
-/* STUDIO PROJECTS SLIDER HEIGHT */
-/* ============================= */
+/* === SLIDER CONTAINER === */
+#studio-projects .slider-wrapper {
+  position: relative;
+  max-width: 95%;
+  margin: 0 auto;
+  overflow: visible; /* ensures arrows aren't cut off */
+}
 
-/* Consistent height for all slides */
+/* === SLIDES CONTAINER === */
 #studio-projects .projects-slider {
   position: relative;
   width: 100%;
-  min-height: 700px; /* fits two rows of 4 cards nicely */
+  min-height: 700px; /* consistent height for desktop */
   overflow: visible;
 }
 
-/* Every slide uses the same grid height */
+/* === INDIVIDUAL SLIDES === */
 #studio-projects .project-slide {
   display: none;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   align-items: start;
-  min-height: 700px; /* match parent */
+  min-height: 700px; /* match the parent height */
+  transition: opacity 0.8s ease;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 #studio-projects .project-slide.active {
@@ -459,7 +377,7 @@ h2 {
   z-index: 1;
 }
 
-/* Responsive adjustments */
+/* === RESPONSIVE ADJUSTMENTS === */
 @media (max-width: 1200px) {
   #studio-projects .project-slide,
   #studio-projects .projects-slider {
@@ -471,7 +389,7 @@ h2 {
 @media (max-width: 900px) {
   #studio-projects .project-slide,
   #studio-projects .projects-slider {
-    min-height: 1000px;
+    min-height: 950px;
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -479,94 +397,96 @@ h2 {
 @media (max-width: 600px) {
   #studio-projects .project-slide,
   #studio-projects .projects-slider {
-    min-height: auto; /* let it adjust on phones */
+    min-height: auto; /* let mobile resize naturally */
     grid-template-columns: 1fr;
   }
 }
 
-.slider-nav {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
-}
-
-.slider-nav button {
-  background: none;
-  border: 2px solid white;
-  color: white;
-  font-size: 2rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.slider-nav button:hover {
-  background: white;
-  color: black;
-}
-
-/* Projects Slider (Crossfade) */
-.projects-slider {
+/* === PROJECT CARDS === */
+#studio-projects .project-card {
   position: relative;
-  width: 100%;
-  height: auto;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  background: transparent;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* Force consistent slide height (always fits 2 rows of 4 cards) */
-#studio-projects .projects-slider {
-  position: relative;
+#studio-projects .project-card.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Keep height flexible on smaller screens */
-@media (max-width: 1200px) {
-  #studio-projects .projects-slider {
-    min-height: 1100px;
-  }
+#studio-projects .project-card:hover {
+  transform: scale(1.05);
 }
 
-@media (max-width: 900px) {
-  #studio-projects .projects-slider {
-    min-height: 1500px;
-  }
+/* Album art image */
+#studio-projects .project-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
 }
 
-@media (max-width: 600px) {
-  #studio-projects .projects-slider {
-    min-height: auto; /* let mobile resize naturally */
-  }
-}
-
-.project-slide {
+/* Hover overlay */
+#studio-projects .project-card .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   opacity: 0;
-  transition: opacity 1s ease;
+  transition: opacity 0.4s ease, background 0.4s ease;
 }
 
-.project-slide.active {
+#studio-projects .project-card:hover .overlay {
   opacity: 1;
-  z-index: 1;
-  position: relative; /* keep active slide in flow */
+  background: rgba(0, 0, 0, 0.6);
 }
 
-#studio-projects .project-slide {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  align-items: start;
+#studio-projects .project-card .overlay p {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
-.projects-slider {
-  position: relative;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
+#studio-projects .project-card .overlay span {
+  font-size: 0.9rem;
+  font-weight: 300;
+  opacity: 0.8;
 }
 
-/* Slider Dots */
+/* === "VIEW MORE" SPECIAL CARD === */
+#studio-projects .project-card.view-more {
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#studio-projects .project-card.view-more .overlay {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#studio-projects .project-card.view-more p {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #FFBB2B;
+}
+
+/* === SLIDER DOTS === */
 .slider-dots {
   display: flex;
   justify-content: center;
@@ -579,7 +499,7 @@ h2 {
   height: 10px;
   border-radius: 50%;
   border: none;
-  background: rgba(255,255,255,0.4);
+  background: rgba(255, 255, 255, 0.4);
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -588,19 +508,11 @@ h2 {
   background: #FFBB2B;
 }
 
-/* Make sure the arrows are positioned relative to this wrapper */
-#studio-projects .slider-wrapper {
-  position: relative;
-  max-width: 95%;
-  margin: 0 auto;
-  overflow: visible; /* ensure arrows aren't clipped */
-}
-
-/* Studio Projects Slider Arrows */
+/* === SLIDER ARROWS === */
 #studio-projects .slider-arrow {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%) translateX(0);
+  transform: translateY(-50%);
   background: none;
   border: none;
   color: white;
@@ -608,16 +520,10 @@ h2 {
   cursor: pointer;
   z-index: 20;
   opacity: 0;
-  transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s ease;
+  transition: opacity 0.4s ease, transform 0.3s ease, color 0.3s ease;
 }
 
-#studio-projects .slider-arrow:hover {
-  color: #FFBB2B;
-  transform: translateY(-50%) scale(1.15);
-}
-
-/* Arrow positions —
-slightly outside the grid but visible */
+/* Slightly outside the grid */
 #studio-projects .slider-arrow.left {
   left: -55px;
 }
@@ -626,63 +532,20 @@ slightly outside the grid but visible */
   right: -55px;
 }
 
-/* Fade-in arrows only when user hovers near the grid */
-#studio-projects .slider-arrow {
-  opacity: 0;
-  transition: opacity 0.4s ease, color 0.3s ease, transform 0.3s ease;
-}
-
-/* Fade + slide in on hover */
+/* Hover animations */
 #studio-projects .slider-wrapper:hover .slider-arrow {
   opacity: 1;
-  transform: translateY(-50%) translateX(0);
+  transform: translateY(-50%) scale(1.05);
 }
 
-/* Subtle appear + lift for each project card */
-#studio-projects .project-card {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+#studio-projects .slider-arrow:hover {
+  color: #FFBB2B;
+  transform: translateY(-50%) scale(1.2);
 }
 
-#studio-projects .project-card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Dim + disable inactive arrows */
+/* Disable inactive arrows */
 #studio-projects .slider-arrow.disabled {
   opacity: 0.4;
   pointer-events: none;
   cursor: default;
-  transition: opacity 0.3s ease;
 }
-
-@keyframes scrollArrow {
-  0% {
-    transform: rotate(45deg) translate(0, 0);
-  }
-  50% {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  100% {
-    transform: rotate(45deg) translate(0, 0);
-  }
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-
-
