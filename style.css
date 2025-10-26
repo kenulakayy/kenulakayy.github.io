@@ -494,6 +494,31 @@ h2 {
   overflow: hidden;
 }
 
+/* Force consistent slide height (always fits 2 rows of 4 cards) */
+#studio-projects .projects-slider {
+  position: relative;
+  min-height: 900px; /* lock consistent height */
+}
+
+/* Keep height flexible on smaller screens */
+@media (max-width: 1200px) {
+  #studio-projects .projects-slider {
+    min-height: 1100px;
+  }
+}
+
+@media (max-width: 900px) {
+  #studio-projects .projects-slider {
+    min-height: 1500px;
+  }
+}
+
+@media (max-width: 600px) {
+  #studio-projects .projects-slider {
+    min-height: auto; /* let mobile resize naturally */
+  }
+}
+
 .project-slide {
   position: absolute;
   top: 0;
@@ -633,5 +658,6 @@ slightly outside the grid but visible */
     grid-template-columns: 1fr;
   }
 }
+
 
 
