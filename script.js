@@ -250,10 +250,11 @@ const dotsContainer = document.querySelector("#studio-projects .slider-dots");
 const sliderWrapper = document.querySelector("#studio-projects .projects-slider");
 
 let currentSlide = 0;
-let autoSlideInterval;
-let hoverTimeout;
+let autoSlideInterval = null;
+let hoverTimeout = null;
+let autoStarted = false;
 
-// Create dots
+// --- Create dots dynamically ---
 slides.forEach((_, i) => {
   const dot = document.createElement("button");
   if (i === 0) dot.classList.add("active");
@@ -267,6 +268,7 @@ slides.forEach((_, i) => {
 
 const dots = document.querySelectorAll("#studio-projects .slider-dots button");
 
+// --- Core slider update ---
 function updateSlider() {
   slides.forEach((slide, i) => {
     slide.classList.remove("active");
@@ -276,22 +278,21 @@ function updateSlider() {
   slides[currentSlide].classList.add("active");
   dots[currentSlide].classList.add("active");
 
-  // Animate cards in this slide (staggered)
-  const currentCards = slides[currentSlide].querySelectorAll(".project-card");
-  currentCards.forEach((card, index) => {
+  // Animate current cards with stagger
+  const cards = slides[currentSlide].querySelectorAll(".project-card");
+  cards.forEach((card, index) => {
     card.classList.remove("show");
-    setTimeout(() => {
-      card.classList.add("show");
-    }, index * 100);
+    setTimeout(() => card.classList.add("show"), index * 100);
   });
 
-  // Disable arrows visually
+  // Disable arrows properly
   prevBtn.classList.toggle("disabled", currentSlide === 0);
   nextBtn.classList.toggle("disabled", currentSlide === slides.length - 1);
 }
 
+// --- Navigation helpers ---
 function goToSlide(index) {
-  if (index < 0 || index >= slides.length) return; // block invalid moves
+  if (index < 0 || index >= slides.length) return;
   currentSlide = index;
   updateSlider();
 }
@@ -310,9 +311,9 @@ function prevSlide() {
   }
 }
 
-// --- Auto-slide logic (stop at last slide)
+// --- Auto Slide Logic ---
 function startAutoSlide() {
-  stopAutoSlide(); // prevent duplicates
+  stopAutoSlide(); // clear old interval
   autoSlideInterval = setInterval(() => {
     if (currentSlide < slides.length - 1) {
       nextSlide();
@@ -331,7 +332,7 @@ function resetAutoSlide() {
   startAutoSlide();
 }
 
-// Pause on hover, resume after 5s
+// --- Hover pause + delayed resume ---
 sliderWrapper.addEventListener("mouseenter", () => {
   stopAutoSlide();
   clearTimeout(hoverTimeout);
@@ -342,7 +343,7 @@ sliderWrapper.addEventListener("mouseleave", () => {
   hoverTimeout = setTimeout(startAutoSlide, 5000);
 });
 
-// Button controls
+// --- Button controls ---
 nextBtn.addEventListener("click", () => {
   if (currentSlide < slides.length - 1) {
     nextSlide();
@@ -357,24 +358,19 @@ prevBtn.addEventListener("click", () => {
   }
 });
 
-// Start auto-slide on load
-updateSlider();
-
-// Wait until Studio Projects is visible to start auto-slide
-let autoStarted = false;
-
+// --- Start only when section visible ---
 function startAutoWhenVisible() {
   const studioSection = document.querySelector("#studio-projects");
   const sectionTop = studioSection.getBoundingClientRect().top;
   const sectionBottom = studioSection.getBoundingClientRect().bottom;
 
-  // Start when visible in viewport
+  // Start auto when visible in viewport
   if (sectionTop < window.innerHeight && sectionBottom > 0 && !autoStarted) {
     startAutoSlide();
     autoStarted = true;
   }
 
-  // Stop auto-slide if section leaves view (optional)
+  // Optional: stop if completely out of view
   if ((sectionBottom <= 0 || sectionTop >= window.innerHeight) && autoStarted) {
     stopAutoSlide();
     autoStarted = false;
@@ -382,4 +378,7 @@ function startAutoWhenVisible() {
 }
 
 window.addEventListener("scroll", startAutoWhenVisible);
-window.addEventListener("load", startAutoWhenVisible);
+window.addEventListener("load", () => {
+  updateSlider();
+  startAutoWhenVisible();
+});
