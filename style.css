@@ -549,3 +549,44 @@ h2 {
   pointer-events: none;
   cursor: default;
 }
+
+/* ============================= */
+/* GLOBAL CONSISTENT SECTION HEIGHT */
+/* ============================= */
+
+#home,
+#about,
+#studio-projects,
+#creative-projects,
+#contact {
+  min-height: 100vh;           /* fills full viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;     /* vertically center content */
+  align-items: center;         /* horizontally center */
+  padding: 6rem 2rem;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* keep inner grids centered properly */
+#studio-projects .slider-wrapper,
+#creative-projects .grid {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* allow natural scroll for smaller screens */
+@media (max-width: 768px) {
+  #home,
+  #about,
+  #studio-projects,
+  #creative-projects,
+  #contact {
+    min-height: auto;
+    padding: 5rem 1.5rem;
+  }
+}
