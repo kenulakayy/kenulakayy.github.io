@@ -431,37 +431,56 @@ h2 {
   text-align: center;
 }
 
+/* ============================= */
+/* STUDIO PROJECTS SLIDER HEIGHT */
+/* ============================= */
+
+/* Consistent height for all slides */
 #studio-projects .projects-slider {
-  width: 100%;
   position: relative;
+  width: 100%;
+  min-height: 700px; /* fits two rows of 4 cards nicely */
+  overflow: visible;
 }
 
+/* Every slide uses the same grid height */
 #studio-projects .project-slide {
   display: none;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   align-items: start;
-
-  /* Fix shrinking issue on large screens */
-  min-height: calc((25vw - 1.5rem) * 2 + 1.5rem);
+  min-height: 700px; /* match parent */
 }
 
 #studio-projects .project-slide.active {
   display: grid;
+  opacity: 1;
+  position: relative;
+  z-index: 1;
 }
 
-/* Responsive height adjustments */
-@media (max-width: 1024px) {
-  #studio-projects .project-slide {
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  #studio-projects .project-slide,
+  #studio-projects .projects-slider {
+    min-height: 800px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  #studio-projects .project-slide,
+  #studio-projects .projects-slider {
+    min-height: 1000px;
     grid-template-columns: repeat(2, 1fr);
-    min-height: calc((50vw - 1.5rem) * 4 + 3rem);
   }
 }
 
 @media (max-width: 600px) {
-  #studio-projects .project-slide {
+  #studio-projects .project-slide,
+  #studio-projects .projects-slider {
+    min-height: auto; /* let it adjust on phones */
     grid-template-columns: 1fr;
-    min-height: auto;
   }
 }
 
@@ -497,7 +516,6 @@ h2 {
 /* Force consistent slide height (always fits 2 rows of 4 cards) */
 #studio-projects .projects-slider {
   position: relative;
-  min-height: 900px; /* lock consistent height */
 }
 
 /* Keep height flexible on smaller screens */
@@ -535,11 +553,17 @@ h2 {
 }
 
 #studio-projects .project-slide {
-  min-height: 600px; /* adjust based on how tall your 2-row grid normally is */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   align-items: start;
+}
+
+.projects-slider {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
 }
 
 /* Slider Dots */
@@ -658,6 +682,7 @@ slightly outside the grid but visible */
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
