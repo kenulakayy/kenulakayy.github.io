@@ -583,6 +583,18 @@ h2 {
   cursor: default;
 }
 
+/* === Animate slider dots fade-in === */
+#studio-projects .slider-dots {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#studio-projects .slider-dots.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* === Reduce overall grid scale for Studio Projects === */
 #studio-projects .project-slide {
   transform: scale(0.85);           /* makes grid 10% smaller overall */
@@ -633,12 +645,3 @@ h2 {
     padding: 5rem 1.5rem;
   }
 }
-
-
-
-
-
-
-
-
-
