@@ -340,19 +340,23 @@ h2 {
   text-align: center;
 }
 
-/* === SLIDER CONTAINER === */
+/* --- Slider wrapper: vertical stack layout --- */
 #studio-projects .slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centers arrows + dots */
+  justify-content: flex-start;
   position: relative;
   max-width: 95%;
   margin: 0 auto;
-  overflow: visible; /* ensures arrows aren't cut off */
+  overflow: visible;
 }
 
-/* === SLIDES CONTAINER === */
+/* --- Projects slider (grid area) --- */
 #studio-projects .projects-slider {
-  position: relative;
   width: 100%;
-  min-height: 700px; /* consistent height for desktop */
+  position: relative;
+  min-height: 650px; /* slightly smaller so dots are visible sooner */
   overflow: visible;
 }
 
@@ -486,17 +490,23 @@ h2 {
   color: #FFBB2B;
 }
 
-/* === SLIDER DOTS === */
+/* --- Center + style dots properly --- */
 #studio-projects .slider-dots {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.6rem;
-  margin-top: 1.5rem;
-  width: 100%;              /* ensures full width */
-  transform: none;          /* reset any scaling inheritance */
-  z-index: 10;              /* make sure it's above */
+  margin-top: 1rem;          /* closer to grid */
+  margin-bottom: 0.5rem;     /* adds breathing room */
+  width: 100%;
+  position: relative;
+  z-index: 5;
+}
+
+#studio-projects .slider-dots button:hover {
+  background: rgba(255, 187, 43, 0.8);
+  transform: scale(1.2);
+  transition: all 0.2s ease;
 }
 
 #studio-projects .slider-wrapper {
@@ -611,6 +621,7 @@ h2 {
     padding: 5rem 1.5rem;
   }
 }
+
 
 
 
