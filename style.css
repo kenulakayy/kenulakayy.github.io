@@ -606,6 +606,283 @@ h2 {
 }
 
 /* ============================= */
+/*    CREATIVE PROJECTS SECTION  */
+/* ============================= */
+
+/* Section heading */
+#creative-projects h2 {
+  font-size: 6rem;
+  margin-bottom: 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* --- Slider wrapper: vertical stack layout --- */
+#creative-projects .slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centers arrows + dots */
+  justify-content: flex-start;
+  position: relative;
+  max-width: 95%;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+/* --- Projects slider (grid area) --- */
+#creative-projects .projects-slider {
+  width: 100%;
+  position: relative;
+  min-height: auto;       /* remove forced height */
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* no forced bottom padding */
+}
+
+/* === INDIVIDUAL SLIDES === */
+#creative-projects .project-slide {
+  display: none;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+  min-height: auto;
+  transition: opacity 0.8s ease;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#creative-projects .project-slide.active {
+  display: grid;
+  opacity: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 1200px) {
+  #creative-projects .project-slide,
+  #creative-projects .projects-slider {
+    min-height: 800px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  #creative-projects .project-slide,
+  #creative-projects .projects-slider {
+    min-height: 950px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  #creative-projects .project-slide,
+  #creative-projects .projects-slider {
+    min-height: auto;
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === PROJECT CARDS === */
+#creative-projects .project-card {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  background: transparent;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#creative-projects .project-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#creative-projects .project-card:hover {
+  transform: scale(1.05);
+}
+
+/* Album art image */
+#creative-projects .project-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+}
+
+/* Hover overlay */
+#creative-projects .project-card .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s ease, background 0.4s ease;
+}
+
+#creative-projects .project-card:hover .overlay {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+#creative-projects .project-card .overlay p {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+#creative-projects .project-card .overlay span {
+  font-size: 0.9rem;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+/* === "VIEW MORE" SPECIAL CARD === */
+#creative-projects .project-card.view-more {
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#creative-projects .project-card.view-more .overlay {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#creative-projects .project-card.view-more p {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #FFBB2B;
+}
+
+/* --- Center + style dots properly --- */
+#creative-projects .slider-dots {
+  position: relative;
+  margin-top: -7rem;           /* distance below grid */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  z-index: 30;
+}
+
+#creative-projects .slider-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#creative-projects .slider-dots button.active {
+  background: #FFBB2B;
+}
+
+#creative-projects .slider-dots button:hover {
+  background: rgba(255, 187, 43, 0.8);
+  transform: scale(1.2);
+}
+
+/* === SLIDER ARROWS === */
+#creative-projects .slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+#creative-projects .slider-arrow.left {
+  left: -35px;
+}
+
+#creative-projects .slider-arrow.right {
+  right: -35px;
+}
+
+@media (max-width: 1200px) {
+  #creative-projects .slider-arrow.left {
+    left: -25px;
+  }
+  #creative-projects .slider-arrow.right {
+    right: -25px;
+  }
+}
+
+@media (max-width: 900px) {
+  #creative-projects .slider-arrow.left {
+    left: -15px;
+  }
+  #creative-projects .slider-arrow.right {
+    right: -15px;
+  }
+}
+
+/* Hover animations */
+#creative-projects .slider-wrapper:hover .slider-arrow {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.05);
+}
+
+#creative-projects .slider-arrow:hover {
+  color: #FFBB2B;
+  transform: translateY(-50%) scale(1.2);
+}
+
+/* Disable inactive arrows */
+#creative-projects .slider-arrow.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: default;
+}
+
+/* === Animate slider dots fade-in === */
+#creative-projects .slider-dots {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#creative-projects .slider-dots.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Reduce overall grid scale for Creative Projects === */
+#creative-projects .project-slide {
+  transform: scale(0.85);
+  transform-origin: center top;
+}
+
+#creative-projects .projects-slider {
+  min-height: 600px;
+}
+
+/* ============================= */
 /* GLOBAL CONSISTENT SECTION HEIGHT */
 /* ============================= */
 
@@ -645,3 +922,4 @@ h2 {
     padding: 5rem 1.5rem;
   }
 }
+
