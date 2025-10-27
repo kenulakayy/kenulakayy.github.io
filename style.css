@@ -550,6 +550,16 @@ h2 {
   cursor: default;
 }
 
+/* === Reduce overall grid scale for Studio Projects === */
+#studio-projects .project-slide {
+  transform: scale(0.9);           /* makes grid 10% smaller overall */
+  transform-origin: center top;    /* keeps grid centered and shrinks upward */
+}
+
+#studio-projects .projects-slider {
+  min-height: 600px; /* reduce from 700px so dots stay visible */
+}
+
 /* ============================= */
 /* GLOBAL CONSISTENT SECTION HEIGHT */
 /* ============================= */
@@ -590,3 +600,4 @@ h2 {
     padding: 5rem 1.5rem;
   }
 }
+
