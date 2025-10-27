@@ -407,3 +407,197 @@ window.addEventListener("load", () => {
   startAutoWhenVisible();
 });
 
+// ===============================
+// Creative Projects Slider (same as Studio Projects)
+// ===============================
+const creativeSlides = document.querySelectorAll("#creative-projects .project-slide");
+const creativePrev = document.querySelector("#creative-projects .slider-arrow.left");
+const creativeNext = document.querySelector("#creative-projects .slider-arrow.right");
+const creativeDotsContainer = document.querySelector("#creative-projects .slider-dots");
+const creativeSliderWrapper = document.querySelector("#creative-projects .projects-slider");
+
+let creativeCurrent = 0;
+let creativeAuto = null;
+let creativeHoverTimeout = null;
+let creativeAutoStarted = false;
+
+// --- Create dots dynamically ---
+creativeSlides.forEach((_, i) => {
+  const dot = document.createElement("button");
+  if (i === 0) dot.classList.add("active");
+  creativeDotsContainer.appendChild(dot);
+
+  dot.addEventListener("click", () => {
+    creativeGoTo(i);
+    creativeResetAuto();
+  });
+});
+
+const creativeDots = document.querySelectorAll("#creative-projects .slider-dots button");
+
+// --- Update slide ---
+function creativeUpdate() {
+  creativeSlides.forEach((s, i) => {
+    s.classList.remove("active");
+    creativeDots[i].classList.remove("active");
+  });
+  creativeSlides[creativeCurrent].classList.add("active");
+  creativeDots[creativeCurrent].classList.add("active");
+
+  const cards = creativeSlides[creativeCurrent].querySelectorAll(".project-card");
+  cards.forEach((card, index) => {
+    card.classList.remove("show");
+    setTimeout(() => card.classList.add("show"), index * 100);
+  });
+
+  creativePrev.classList.toggle("disabled", creativeCurrent === 0);
+  creativeNext.classList.toggle("disabled", creativeCurrent === creativeSlides.length - 1);
+}
+
+// --- Navigation ---
+function creativeGoTo(i) {
+  if (i < 0 || i >= creativeSlides.length) return;
+  creativeCurrent = i;
+  creativeUpdate();
+}
+function creativeNextSlide() {
+  if (creativeCurrent < creativeSlides.length - 1) {
+    creativeCurrent++;
+    creativeUpdate();
+  }
+}
+function creativePrevSlide() {
+  if (creativeCurrent > 0) {
+    creativeCurrent--;
+    creativeUpdate();
+  }
+}
+
+// --- Auto slide ---
+function creativeStartAuto() {
+  creativeStopAuto();
+  creativeAuto = setInterval(() => {
+    if (creativeCurrent < creativeSlides.length - 1) {
+      creativeNextSlide();
+    } else {
+      creativeStopAuto();
+    }
+  }, 10000);
+}
+function creativeStopAuto() {
+  clearInterval(creativeAuto);
+}
+function creativeResetAuto() {
+  creativeStopAuto();
+  creativeStartAuto();
+}
+
+// --- Hover pause ---
+creativeSliderWrapper.addEventListener("mouseenter", () => {
+  creativeStopAuto();
+  clearTimeout(creativeHoverTimeout);
+});
+creativeSliderWrapper.addEventListener("mouseleave", () => {
+  clearTimeout(creativeHoverTimeout);
+  creativeHoverTimeout = setTimeout(creativeStartAuto, 5000);
+});
+
+// --- Buttons ---
+creativeNext.addEventListener("click", () => {
+  creativeNextSlide();
+  creativeResetAuto();
+});
+creativePrev.addEventListener("click", () => {
+  creativePrevSlide();
+  creativeResetAuto();
+});
+
+// --- Start auto when visible ---
+function creativeStartAutoWhenVisible() {
+  const creativeSection = document.querySelector("#creative-projects");
+  const top = creativeSection.getBoundingClientRect().top;
+  const bottom = creativeSection.getBoundingClientRect().bottom;
+
+  if (top < window.innerHeight && bottom > 0 && !creativeAutoStarted) {
+    creativeStartAuto();
+    creativeAutoStarted = true;
+  }
+
+  if ((bottom <= 0 || top >= window.innerHeight) && creativeAutoStarted) {
+    creativeStopAuto();
+    creativeAutoStarted = false;
+  }
+}
+
+window.addEventListener("scroll", creativeStartAutoWhenVisible);
+window.addEventListener("load", () => {
+  creativeUpdate();
+  creativeStartAutoWhenVisible();
+});
+
+// ===============================
+// Animate Creative Projects Heading (on scroll)
+// ===============================
+const creativeHeading = document.querySelector("#creative-projects h2");
+let creativePlayed = false;
+
+function animateCreativeHeading() {
+  if (!creativeHeading) return;
+
+  const sectionTop = document.querySelector("#creative-projects").offsetTop;
+  const scrollY = window.scrollY;
+
+  if (scrollY + window.innerHeight > sectionTop + 100 && !creativePlayed) {
+    creativeHeading.classList.add("show");
+    creativePlayed = true; // only once
+  }
+}
+
+window.addEventListener("scroll", animateCreativeHeading);
+window.addEventListener("load", animateCreativeHeading);
+
+// ===============================
+// Animate Creative Projects Grid (staggered)
+// ===============================
+const creativeCards = document.querySelectorAll("#creative-projects .project-card");
+let creativeGridPlayed = false;
+
+function animateCreativeGrid() {
+  const sectionTop = document.querySelector("#creative-projects").offsetTop;
+  const triggerBottom = window.innerHeight * 0.85;
+
+  if (window.scrollY + triggerBottom > sectionTop && !creativeGridPlayed) {
+    creativeCards.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.add("show");
+      }, index * 200); // stagger 200ms per card
+    });
+    creativeGridPlayed = true; // only once
+  }
+}
+
+window.addEventListener("scroll", animateCreativeGrid);
+window.addEventListener("load", animateCreativeGrid);
+
+// ===============================
+// Fade-in Slider Dots when Section Comes into View
+// ===============================
+const creativeSection = document.querySelector("#creative-projects");
+const creativeDots = document.querySelector("#creative-projects .slider-dots");
+
+function fadeInCreativeDots() {
+  if (!creativeSection || !creativeDots) return;
+
+  const sectionTop = creativeSection.getBoundingClientRect().top;
+  const sectionBottom = creativeSection.getBoundingClientRect().bottom;
+  const windowHeight = window.innerHeight;
+
+  if (sectionTop < windowHeight * 0.9 && sectionBottom > 0) {
+    creativeDots.classList.add("show");
+  } else {
+    creativeDots.classList.remove("show");
+  }
+}
+
+window.addEventListener("scroll", fadeInCreativeDots);
+window.addEventListener("load", fadeInCreativeDots);
