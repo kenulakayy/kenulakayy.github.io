@@ -241,6 +241,30 @@ window.addEventListener("scroll", animateStudioGrid);
 window.addEventListener("load", animateStudioGrid);
 
 // ===============================
+// Fade-in Slider Dots when Section Comes into View
+// ===============================
+const studioSection = document.querySelector("#studio-projects");
+const sliderDots = document.querySelector("#studio-projects .slider-dots");
+
+function fadeInDots() {
+  if (!studioSection || !sliderDots) return;
+
+  const sectionTop = studioSection.getBoundingClientRect().top;
+  const sectionBottom = studioSection.getBoundingClientRect().bottom;
+  const windowHeight = window.innerHeight;
+
+  // When section enters viewport
+  if (sectionTop < windowHeight * 0.9 && sectionBottom > 0) {
+    sliderDots.classList.add("show");
+  } else {
+    sliderDots.classList.remove("show");
+  }
+}
+
+window.addEventListener("scroll", fadeInDots);
+window.addEventListener("load", fadeInDots);
+
+// ===============================
 // Studio Projects Slider (Fade + Auto + Hover Pause)
 // ===============================
 const slides = document.querySelectorAll("#studio-projects .project-slide");
@@ -382,3 +406,4 @@ window.addEventListener("load", () => {
   updateSlider();
   startAutoWhenVisible();
 });
+
