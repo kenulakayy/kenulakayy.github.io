@@ -358,6 +358,9 @@ h2 {
   position: relative;
   min-height: 650px; /* slightly smaller so dots are visible sooner */
   overflow: visible;
+  display: flex;             /* 👈 add this */
+  flex-direction: column;    /* ensures stacking order works */
+  justify-content: flex-end; /* pushes dots closer to bottom */
 }
 
 /* === INDIVIDUAL SLIDES === */
@@ -493,14 +496,14 @@ h2 {
 /* --- Center + style dots properly --- */
 #studio-projects .slider-dots {
   position: absolute;
-  bottom: 30px;                /* brings dots right below the grid */
+  bottom: 50px;                /* brings dots right below the grid */
   left: 50%;
   transform: translateX(-50%); /* centers them perfectly */
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.6rem;
-  z-index: 15;                 /* above the grid */
+  z-index: 30;                 /* above the grid */
 }
 
 #studio-projects .slider-dots button:hover {
@@ -633,6 +636,7 @@ h2 {
     padding: 5rem 1.5rem;
   }
 }
+
 
 
 
