@@ -496,7 +496,7 @@ h2 {
 /* --- Center + style dots properly --- */
 #studio-projects .slider-dots {
   position: relative;           /* no longer absolute */
-  margin-top: 0.25rem;           /* distance below the grid */
+  margin-top: -7rem;           /* distance below the grid */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -633,6 +633,7 @@ h2 {
     padding: 5rem 1.5rem;
   }
 }
+
 
 
 
