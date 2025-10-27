@@ -496,7 +496,7 @@ h2 {
 /* --- Center + style dots properly --- */
 #studio-projects .slider-dots {
   position: absolute;
-  bottom: 50px;                /* brings dots right below the grid */
+  bottom: 70px;                /* brings dots right below the grid */
   left: 50%;
   transform: translateX(-50%); /* centers them perfectly */
   display: flex;
@@ -636,6 +636,7 @@ h2 {
     padding: 5rem 1.5rem;
   }
 }
+
 
 
 
