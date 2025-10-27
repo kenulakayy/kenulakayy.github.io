@@ -496,7 +496,7 @@ h2 {
   justify-content: center;
   align-items: center;
   gap: 0.6rem;
-  margin-top: 1rem;          /* closer to grid */
+  margin-top: 0.2rem;      
   margin-bottom: 0.5rem;     /* adds breathing room */
   width: 100%;
   position: relative;
@@ -544,13 +544,31 @@ h2 {
   transition: opacity 0.4s ease, transform 0.3s ease, color 0.3s ease;
 }
 
-/* Slightly outside the grid */
 #studio-projects .slider-arrow.left {
-  left: -55px;
+  left: -35px;  /* was -55px */
 }
 
 #studio-projects .slider-arrow.right {
-  right: -55px;
+  right: -35px; /* was -55px */
+}
+
+/* make them move inward even more on smaller screens */
+@media (max-width: 1200px) {
+  #studio-projects .slider-arrow.left {
+    left: -25px;
+  }
+  #studio-projects .slider-arrow.right {
+    right: -25px;
+  }
+}
+
+@media (max-width: 900px) {
+  #studio-projects .slider-arrow.left {
+    left: -15px;
+  }
+  #studio-projects .slider-arrow.right {
+    right: -15px;
+  }
 }
 
 /* Hover animations */
@@ -621,6 +639,7 @@ h2 {
     padding: 5rem 1.5rem;
   }
 }
+
 
 
 
