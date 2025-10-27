@@ -552,7 +552,7 @@ h2 {
 
 /* === Reduce overall grid scale for Studio Projects === */
 #studio-projects .project-slide {
-  transform: scale(0.9);           /* makes grid 10% smaller overall */
+  transform: scale(0.85);           /* makes grid 10% smaller overall */
   transform-origin: center top;    /* keeps grid centered and shrinks upward */
 }
 
@@ -600,4 +600,5 @@ h2 {
     padding: 5rem 1.5rem;
   }
 }
+
 
