@@ -487,11 +487,22 @@ h2 {
 }
 
 /* === SLIDER DOTS === */
-.slider-dots {
+#studio-projects .slider-dots {
+  position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 0.6rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  width: 100%;              /* ensures full width */
+  transform: none;          /* reset any scaling inheritance */
+  z-index: 10;              /* make sure it's above */
+}
+
+#studio-projects .slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* center arrows and dots horizontally */
 }
 
 .slider-dots button {
@@ -600,5 +611,6 @@ h2 {
     padding: 5rem 1.5rem;
   }
 }
+
 
 
