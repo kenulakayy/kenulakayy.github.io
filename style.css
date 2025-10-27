@@ -495,35 +495,32 @@ h2 {
 
 /* --- Center + style dots properly --- */
 #studio-projects .slider-dots {
-  position: absolute;
-  bottom: 70px;                /* brings dots right below the grid */
-  left: 50%;
-  transform: translateX(-50%); /* centers them perfectly */
+  position: relative;           /* no longer absolute */
+  margin-top: 1.5rem;           /* distance below the grid */
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.6rem;
-  z-index: 30;                 /* above the grid */
+  z-index: 30;
 }
 
-#studio-projects .slider-dots button:hover {
-  background: rgba(255, 187, 43, 0.8);
-  transform: scale(1.2);
-  transition: all 0.2s ease;
-}
-
-.slider-dots button {
+#studio-projects .slider-dots button {
   width: 10px;
   height: 10px;
   border-radius: 50%;
   border: none;
   background: rgba(255, 255, 255, 0.4);
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.slider-dots button.active {
+#studio-projects .slider-dots button.active {
   background: #FFBB2B;
+}
+
+#studio-projects .slider-dots button:hover {
+  background: rgba(255, 187, 43, 0.8);
+  transform: scale(1.2);
 }
 
 /* === SLIDER ARROWS === */
@@ -636,6 +633,7 @@ h2 {
     padding: 5rem 1.5rem;
   }
 }
+
 
 
 
