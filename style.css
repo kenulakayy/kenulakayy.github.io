@@ -356,11 +356,11 @@ h2 {
 #studio-projects .projects-slider {
   width: 100%;
   position: relative;
-  min-height: 650px; /* slightly smaller so dots are visible sooner */
+  min-height: auto;       /* remove forced height */
   overflow: visible;
-  display: flex;             /* 👈 add this */
-  flex-direction: column;    /* ensures stacking order works */
-  justify-content: flex-end; /* pushes dots closer to bottom */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* no forced bottom padding */
 }
 
 /* === INDIVIDUAL SLIDES === */
@@ -369,7 +369,7 @@ h2 {
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   align-items: start;
-  min-height: 700px; /* match the parent height */
+  min-height: auto; /* match the parent height */
   transition: opacity 0.8s ease;
   opacity: 0;
   position: absolute;
@@ -496,7 +496,7 @@ h2 {
 /* --- Center + style dots properly --- */
 #studio-projects .slider-dots {
   position: relative;           /* no longer absolute */
-  margin-top: 1.5rem;           /* distance below the grid */
+  margin-top: 0.75rem;           /* distance below the grid */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -633,6 +633,7 @@ h2 {
     padding: 5rem 1.5rem;
   }
 }
+
 
 
 
