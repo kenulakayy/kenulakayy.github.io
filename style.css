@@ -634,11 +634,10 @@ h2 {
 #creative-projects .projects-slider {
   width: 100%;
   position: relative;
-  min-height: 600px;
+  min-height: auto;
   overflow: visible;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  display: grid;
+  place-items: center;
 }
 
 /* Slides */
@@ -658,6 +657,7 @@ h2 {
 
 #creative-projects .project-slide.active {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
   opacity: 1;
   position: relative;
   z-index: 1;
@@ -879,5 +879,6 @@ h2 {
     padding: 5rem 1.5rem;
   }
 }
+
 
 
