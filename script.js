@@ -570,9 +570,9 @@ function animateCreativeGrid() {
     creativeCards.forEach((card, index) => {
       setTimeout(() => {
         card.classList.add("show");
-      }, index * 200); // stagger 200ms per card
+      }, index * 200);
     });
-    creativeGridPlayed = true; // only once
+    creativeGridPlayed = true;
   }
 }
 
@@ -583,143 +583,21 @@ window.addEventListener("load", animateCreativeGrid);
 // Fade-in Slider Dots when Section Comes into View
 // ===============================
 const creativeSection = document.querySelector("#creative-projects");
-const creativeDots = document.querySelector("#creative-projects .slider-dots");
+const creativeDotsWrapper = document.querySelector("#creative-projects .slider-dots");
 
 function fadeInCreativeDots() {
-  if (!creativeSection || !creativeDots) return;
+  if (!creativeSection || !creativeDotsWrapper) return;
 
   const sectionTop = creativeSection.getBoundingClientRect().top;
   const sectionBottom = creativeSection.getBoundingClientRect().bottom;
   const windowHeight = window.innerHeight;
 
   if (sectionTop < windowHeight * 0.9 && sectionBottom > 0) {
-    creativeDots.classList.add("show");
+    creativeDotsWrapper.classList.add("show");
   } else {
-    creativeDots.classList.remove("show");
+    creativeDotsWrapper.classList.remove("show");
   }
 }
 
 window.addEventListener("scroll", fadeInCreativeDots);
 window.addEventListener("load", fadeInCreativeDots);
-
-// ===============================
-// CREATIVE PROJECTS SLIDER
-// ===============================
-const creativeSlides = document.querySelectorAll("#creative-projects .project-slide");
-const creativePrevBtn = document.querySelector("#creative-projects .slider-arrow.left");
-const creativeNextBtn = document.querySelector("#creative-projects .slider-arrow.right");
-const creativeDotsContainer = document.querySelector("#creative-projects .slider-dots");
-const creativeSliderWrapper = document.querySelector("#creative-projects .projects-slider");
-
-let creativeCurrent = 0;
-let creativeInterval = null;
-let creativeHoverTimeout = null;
-let creativeAutoStarted = false;
-
-// Create dots
-creativeSlides.forEach((_, i) => {
-  const dot = document.createElement("button");
-  if (i === 0) dot.classList.add("active");
-  creativeDotsContainer.appendChild(dot);
-  dot.addEventListener("click", () => {
-    goToCreativeSlide(i);
-    resetCreativeAuto();
-  });
-});
-
-const creativeDots = document.querySelectorAll("#creative-projects .slider-dots button");
-
-function updateCreativeSlider() {
-  creativeSlides.forEach((slide, i) => {
-    slide.classList.remove("active");
-    creativeDots[i].classList.remove("active");
-  });
-  creativeSlides[creativeCurrent].classList.add("active");
-  creativeDots[creativeCurrent].classList.add("active");
-
-  const cards = creativeSlides[creativeCurrent].querySelectorAll(".project-card");
-  cards.forEach((card, i) => {
-    card.classList.remove("show");
-    setTimeout(() => card.classList.add("show"), i * 100);
-  });
-
-  creativePrevBtn.classList.toggle("disabled", creativeCurrent === 0);
-  creativeNextBtn.classList.toggle("disabled", creativeCurrent === creativeSlides.length - 1);
-}
-
-function goToCreativeSlide(index) {
-  if (index < 0 || index >= creativeSlides.length) return;
-  creativeCurrent = index;
-  updateCreativeSlider();
-}
-
-function nextCreativeSlide() {
-  if (creativeCurrent < creativeSlides.length - 1) {
-    creativeCurrent++;
-    updateCreativeSlider();
-  }
-}
-function prevCreativeSlide() {
-  if (creativeCurrent > 0) {
-    creativeCurrent--;
-    updateCreativeSlider();
-  }
-}
-
-// Auto Slide
-function startCreativeAuto() {
-  stopCreativeAuto();
-  creativeInterval = setInterval(() => {
-    if (creativeCurrent < creativeSlides.length - 1) nextCreativeSlide();
-    else stopCreativeAuto();
-  }, 10000);
-}
-function stopCreativeAuto() { clearInterval(creativeInterval); }
-function resetCreativeAuto() { stopCreativeAuto(); startCreativeAuto(); }
-
-// Hover pause
-creativeSliderWrapper.addEventListener("mouseenter", () => {
-  stopCreativeAuto();
-  clearTimeout(creativeHoverTimeout);
-});
-creativeSliderWrapper.addEventListener("mouseleave", () => {
-  clearTimeout(creativeHoverTimeout);
-  creativeHoverTimeout = setTimeout(startCreativeAuto, 5000);
-});
-
-// Buttons
-creativeNextBtn.addEventListener("click", () => {
-  if (creativeCurrent < creativeSlides.length - 1) {
-    nextCreativeSlide();
-    resetCreativeAuto();
-  }
-});
-creativePrevBtn.addEventListener("click", () => {
-  if (creativeCurrent > 0) {
-    prevCreativeSlide();
-    resetCreativeAuto();
-  }
-});
-
-// Start when visible
-function startCreativeWhenVisible() {
-  const section = document.querySelector("#creative-projects");
-  const top = section.getBoundingClientRect().top;
-  const bottom = section.getBoundingClientRect().bottom;
-
-  if (top < window.innerHeight && bottom > 0 && !creativeAutoStarted) {
-    startCreativeAuto();
-    creativeAutoStarted = true;
-  }
-
-  if ((bottom <= 0 || top >= window.innerHeight) && creativeAutoStarted) {
-    stopCreativeAuto();
-    creativeAutoStarted = false;
-  }
-}
-
-window.addEventListener("scroll", startCreativeWhenVisible);
-window.addEventListener("load", () => {
-  updateCreativeSlider();
-  startCreativeWhenVisible();
-});
