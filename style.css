@@ -768,7 +768,7 @@ h2 {
 /* Dots */
 #creative-projects .slider-dots {
   position: relative;
-  margin-top: -6rem;
+  margin-top: -7rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -893,6 +893,12 @@ h2 {
   justify-content: flex-start; /* align top rather than center */
 }
 
+/* === Reduce overall grid scale for Creative Projects === */
+#creative-projects .project-slide {
+  transform: scale(0.85);           /* makes grid 10% smaller overall */
+  transform-origin: center top;    /* keeps grid centered and shrinks upward */
+}
 
-
-
+#creative-projects .projects-slider {
+  min-height: 600px; /* reduce from 700px so dots stay visible */
+}
