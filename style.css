@@ -880,8 +880,14 @@ h2 {
   }
 }
 
+/* --- Fix Creative Projects height & centering issue --- */
+#creative-projects {
+  display: block;           /* overrides global flex */
+  min-height: auto;         /* allow it to grow naturally */
+  padding: 6rem 2rem;       /* keep your spacing */
+}
 
-
-
-
-
+#creative-projects .slider-wrapper {
+  align-items: stretch;     /* make inner grid fill width */
+  justify-content: flex-start; /* align top rather than center */
+}
