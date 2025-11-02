@@ -768,7 +768,7 @@ h2 {
 /* Dots */
 #creative-projects .slider-dots {
   position: relative;
-  margin-top: -7rem;
+  margin-top: -6rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -892,6 +892,7 @@ h2 {
   align-items: stretch;     /* make inner grid fill width */
   justify-content: flex-start; /* align top rather than center */
 }
+
 
 
 
