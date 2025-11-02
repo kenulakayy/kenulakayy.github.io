@@ -408,7 +408,7 @@ window.addEventListener("load", () => {
 });
 
 // ===============================
-// Creative Projects Slider (same as Studio Projects)
+// Creative Projects Slider (identical independent version)
 // ===============================
 const creativeSlides = document.querySelectorAll("#creative-projects .project-slide");
 const creativePrev = document.querySelector("#creative-projects .slider-arrow.left");
@@ -417,7 +417,7 @@ const creativeDotsContainer = document.querySelector("#creative-projects .slider
 const creativeSliderWrapper = document.querySelector("#creative-projects .projects-slider");
 
 let creativeCurrent = 0;
-let creativeAuto = null;
+let creativeAutoSlideInterval = null;
 let creativeHoverTimeout = null;
 let creativeAutoStarted = false;
 
@@ -428,19 +428,20 @@ creativeSlides.forEach((_, i) => {
   creativeDotsContainer.appendChild(dot);
 
   dot.addEventListener("click", () => {
-    creativeGoTo(i);
-    creativeResetAuto();
+    creativeGoToSlide(i);
+    creativeResetAutoSlide();
   });
 });
 
 const creativeDots = document.querySelectorAll("#creative-projects .slider-dots button");
 
 // --- Update slide ---
-function creativeUpdate() {
-  creativeSlides.forEach((s, i) => {
-    s.classList.remove("active");
+function creativeUpdateSlider() {
+  creativeSlides.forEach((slide, i) => {
+    slide.classList.remove("active");
     creativeDots[i].classList.remove("active");
   });
+
   creativeSlides[creativeCurrent].classList.add("active");
   creativeDots[creativeCurrent].classList.add("active");
 
@@ -455,61 +456,61 @@ function creativeUpdate() {
 }
 
 // --- Navigation ---
-function creativeGoTo(i) {
+function creativeGoToSlide(i) {
   if (i < 0 || i >= creativeSlides.length) return;
   creativeCurrent = i;
-  creativeUpdate();
+  creativeUpdateSlider();
 }
 function creativeNextSlide() {
   if (creativeCurrent < creativeSlides.length - 1) {
     creativeCurrent++;
-    creativeUpdate();
+    creativeUpdateSlider();
   }
 }
 function creativePrevSlide() {
   if (creativeCurrent > 0) {
     creativeCurrent--;
-    creativeUpdate();
+    creativeUpdateSlider();
   }
 }
 
 // --- Auto slide ---
-function creativeStartAuto() {
-  creativeStopAuto();
-  creativeAuto = setInterval(() => {
+function creativeStartAutoSlide() {
+  creativeStopAutoSlide();
+  creativeAutoSlideInterval = setInterval(() => {
     if (creativeCurrent < creativeSlides.length - 1) {
       creativeNextSlide();
     } else {
-      creativeStopAuto();
+      creativeStopAutoSlide(); // stop at last slide
     }
   }, 10000);
 }
-function creativeStopAuto() {
-  clearInterval(creativeAuto);
+function creativeStopAutoSlide() {
+  clearInterval(creativeAutoSlideInterval);
 }
-function creativeResetAuto() {
-  creativeStopAuto();
-  creativeStartAuto();
+function creativeResetAutoSlide() {
+  creativeStopAutoSlide();
+  creativeStartAutoSlide();
 }
 
 // --- Hover pause ---
 creativeSliderWrapper.addEventListener("mouseenter", () => {
-  creativeStopAuto();
+  creativeStopAutoSlide();
   clearTimeout(creativeHoverTimeout);
 });
 creativeSliderWrapper.addEventListener("mouseleave", () => {
   clearTimeout(creativeHoverTimeout);
-  creativeHoverTimeout = setTimeout(creativeStartAuto, 5000);
+  creativeHoverTimeout = setTimeout(creativeStartAutoSlide, 5000);
 });
 
 // --- Buttons ---
 creativeNext.addEventListener("click", () => {
   creativeNextSlide();
-  creativeResetAuto();
+  creativeResetAutoSlide();
 });
 creativePrev.addEventListener("click", () => {
   creativePrevSlide();
-  creativeResetAuto();
+  creativeResetAutoSlide();
 });
 
 // --- Start auto when visible ---
@@ -519,19 +520,19 @@ function creativeStartAutoWhenVisible() {
   const bottom = creativeSection.getBoundingClientRect().bottom;
 
   if (top < window.innerHeight && bottom > 0 && !creativeAutoStarted) {
-    creativeStartAuto();
+    creativeStartAutoSlide();
     creativeAutoStarted = true;
   }
 
   if ((bottom <= 0 || top >= window.innerHeight) && creativeAutoStarted) {
-    creativeStopAuto();
+    creativeStopAutoSlide();
     creativeAutoStarted = false;
   }
 }
 
 window.addEventListener("scroll", creativeStartAutoWhenVisible);
 window.addEventListener("load", () => {
-  creativeUpdate();
+  creativeUpdateSlider();
   creativeStartAutoWhenVisible();
 });
 
@@ -601,3 +602,4 @@ function fadeInCreativeDots() {
 
 window.addEventListener("scroll", fadeInCreativeDots);
 window.addEventListener("load", fadeInCreativeDots);
+
