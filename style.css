@@ -635,7 +635,7 @@ h2 {
 #creative-projects .projects-slider {
   width: 100%;
   position: relative;
-  min-height: 700px; /* ✅ gives room for grid */
+  min-height: 600px;
   overflow: visible;
   display: flex;
   flex-direction: column;
@@ -653,8 +653,6 @@ h2 {
   position: absolute;
   top: 0;
   left: 0;
-  transform: scale(0.85);
-  transform-origin: center top;
 }
 
 #creative-projects .project-slide.active {
@@ -881,6 +879,7 @@ h2 {
     padding: 5rem 1.5rem;
   }
 }
+
 
 
 
