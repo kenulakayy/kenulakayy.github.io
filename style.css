@@ -620,7 +620,6 @@ h2 {
 
 /* Slider Wrapper */
 #creative-projects .slider-wrapper {
-  min-height: 700px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -659,6 +658,7 @@ h2 {
   position: relative; /* ✅ important: not absolute */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem; /* adjust spacing to match Studio Projects */
   opacity: 1;
   z-index: 1;
 }
@@ -688,7 +688,7 @@ h2 {
 /* Cards */
 #creative-projects .project-card {
   position: relative;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1 / 1.1;
   overflow: hidden;
   border-radius: 8px;
   cursor: pointer;
@@ -891,3 +891,4 @@ h2 {
   align-items: stretch;     /* make inner grid fill width */
   justify-content: flex-start; /* align top rather than center */
 }
+
