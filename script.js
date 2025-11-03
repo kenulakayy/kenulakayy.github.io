@@ -265,172 +265,133 @@ window.addEventListener("scroll", fadeInDots);
 window.addEventListener("load", fadeInDots);
 
 // ===============================
-// Studio Projects Slider (Fade + Auto + Hover Pause)
+// STUDIO PROJECTS SLIDER (FULL UPDATED)
 // ===============================
-const slides = document.querySelectorAll("#studio-projects .project-slide");
-const prevBtn = document.querySelector("#studio-projects .slider-arrow.left");
-const nextBtn = document.querySelector("#studio-projects .slider-arrow.right");
-const dotsContainer = document.querySelector("#studio-projects .slider-dots");
-const sliderWrapper = document.querySelector("#studio-projects .projects-slider");
+const studioSlides = document.querySelectorAll("#studio-projects .project-slide");
+const studioPrev = document.querySelector("#studio-projects .slider-arrow.left");
+const studioNext = document.querySelector("#studio-projects .slider-arrow.right");
+const studioDotsContainer = document.querySelector("#studio-projects .slider-dots");
+const studioSliderWrapper = document.querySelector("#studio-projects .projects-slider");
 
-let currentSlide = 0;
-let autoSlideInterval = null;
-let hoverTimeout = null;
-let autoStarted = false;
+let studioCurrent = 0;
+let studioAutoSlideInterval = null;
 
 // --- Create dots dynamically ---
-slides.forEach((_, i) => {
+studioSlides.forEach((_, i) => {
   const dot = document.createElement("button");
   if (i === 0) dot.classList.add("active");
-  dotsContainer.appendChild(dot);
+  studioDotsContainer.appendChild(dot);
 
   dot.addEventListener("click", () => {
-    goToSlide(i);
-    resetAutoSlide();
+    studioGoToSlide(i);
+    studioResetAutoSlide();
   });
 });
 
-const dots = document.querySelectorAll("#studio-projects .slider-dots button");
+const studioDots = document.querySelectorAll("#studio-projects .slider-dots button");
 
-// --- Core slider update ---
-function updateSlider() {
-  slides.forEach((slide, i) => {
+// --- Update slide ---
+function studioUpdateSlider() {
+  studioSlides.forEach((slide, i) => {
     slide.classList.remove("active");
-    dots[i].classList.remove("active");
+    studioDots[i].classList.remove("active");
   });
 
-  slides[currentSlide].classList.add("active");
-  dots[currentSlide].classList.add("active");
+  studioSlides[studioCurrent].classList.add("active");
+  studioDots[studioCurrent].classList.add("active");
 
-  // Animate current cards with stagger
-  const cards = slides[currentSlide].querySelectorAll(".project-card");
+  const cards = studioSlides[studioCurrent].querySelectorAll(".project-card");
   cards.forEach((card, index) => {
     card.classList.remove("show");
     setTimeout(() => card.classList.add("show"), index * 100);
   });
 
-  // Disable arrows properly
-  prevBtn.classList.toggle("disabled", currentSlide === 0);
-  nextBtn.classList.toggle("disabled", currentSlide === slides.length - 1);
+  studioPrev.classList.toggle("disabled", studioCurrent === 0);
+  studioNext.classList.toggle("disabled", studioCurrent === studioSlides.length - 1);
 }
 
-// --- Navigation helpers ---
-function goToSlide(index) {
-  if (index < 0 || index >= slides.length) return;
-  currentSlide = index;
-  updateSlider();
+// --- Navigation ---
+function studioGoToSlide(i) {
+  if (i < 0 || i >= studioSlides.length) return;
+  studioCurrent = i;
+  studioUpdateSlider();
 }
-
-function nextSlide() {
-  if (currentSlide < slides.length - 1) {
-    currentSlide++;
-    updateSlider();
+function studioNextSlide() {
+  if (studioCurrent < studioSlides.length - 1) {
+    studioCurrent++;
+    studioUpdateSlider();
+  }
+}
+function studioPrevSlide() {
+  if (studioCurrent > 0) {
+    studioCurrent--;
+    studioUpdateSlider();
   }
 }
 
-function prevSlide() {
-  if (currentSlide > 0) {
-    currentSlide--;
-    updateSlider();
-  }
+// --- Auto slide logic ---
+function studioStartAutoSlide() {
+  studioStopAutoSlide();
+
+  // Start 10s after section visible
+  setTimeout(() => {
+    studioAutoSlideInterval = setInterval(() => {
+      if (studioCurrent < studioSlides.length - 1) {
+        studioNextSlide();
+      } else {
+        // On last slide, pause 60s then loop back
+        studioStopAutoSlide();
+        setTimeout(() => {
+          studioCurrent = 0;
+          studioUpdateSlider();
+          studioStartAutoSlide();
+        }, 60000);
+      }
+    }, 10000); // 10s per slide
+  }, 10000);
 }
 
-// --- Auto Slide Logic ---
-function startAutoSlide() {
-  stopAutoSlide(); // clear old interval
-  autoSlideInterval = setInterval(() => {
-    if (currentSlide < slides.length - 1) {
-      nextSlide();
-    } else {
-      stopAutoSlide(); // stop at last slide
-    }
-  }, 10000); // 10s per slide
+function studioStopAutoSlide() {
+  clearInterval(studioAutoSlideInterval);
+}
+function studioResetAutoSlide() {
+  studioStopAutoSlide();
+  studioStartAutoSlide();
 }
 
-function stopAutoSlide() {
-  clearInterval(autoSlideInterval);
-}
+// --- Hover pause ---
+studioSliderWrapper.addEventListener("mouseenter", studioStopAutoSlide);
+studioSliderWrapper.addEventListener("mouseleave", studioResetAutoSlide);
 
-function resetAutoSlide() {
-  stopAutoSlide();
-  startAutoSlide();
-}
-
-// --- Hover pause + delayed resume ---
-sliderWrapper.addEventListener("mouseenter", () => {
-  stopAutoSlide();
-  clearTimeout(hoverTimeout);
+// --- Buttons ---
+studioNext.addEventListener("click", () => {
+  studioNextSlide();
+  studioResetAutoSlide();
+});
+studioPrev.addEventListener("click", () => {
+  studioPrevSlide();
+  studioResetAutoSlide();
 });
 
-sliderWrapper.addEventListener("mouseleave", () => {
-  clearTimeout(hoverTimeout);
-  hoverTimeout = setTimeout(startAutoSlide, 5000);
-});
-
-// --- Button controls ---
-nextBtn.addEventListener("click", () => {
-  if (currentSlide < slides.length - 1) {
-    nextSlide();
-    resetAutoSlide();
-  }
-});
-
-prevBtn.addEventListener("click", () => {
-  if (currentSlide > 0) {
-    prevSlide();
-    resetAutoSlide();
-  }
-});
-
-// --- Start only when section visible ---
-function startAutoWhenVisible() {
-  const studioSection = document.querySelector("#studio-projects");
-  const sectionTop = studioSection.getBoundingClientRect().top;
-  const sectionBottom = studioSection.getBoundingClientRect().bottom;
-
-  // Start auto when visible in viewport
-  if (sectionTop < window.innerHeight && sectionBottom > 0 && !autoStarted) {
-    startAutoSlide();
-    autoStarted = true;
-  }
-
-  // Optional: stop if completely out of view
-  if ((sectionBottom <= 0 || sectionTop >= window.innerHeight) && autoStarted) {
-    stopAutoSlide();
-    autoStarted = false;
+// --- Start auto when visible ---
+function studioStartAutoWhenVisible() {
+  const section = document.querySelector("#studio-projects");
+  const rect = section.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    studioStartAutoSlide();
+  } else {
+    studioStopAutoSlide();
   }
 }
-
-window.addEventListener("scroll", startAutoWhenVisible);
+window.addEventListener("scroll", studioStartAutoWhenVisible);
 window.addEventListener("load", () => {
-  updateSlider();
-  startAutoWhenVisible();
+  studioUpdateSlider();
+  studioStartAutoWhenVisible();
 });
 
-// ===============================
-// Fade-in animation for Creative Projects
-// ===============================
-const creativeSection = document.querySelector("#creative-projects");
-const creativeHeading = creativeSection.querySelector("h2");
-const creativeDots = creativeSection.querySelector(".slider-dots");
-
-function checkCreativeVisibility() {
-  const rect = creativeSection.getBoundingClientRect();
-  const visible = rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
-
-  if (visible) {
-    creativeHeading.classList.add("show");
-    setTimeout(() => {
-      creativeDots.classList.add("show");
-    }, 800); // dots fade in after heading
-  }
-}
-
-window.addEventListener("scroll", checkCreativeVisibility);
-window.addEventListener("load", checkCreativeVisibility);
 
 // ===============================
-// Creative Projects Slider (identical independent version)
+// CREATIVE PROJECTS SLIDER (FULL UPDATED)
 // ===============================
 const creativeSlides = document.querySelectorAll("#creative-projects .project-slide");
 const creativePrev = document.querySelector("#creative-projects .slider-arrow.left");
@@ -440,8 +401,6 @@ const creativeSliderWrapper = document.querySelector("#creative-projects .projec
 
 let creativeCurrent = 0;
 let creativeAutoSlideInterval = null;
-let creativeHoverTimeout = null;
-let creativeAutoStarted = false;
 
 // --- Create dots dynamically ---
 creativeSlides.forEach((_, i) => {
@@ -496,17 +455,28 @@ function creativePrevSlide() {
   }
 }
 
-// --- Auto slide ---
+// --- Auto slide logic ---
 function creativeStartAutoSlide() {
   creativeStopAutoSlide();
-  creativeAutoSlideInterval = setInterval(() => {
-    if (creativeCurrent < creativeSlides.length - 1) {
-      creativeNextSlide();
-    } else {
-      creativeStopAutoSlide(); // stop at last slide
-    }
+
+  // Start 10s after section visible
+  setTimeout(() => {
+    creativeAutoSlideInterval = setInterval(() => {
+      if (creativeCurrent < creativeSlides.length - 1) {
+        creativeNextSlide();
+      } else {
+        // On last slide, pause 60s then loop back
+        creativeStopAutoSlide();
+        setTimeout(() => {
+          creativeCurrent = 0;
+          creativeUpdateSlider();
+          creativeStartAutoSlide();
+        }, 60000);
+      }
+    }, 10000); // 10s per slide
   }, 10000);
 }
+
 function creativeStopAutoSlide() {
   clearInterval(creativeAutoSlideInterval);
 }
@@ -516,14 +486,8 @@ function creativeResetAutoSlide() {
 }
 
 // --- Hover pause ---
-creativeSliderWrapper.addEventListener("mouseenter", () => {
-  creativeStopAutoSlide();
-  clearTimeout(creativeHoverTimeout);
-});
-creativeSliderWrapper.addEventListener("mouseleave", () => {
-  clearTimeout(creativeHoverTimeout);
-  creativeHoverTimeout = setTimeout(creativeStartAutoSlide, 5000);
-});
+creativeSliderWrapper.addEventListener("mouseenter", creativeStopAutoSlide);
+creativeSliderWrapper.addEventListener("mouseleave", creativeResetAutoSlide);
 
 // --- Buttons ---
 creativeNext.addEventListener("click", () => {
@@ -537,92 +501,50 @@ creativePrev.addEventListener("click", () => {
 
 // --- Start auto when visible ---
 function creativeStartAutoWhenVisible() {
-  const creativeSection = document.querySelector("#creative-projects");
-  const top = creativeSection.getBoundingClientRect().top;
-  const bottom = creativeSection.getBoundingClientRect().bottom;
-
-  if (top < window.innerHeight && bottom > 0 && !creativeAutoStarted) {
+  const section = document.querySelector("#creative-projects");
+  const rect = section.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
     creativeStartAutoSlide();
-    creativeAutoStarted = true;
-  }
-
-  if ((bottom <= 0 || top >= window.innerHeight) && creativeAutoStarted) {
+  } else {
     creativeStopAutoSlide();
-    creativeAutoStarted = false;
   }
 }
-
 window.addEventListener("scroll", creativeStartAutoWhenVisible);
 window.addEventListener("load", () => {
   creativeUpdateSlider();
   creativeStartAutoWhenVisible();
 });
 
-// ===============================
-// Animate Creative Projects Heading (on scroll)
-// ===============================
-const creativeHeading = document.querySelector("#creative-projects h2");
-let creativePlayed = false;
-
-function animateCreativeHeading() {
-  if (!creativeHeading) return;
-
-  const sectionTop = document.querySelector("#creative-projects").offsetTop;
-  const scrollY = window.scrollY;
-
-  if (scrollY + window.innerHeight > sectionTop + 100 && !creativePlayed) {
-    creativeHeading.classList.add("show");
-    creativePlayed = true; // only once
-  }
-}
-
-window.addEventListener("scroll", animateCreativeHeading);
-window.addEventListener("load", animateCreativeHeading);
 
 // ===============================
-// Animate Creative Projects Grid (staggered)
+// SECTION FADE-IN ANIMATIONS
 // ===============================
-const creativeCards = document.querySelectorAll("#creative-projects .project-card");
-let creativeGridPlayed = false;
+const studioSection = document.querySelector("#studio-projects");
+const studioHeading = studioSection.querySelector("h2");
+const studioDotsEl = studioSection.querySelector(".slider-dots");
 
-function animateCreativeGrid() {
-  const sectionTop = document.querySelector("#creative-projects").offsetTop;
-  const triggerBottom = window.innerHeight * 0.85;
-
-  if (window.scrollY + triggerBottom > sectionTop && !creativeGridPlayed) {
-    creativeCards.forEach((card, index) => {
-      setTimeout(() => {
-        card.classList.add("show");
-      }, index * 200);
-    });
-    creativeGridPlayed = true;
-  }
-}
-
-window.addEventListener("scroll", animateCreativeGrid);
-window.addEventListener("load", animateCreativeGrid);
-
-// ===============================
-// Fade-in Slider Dots when Section Comes into View
-// ===============================
 const creativeSection = document.querySelector("#creative-projects");
-const creativeDotsWrapper = document.querySelector("#creative-projects .slider-dots");
+const creativeHeading = creativeSection.querySelector("h2");
+const creativeDotsEl = creativeSection.querySelector(".slider-dots");
 
-function fadeInCreativeDots() {
-  if (!creativeSection || !creativeDotsWrapper) return;
+function fadeInSections() {
+  [studioSection, creativeSection].forEach((section) => {
+    const rect = section.getBoundingClientRect();
+    const visible = rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
 
-  const sectionTop = creativeSection.getBoundingClientRect().top;
-  const sectionBottom = creativeSection.getBoundingClientRect().bottom;
-  const windowHeight = window.innerHeight;
+    if (visible) {
+      const heading = section.querySelector("h2");
+      const dots = section.querySelector(".slider-dots");
+      heading.classList.add("show");
+      setTimeout(() => dots.classList.add("show"), 800);
 
-  if (sectionTop < windowHeight * 0.9 && sectionBottom > 0) {
-    creativeDotsWrapper.classList.add("show");
-  } else {
-    creativeDotsWrapper.classList.remove("show");
-  }
+      const cards = section.querySelectorAll(".project-card");
+      cards.forEach((card, i) => {
+        setTimeout(() => card.classList.add("show"), i * 80);
+      });
+    }
+  });
 }
 
-window.addEventListener("scroll", fadeInCreativeDots);
-window.addEventListener("load", fadeInCreativeDots);
-
-
+window.addEventListener("scroll", fadeInSections);
+window.addEventListener("load", fadeInSections);
