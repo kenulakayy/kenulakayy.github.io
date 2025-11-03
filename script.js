@@ -196,75 +196,6 @@ window.addEventListener("scroll", animateAbout);
 window.addEventListener("load", animateAbout);
 
 // ===============================
-// Animate Studio Projects Heading (on scroll)
-// ===============================
-const studioHeading = document.querySelector("#studio-projects h2");
-let studioPlayed = false;
-
-function animateStudio() {
-  if (!studioHeading) return;
-
-  let scrollY = window.scrollY;
-  let sectionTop = document.querySelector("#studio-projects").offsetTop;
-  let sectionHeight = document.querySelector("#studio-projects").offsetHeight;
-
-  if (scrollY + window.innerHeight > sectionTop + 100 && !studioPlayed) {
-    studioHeading.classList.add("show");
-    studioPlayed = true; // only once
-  }
-}
-
-window.addEventListener("scroll", animateStudio);
-window.addEventListener("load", animateStudio);
-
-// ===============================
-// Animate Studio Projects Grid (staggered)
-// ===============================
-const studioCards = document.querySelectorAll("#studio-projects .project-card");
-let studioGridPlayed = false;
-
-function animateStudioGrid() {
-  const sectionTop = document.querySelector("#studio-projects").offsetTop;
-  const triggerBottom = window.innerHeight * 0.85;
-
-  if (window.scrollY + triggerBottom > sectionTop && !studioGridPlayed) {
-    studioCards.forEach((card, index) => {
-      setTimeout(() => {
-        card.classList.add("show");
-      }, index * 200); // stagger 200ms per card
-    });
-    studioGridPlayed = true; // only once
-  }
-}
-
-window.addEventListener("scroll", animateStudioGrid);
-window.addEventListener("load", animateStudioGrid);
-
-// ===============================
-// Fade-in Slider Dots when Section Comes into View
-// ===============================
-const studioSection = document.querySelector("#studio-projects");
-const sliderDots = document.querySelector("#studio-projects .slider-dots");
-
-function fadeInDots() {
-  if (!studioSection || !sliderDots) return;
-
-  const sectionTop = studioSection.getBoundingClientRect().top;
-  const sectionBottom = studioSection.getBoundingClientRect().bottom;
-  const windowHeight = window.innerHeight;
-
-  // When section enters viewport
-  if (sectionTop < windowHeight * 0.9 && sectionBottom > 0) {
-    sliderDots.classList.add("show");
-  } else {
-    sliderDots.classList.remove("show");
-  }
-}
-
-window.addEventListener("scroll", fadeInDots);
-window.addEventListener("load", fadeInDots);
-
-// ===============================
 // STUDIO PROJECTS SLIDER (FULL UPDATED)
 // ===============================
 const studioSlides = document.querySelectorAll("#studio-projects .project-slide");
@@ -548,3 +479,4 @@ function fadeInSections() {
 
 window.addEventListener("scroll", fadeInSections);
 window.addEventListener("load", fadeInSections);
+
