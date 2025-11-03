@@ -408,6 +408,28 @@ window.addEventListener("load", () => {
 });
 
 // ===============================
+// Fade-in animation for Creative Projects
+// ===============================
+const creativeSection = document.querySelector("#creative-projects");
+const creativeHeading = creativeSection.querySelector("h2");
+const creativeDots = creativeSection.querySelector(".slider-dots");
+
+function checkCreativeVisibility() {
+  const rect = creativeSection.getBoundingClientRect();
+  const visible = rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
+
+  if (visible) {
+    creativeHeading.classList.add("show");
+    setTimeout(() => {
+      creativeDots.classList.add("show");
+    }, 800); // dots fade in after heading
+  }
+}
+
+window.addEventListener("scroll", checkCreativeVisibility);
+window.addEventListener("load", checkCreativeVisibility);
+
+// ===============================
 // Creative Projects Slider (identical independent version)
 // ===============================
 const creativeSlides = document.querySelectorAll("#creative-projects .project-slide");
@@ -602,4 +624,5 @@ function fadeInCreativeDots() {
 
 window.addEventListener("scroll", fadeInCreativeDots);
 window.addEventListener("load", fadeInCreativeDots);
+
 
