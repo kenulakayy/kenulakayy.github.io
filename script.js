@@ -260,20 +260,16 @@ function studioPrevSlide() {
 // --- Auto slide logic (fixed 3s delay + loop + 10s per slide) ---
 function studioStartAutoSlide() {
   studioStopAutoSlide(); // clear any old timers
-
+  
   // Start AFTER 3s delay
   setTimeout(() => {
     studioAutoSlideInterval = setInterval(() => {
       if (studioCurrent < studioSlides.length - 1) {
         studioNextSlide();
       } else {
-        // Last slide → wait 10s → loop to first
-        studioStopAutoSlide();
-        setTimeout(() => {
-          studioCurrent = 0;
-          studioUpdateSlider();
-          studioStartAutoSlide(); // restart loop
-        }, 10000);
+        // Loop back to first slide immediately
+        studioCurrent = 0;
+        studioUpdateSlider();
       }
     }, 10000); // 10s per slide
   }, 3000);
@@ -387,20 +383,16 @@ function creativePrevSlide() {
 // --- Auto slide logic (fixed 3s delay + loop + 10s per slide) ---
 function creativeStartAutoSlide() {
   creativeStopAutoSlide(); // clear old timers
-
+  
   // Start AFTER 3s delay
   setTimeout(() => {
     creativeAutoSlideInterval = setInterval(() => {
       if (creativeCurrent < creativeSlides.length - 1) {
         creativeNextSlide();
       } else {
-        // Last slide → wait 10s → loop to first
-        creativeStopAutoSlide();
-        setTimeout(() => {
-          creativeCurrent = 0;
-          creativeUpdateSlider();
-          creativeStartAutoSlide(); // restart loop
-        }, 10000);
+        // Loop back to first slide immediately
+        creativeCurrent = 0;
+        creativeUpdateSlider();
       }
     }, 10000);
   }, 3000);
@@ -476,6 +468,7 @@ function fadeInSections() {
 
 window.addEventListener("scroll", fadeInSections);
 window.addEventListener("load", fadeInSections);
+
 
 
 
