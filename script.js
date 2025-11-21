@@ -592,8 +592,15 @@ function fadeInSections() {
 window.addEventListener("scroll", fadeInSections);
 window.addEventListener("load", fadeInSections);
 
+// ===========================================
+// PROJECT SECTIONS PARALLAX BACKGROUND
+// ===========================================
+const projBg = document.querySelector(".projects-bg-wrapper .projects-bg");
 
+function updateProjectsParallax() {
+  const scrollY = window.scrollY;
+  projBg.style.transform = `translateY(${scrollY * 0.2}px)`; 
+}
 
-
-
-
+window.addEventListener("scroll", updateProjectsParallax);
+window.addEventListener("load", updateProjectsParallax);
