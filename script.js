@@ -448,7 +448,7 @@ window.addEventListener("load", () => {
 
 
 // ===============================
-// SECTION FADE-IN ANIMATIONS
+// SECTION FADE-IN ANIMATIONS (FIXED)
 // ===============================
 const studioSection = document.querySelector("#studio-projects");
 const studioHeading = studioSection.querySelector("h2");
@@ -466,17 +466,14 @@ function fadeInSections() {
     if (visible) {
       const heading = section.querySelector("h2");
       const dots = section.querySelector(".slider-dots");
+
       heading.classList.add("show");
       setTimeout(() => dots.classList.add("show"), 800);
 
-      const cards = section.querySelectorAll(".project-card");
-      cards.forEach((card, i) => {
-        setTimeout(() => card.classList.add("show"), i * 80);
-      });
+      // ❌ Removed: card fade-in on scroll
     }
   });
 }
 
 window.addEventListener("scroll", fadeInSections);
 window.addEventListener("load", fadeInSections);
-
