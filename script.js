@@ -257,22 +257,26 @@ function studioPrevSlide() {
   }
 }
 
-// --- Auto slide logic ---
+// --- Auto slide logic (fixed 3s delay + loop + 10s per slide) ---
 function studioStartAutoSlide() {
-  studioStopAutoSlide();
+  studioStopAutoSlide(); // clear any old timers
 
-  // Wait 3 seconds after visible
+  // Start AFTER 3s delay
   setTimeout(() => {
     studioAutoSlideInterval = setInterval(() => {
       if (studioCurrent < studioSlides.length - 1) {
         studioNextSlide();
       } else {
-        // Last slide → instantly jump to slide 1 after 10s
-        studioCurrent = 0;
-        studioUpdateSlider();
+        // Last slide → wait 10s → loop to first
+        studioStopAutoSlide();
+        setTimeout(() => {
+          studioCurrent = 0;
+          studioUpdateSlider();
+          studioStartAutoSlide(); // restart loop
+        }, 10000);
       }
-    }, 10000); // 10 seconds per slide
-  }, 3000); // initial 3s delay
+    }, 10000); // 10s per slide
+  }, 3000);
 }
 
 function studioStopAutoSlide() {
@@ -281,7 +285,7 @@ function studioStopAutoSlide() {
 
 function studioResetAutoSlide() {
   studioStopAutoSlide();
-  studioStartAutoSlide(); // always restart with 3s delay
+  studioStartAutoSlide(); // fresh 3s delay
 }
 
 // --- Hover pause ---
@@ -380,22 +384,26 @@ function creativePrevSlide() {
   }
 }
 
-// --- Auto slide logic ---
+// --- Auto slide logic (fixed 3s delay + loop + 10s per slide) ---
 function creativeStartAutoSlide() {
-  creativeStopAutoSlide();
+  creativeStopAutoSlide(); // clear old timers
 
-  // Wait 3 seconds after visible
+  // Start AFTER 3s delay
   setTimeout(() => {
     creativeAutoSlideInterval = setInterval(() => {
       if (creativeCurrent < creativeSlides.length - 1) {
         creativeNextSlide();
       } else {
-        // Last slide → instantly jump to slide 1 after 10s
-        creativeCurrent = 0;
-        creativeUpdateSlider();
+        // Last slide → wait 10s → loop to first
+        creativeStopAutoSlide();
+        setTimeout(() => {
+          creativeCurrent = 0;
+          creativeUpdateSlider();
+          creativeStartAutoSlide(); // restart loop
+        }, 10000);
       }
-    }, 10000); // 10 seconds per slide
-  }, 3000); // initial 3s delay
+    }, 10000);
+  }, 3000);
 }
 
 function creativeStopAutoSlide() {
@@ -404,7 +412,7 @@ function creativeStopAutoSlide() {
 
 function creativeResetAutoSlide() {
   creativeStopAutoSlide();
-  creativeStartAutoSlide(); // always restart with 3s delay
+  creativeStartAutoSlide(); // fresh 3s delay
 }
 
 // --- Hover pause ---
@@ -468,5 +476,6 @@ function fadeInSections() {
 
 window.addEventListener("scroll", fadeInSections);
 window.addEventListener("load", fadeInSections);
+
 
 
