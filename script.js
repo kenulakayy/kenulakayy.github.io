@@ -593,6 +593,32 @@ window.addEventListener("scroll", fadeInSections);
 window.addEventListener("load", fadeInSections);
 
 // ===========================================
+// GRID CARD FADE-IN ON SCROLL (RESTORED SAFE VERSION)
+// ===========================================
+function fadeInProjectCards() {
+  const sections = ["#studio-projects", "#creative-projects"];
+
+  sections.forEach((id) => {
+    const section = document.querySelector(id);
+    const rect = section.getBoundingClientRect();
+
+    // Only trigger when 75% visible
+    if (rect.top < window.innerHeight * 0.75 && rect.bottom > 0) {
+      const cards = section.querySelectorAll(".project-card");
+
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.classList.add("show");
+        }, index * 120); // 120ms stagger
+      });
+    }
+  });
+}
+
+window.addEventListener("scroll", fadeInProjectCards);
+window.addEventListener("load", fadeInProjectCards);
+
+// ===========================================
 // PROJECT SECTIONS PARALLAX BACKGROUND
 // ===========================================
 const projBg = document.querySelector(".projects-bg-wrapper .projects-bg");
