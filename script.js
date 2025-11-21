@@ -111,27 +111,24 @@ arrow.addEventListener("click", function () {
 });
 
 // ===============================
-// Smooth Scroll for Links
+// Smooth Scroll for Links (SAFE FIX)
 // ===============================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", function (e) {
+    const href = this.getAttribute("href");
+
+    // Ignore links that are exactly "#"
+    if (href === "#") return;
+
     e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
+    const target = document.querySelector(href);
+
     if (target) {
       window.scrollTo({
         top: target.offsetTop - 80, // offset for navbar height
         behavior: "smooth"
       });
     }
-  });
-});
-
-// Smooth scroll to top when logo is clicked
-document.querySelector(".logo-link").addEventListener("click", function (e) {
-  e.preventDefault();
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
   });
 });
 
@@ -477,3 +474,4 @@ function fadeInSections() {
 
 window.addEventListener("scroll", fadeInSections);
 window.addEventListener("load", fadeInSections);
+
