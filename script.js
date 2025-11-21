@@ -199,7 +199,7 @@ window.addEventListener("load", animateAbout);
 // Shared timing settings (adjust here if you want)
 const AUTO_START_DELAY = 10000; // 10s after section visible
 const SLIDE_INTERVAL = 10000;   // 10s per slide
-const LAST_SLIDE_PAUSE = 60000; // 60s pause on last slide
+const LAST_SLIDE_PAUSE = 10000; // 60s pause on last slide
 
 /* ---------- STUDIO SLIDER ---------- */
 const studioSlides = document.querySelectorAll("#studio-projects .project-slide");
@@ -591,6 +591,7 @@ function fadeInSections() {
 
 window.addEventListener("scroll", fadeInSections);
 window.addEventListener("load", fadeInSections);
+
 
 
 
