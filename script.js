@@ -193,8 +193,15 @@ window.addEventListener("scroll", animateAbout);
 window.addEventListener("load", animateAbout);
 
 // ===============================
-// STUDIO PROJECTS SLIDER (FULL UPDATED)
+// STUDIO + CREATIVE SLIDERS (ROBUST AUTO + GUARDS)
 // ===============================
+
+// Shared timing settings (adjust here if you want)
+const AUTO_START_DELAY = 10000; // 10s after section visible
+const SLIDE_INTERVAL = 10000;   // 10s per slide
+const LAST_SLIDE_PAUSE = 60000; // 60s pause on last slide
+
+/* ---------- STUDIO SLIDER ---------- */
 const studioSlides = document.querySelectorAll("#studio-projects .project-slide");
 const studioPrev = document.querySelector("#studio-projects .slider-arrow.left");
 const studioNext = document.querySelector("#studio-projects .slider-arrow.right");
@@ -202,43 +209,48 @@ const studioDotsContainer = document.querySelector("#studio-projects .slider-dot
 const studioSliderWrapper = document.querySelector("#studio-projects .projects-slider");
 
 let studioCurrent = 0;
-let studioAutoSlideInterval = null;
+let _studioStartTimeout = null;   // id for pending start timeout
+let _studioInterval = null;       // id for running interval
+let _studioLastPauseTimeout = null; // id for last-slide pause
+let _studioAutoActive = false;    // is auto currently active (interval running or scheduled)
+let _studioSectionVisible = false;
 
-// --- Create dots dynamically ---
+// Create dots
 studioSlides.forEach((_, i) => {
   const dot = document.createElement("button");
   if (i === 0) dot.classList.add("active");
   studioDotsContainer.appendChild(dot);
-
   dot.addEventListener("click", () => {
     studioGoToSlide(i);
     studioResetAutoSlide();
   });
 });
-
 const studioDots = document.querySelectorAll("#studio-projects .slider-dots button");
 
-// --- Update slide ---
+// Update slide visuals and animate cards
 function studioUpdateSlider() {
   studioSlides.forEach((slide, i) => {
     slide.classList.remove("active");
-    studioDots[i].classList.remove("active");
+    if (studioDots[i]) studioDots[i].classList.remove("active");
   });
 
-  studioSlides[studioCurrent].classList.add("active");
-  studioDots[studioCurrent].classList.add("active");
+  const slide = studioSlides[studioCurrent];
+  slide.classList.add("active");
+  if (studioDots[studioCurrent]) studioDots[studioCurrent].classList.add("active");
 
-  const cards = studioSlides[studioCurrent].querySelectorAll(".project-card");
+  // Animate cards inside active slide
+  const cards = slide.querySelectorAll(".project-card");
   cards.forEach((card, index) => {
     card.classList.remove("show");
     setTimeout(() => card.classList.add("show"), index * 100);
   });
 
+  // toggles for arrows
   studioPrev.classList.toggle("disabled", studioCurrent === 0);
   studioNext.classList.toggle("disabled", studioCurrent === studioSlides.length - 1);
 }
 
-// --- Navigation ---
+// Navigation helpers
 function studioGoToSlide(i) {
   if (i < 0 || i >= studioSlides.length) return;
   studioCurrent = i;
@@ -257,38 +269,95 @@ function studioPrevSlide() {
   }
 }
 
-// --- Auto slide logic (fixed 3s delay + loop + 10s per slide) ---
+// Clear any scheduled/active studio timers
+function studioStopAutoSlide() {
+  if (_studioStartTimeout) {
+    clearTimeout(_studioStartTimeout);
+    _studioStartTimeout = null;
+  }
+  if (_studioInterval) {
+    clearInterval(_studioInterval);
+    _studioInterval = null;
+  }
+  if (_studioLastPauseTimeout) {
+    clearTimeout(_studioLastPauseTimeout);
+    _studioLastPauseTimeout = null;
+  }
+  _studioAutoActive = false;
+}
+
+// Start auto-play: schedules a single start timeout and then uses one interval. Safe to call multiple times.
 function studioStartAutoSlide() {
-  studioStopAutoSlide(); // clear any old timers
-  
-  // Start AFTER 3s delay
-  setTimeout(() => {
-    studioAutoSlideInterval = setInterval(() => {
+  // If already active (either scheduled or running), do nothing
+  if (_studioAutoActive) return;
+
+  _studioAutoActive = true;
+
+  // schedule the start delay
+  _studioStartTimeout = setTimeout(() => {
+    _studioStartTimeout = null;
+    // start interval
+    _studioInterval = setInterval(() => {
       if (studioCurrent < studioSlides.length - 1) {
         studioNextSlide();
       } else {
-        // Loop back to first slide immediately
-        studioCurrent = 0;
-        studioUpdateSlider();
+        // reached last slide: stop interval and set a single pause timeout
+        if (_studioInterval) {
+          clearInterval(_studioInterval);
+          _studioInterval = null;
+        }
+        _studioLastPauseTimeout = setTimeout(() => {
+          _studioLastPauseTimeout = null;
+          studioCurrent = 0;
+          studioUpdateSlider();
+          // restart the interval loop
+          if (_studioAutoActive) {
+            _studioInterval = setInterval(() => {
+              if (studioCurrent < studioSlides.length - 1) {
+                studioNextSlide();
+              } else {
+                if (_studioInterval) {
+                  clearInterval(_studioInterval);
+                  _studioInterval = null;
+                }
+                _studioLastPauseTimeout = setTimeout(() => {
+                  _studioLastPauseTimeout = null;
+                  studioCurrent = 0;
+                  studioUpdateSlider();
+                }, LAST_SLIDE_PAUSE);
+              }
+            }, SLIDE_INTERVAL);
+          }
+        }, LAST_SLIDE_PAUSE);
       }
-    }, 10000); // 10s per slide
-  }, 3000);
+    }, SLIDE_INTERVAL);
+  }, AUTO_START_DELAY);
 }
 
-function studioStopAutoSlide() {
-  clearInterval(studioAutoSlideInterval);
-}
-
+// Reset auto: stop everything then start fresh only if section still visible
 function studioResetAutoSlide() {
   studioStopAutoSlide();
-  studioStartAutoSlide(); // fresh 3s delay
+  if (_studioSectionVisible) studioStartAutoSlide();
 }
 
-// --- Hover pause ---
-studioSliderWrapper.addEventListener("mouseenter", studioStopAutoSlide);
-studioSliderWrapper.addEventListener("mouseleave", studioResetAutoSlide);
+// Hover pause functionality
+studioSliderWrapper.addEventListener("mouseenter", () => {
+  // pause but keep the _studioAutoActive flag so reset will resume if visible
+  if (_studioInterval) {
+    clearInterval(_studioInterval);
+    _studioInterval = null;
+  }
+  if (_studioStartTimeout) {
+    // if we were waiting to start, keep it scheduled (optional). We clear it to avoid surprises.
+    clearTimeout(_studioStartTimeout);
+    _studioStartTimeout = null;
+  }
+});
+studioSliderWrapper.addEventListener("mouseleave", () => {
+  if (_studioSectionVisible) studioResetAutoSlide();
+});
 
-// --- Buttons ---
+// Buttons
 studioNext.addEventListener("click", () => {
   studioNextSlide();
   studioResetAutoSlide();
@@ -298,13 +367,16 @@ studioPrev.addEventListener("click", () => {
   studioResetAutoSlide();
 });
 
-// --- Start auto when visible ---
+// Visibility watcher for studio: starts once when section enters view, stops when leaves
 function studioStartAutoWhenVisible() {
   const section = document.querySelector("#studio-projects");
   const rect = section.getBoundingClientRect();
-  if (rect.top < window.innerHeight && rect.bottom > 0) {
+  const visible = rect.top < window.innerHeight && rect.bottom > 0;
+  if (visible && !_studioSectionVisible) {
+    _studioSectionVisible = true;
     studioStartAutoSlide();
-  } else {
+  } else if (!visible && _studioSectionVisible) {
+    _studioSectionVisible = false;
     studioStopAutoSlide();
   }
 }
@@ -315,9 +387,7 @@ window.addEventListener("load", () => {
 });
 
 
-// ===============================
-// CREATIVE PROJECTS SLIDER (FULL UPDATED)
-// ===============================
+/* ---------- CREATIVE SLIDER ---------- */
 const creativeSlides = document.querySelectorAll("#creative-projects .project-slide");
 const creativePrev = document.querySelector("#creative-projects .slider-arrow.left");
 const creativeNext = document.querySelector("#creative-projects .slider-arrow.right");
@@ -325,33 +395,36 @@ const creativeDotsContainer = document.querySelector("#creative-projects .slider
 const creativeSliderWrapper = document.querySelector("#creative-projects .projects-slider");
 
 let creativeCurrent = 0;
-let creativeAutoSlideInterval = null;
+let _creativeStartTimeout = null;
+let _creativeInterval = null;
+let _creativeLastPauseTimeout = null;
+let _creativeAutoActive = false;
+let _creativeSectionVisible = false;
 
-// --- Create dots dynamically ---
+// Create dots
 creativeSlides.forEach((_, i) => {
   const dot = document.createElement("button");
   if (i === 0) dot.classList.add("active");
   creativeDotsContainer.appendChild(dot);
-
   dot.addEventListener("click", () => {
     creativeGoToSlide(i);
     creativeResetAutoSlide();
   });
 });
-
 const creativeDots = document.querySelectorAll("#creative-projects .slider-dots button");
 
-// --- Update slide ---
+// Update
 function creativeUpdateSlider() {
   creativeSlides.forEach((slide, i) => {
     slide.classList.remove("active");
-    creativeDots[i].classList.remove("active");
+    if (creativeDots[i]) creativeDots[i].classList.remove("active");
   });
 
-  creativeSlides[creativeCurrent].classList.add("active");
-  creativeDots[creativeCurrent].classList.add("active");
+  const slide = creativeSlides[creativeCurrent];
+  slide.classList.add("active");
+  if (creativeDots[creativeCurrent]) creativeDots[creativeCurrent].classList.add("active");
 
-  const cards = creativeSlides[creativeCurrent].querySelectorAll(".project-card");
+  const cards = slide.querySelectorAll(".project-card");
   cards.forEach((card, index) => {
     card.classList.remove("show");
     setTimeout(() => card.classList.add("show"), index * 100);
@@ -361,7 +434,7 @@ function creativeUpdateSlider() {
   creativeNext.classList.toggle("disabled", creativeCurrent === creativeSlides.length - 1);
 }
 
-// --- Navigation ---
+// Navigation
 function creativeGoToSlide(i) {
   if (i < 0 || i >= creativeSlides.length) return;
   creativeCurrent = i;
@@ -380,38 +453,86 @@ function creativePrevSlide() {
   }
 }
 
-// --- Auto slide logic (fixed 3s delay + loop + 10s per slide) ---
+// Clear timers
+function creativeStopAutoSlide() {
+  if (_creativeStartTimeout) {
+    clearTimeout(_creativeStartTimeout);
+    _creativeStartTimeout = null;
+  }
+  if (_creativeInterval) {
+    clearInterval(_creativeInterval);
+    _creativeInterval = null;
+  }
+  if (_creativeLastPauseTimeout) {
+    clearTimeout(_creativeLastPauseTimeout);
+    _creativeLastPauseTimeout = null;
+  }
+  _creativeAutoActive = false;
+}
+
+// Start auto
 function creativeStartAutoSlide() {
-  creativeStopAutoSlide(); // clear old timers
-  
-  // Start AFTER 3s delay
-  setTimeout(() => {
-    creativeAutoSlideInterval = setInterval(() => {
+  if (_creativeAutoActive) return;
+  _creativeAutoActive = true;
+
+  _creativeStartTimeout = setTimeout(() => {
+    _creativeStartTimeout = null;
+    _creativeInterval = setInterval(() => {
       if (creativeCurrent < creativeSlides.length - 1) {
         creativeNextSlide();
       } else {
-        // Loop back to first slide immediately
-        creativeCurrent = 0;
-        creativeUpdateSlider();
+        if (_creativeInterval) {
+          clearInterval(_creativeInterval);
+          _creativeInterval = null;
+        }
+        _creativeLastPauseTimeout = setTimeout(() => {
+          _creativeLastPauseTimeout = null;
+          creativeCurrent = 0;
+          creativeUpdateSlider();
+          if (_creativeAutoActive) {
+            _creativeInterval = setInterval(() => {
+              if (creativeCurrent < creativeSlides.length - 1) creativeNextSlide();
+              else {
+                if (_creativeInterval) {
+                  clearInterval(_creativeInterval);
+                  _creativeInterval = null;
+                }
+                _creativeLastPauseTimeout = setTimeout(() => {
+                  _creativeLastPauseTimeout = null;
+                  creativeCurrent = 0;
+                  creativeUpdateSlider();
+                }, LAST_SLIDE_PAUSE);
+              }
+            }, SLIDE_INTERVAL);
+          }
+        }, LAST_SLIDE_PAUSE);
       }
-    }, 10000);
-  }, 3000);
+    }, SLIDE_INTERVAL);
+  }, AUTO_START_DELAY);
 }
 
-function creativeStopAutoSlide() {
-  clearInterval(creativeAutoSlideInterval);
-}
-
+// Reset auto
 function creativeResetAutoSlide() {
   creativeStopAutoSlide();
-  creativeStartAutoSlide(); // fresh 3s delay
+  if (_creativeSectionVisible) creativeStartAutoSlide();
 }
 
-// --- Hover pause ---
-creativeSliderWrapper.addEventListener("mouseenter", creativeStopAutoSlide);
-creativeSliderWrapper.addEventListener("mouseleave", creativeResetAutoSlide);
+// Hover pause
+creativeSliderWrapper.addEventListener("mouseenter", () => {
+  if (_creativeInterval) {
+    clearInterval(_creativeInterval);
+    _creativeInterval = null;
+  }
+  if (_creativeStartTimeout) {
+    clearTimeout(_creativeStartTimeout);
+    _creativeStartTimeout = null;
+  }
+});
+creativeSliderWrapper.addEventListener("mouseleave", () => {
+  if (_creativeSectionVisible) creativeResetAutoSlide();
+});
 
-// --- Buttons ---
+// Buttons
 creativeNext.addEventListener("click", () => {
   creativeNextSlide();
   creativeResetAutoSlide();
@@ -421,13 +542,16 @@ creativePrev.addEventListener("click", () => {
   creativeResetAutoSlide();
 });
 
-// --- Start auto when visible ---
+// Visibility watcher
 function creativeStartAutoWhenVisible() {
   const section = document.querySelector("#creative-projects");
   const rect = section.getBoundingClientRect();
-  if (rect.top < window.innerHeight && rect.bottom > 0) {
+  const visible = rect.top < window.innerHeight && rect.bottom > 0;
+  if (visible && !_creativeSectionVisible) {
+    _creativeSectionVisible = true;
     creativeStartAutoSlide();
-  } else {
+  } else if (!visible && _creativeSectionVisible) {
+    _creativeSectionVisible = false;
     creativeStopAutoSlide();
   }
 }
@@ -436,7 +560,6 @@ window.addEventListener("load", () => {
   creativeUpdateSlider();
   creativeStartAutoWhenVisible();
 });
-
 
 // ===============================
 // SECTION FADE-IN ANIMATIONS (FIXED)
@@ -468,6 +591,7 @@ function fadeInSections() {
 
 window.addEventListener("scroll", fadeInSections);
 window.addEventListener("load", fadeInSections);
+
 
 
 
