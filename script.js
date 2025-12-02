@@ -630,3 +630,26 @@ function updateProjectsParallax() {
 
 window.addEventListener("scroll", updateProjectsParallax);
 window.addEventListener("load", updateProjectsParallax);
+
+// =====================================
+// CONTACT SECTION SCROLL FADE-IN
+// =====================================
+const contactSection = document.querySelector("#contact");
+const contactElements = document.querySelectorAll(".animate-contact");
+
+function animateContactSection() {
+  const rect = contactSection.getBoundingClientRect();
+  if (rect.top < window.innerHeight * 0.85) {
+    
+    contactElements.forEach((el, i) => {
+      setTimeout(() => {
+        el.classList.add("show");
+      }, i * 250); // stagger animation
+    });
+
+    window.removeEventListener("scroll", animateContactSection);
+  }
+}
+
+window.addEventListener("scroll", animateContactSection);
+window.addEventListener("load", animateContactSection);
