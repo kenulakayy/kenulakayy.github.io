@@ -895,15 +895,13 @@ h2 {
 #home,
 #about,
 #studio-projects,
-#creative-projects,
 #contact {
-  min-height: 100vh;           /* fills full viewport */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;     /* vertically center content */
-  align-items: center;         /* horizontally center */
+  justify-content: center;
+  align-items: center;
   padding: 6rem 2rem;
-  box-sizing: border-box;
   position: relative;
 }
 
@@ -1068,3 +1066,4 @@ h2 {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
+
