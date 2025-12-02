@@ -951,6 +951,120 @@ h2 {
   min-height: 600px; /* reduce from 700px so dots stay visible */
 }
 
+/* =============================== */
+/* CONTACT SECTION */
+/* =============================== */
 
+#contact {
+  position: relative;
+  min-height: 80vh;
+  padding: 120px 0;
+  color: white;
+  overflow: hidden;
+}
 
+/* Background Video */
+.contact-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+}
 
+.contact-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.35);
+}
+
+/* Content */
+.contact-content {
+  text-align: center;
+  max-width: 700px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.contact-heading {
+  font-size: 3rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+}
+
+.contact-text {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+}
+
+.contact-links {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.contact-link:hover {
+  color: #ffdd57; /* warm gold hover */
+}
+
+/* Social Icons */
+.social-icons {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background-color: white;
+  transition: 0.3s ease;
+}
+
+/* ICON SOURCES (mask-image) */
+.instagram { mask-image: url("icons/instagram.svg"); }
+.whatsapp  { mask-image: url("icons/whatsapp.svg"); }
+.youtube   { mask-image: url("icons/youtube.svg"); }
+.spotify   { mask-image: url("icons/spotify.svg"); }
+.apple     { mask-image: url("icons/apple-music.svg"); }
+.tiktok    { mask-image: url("icons/tiktok.svg"); }
+.linkedin  { mask-image: url("icons/linkedin.svg"); }
+
+/* Hover colors */
+.instagram:hover { background-color: #E1306C; }
+.whatsapp:hover  { background-color: #25D366; }
+.youtube:hover   { background-color: #FF0000; }
+.spotify:hover   { background-color: #1DB954; }
+.apple:hover     { background-color: #FA233B; }
+.tiktok:hover    { background-color: #fe2d52; }
+.linkedin:hover  { background-color: #0077b5; }
+
+/* Fade-in for all elements */
+.animate-contact.show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
