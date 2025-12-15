@@ -654,3 +654,22 @@ function animateContactSection() {
 window.addEventListener("scroll", animateContactSection);
 window.addEventListener("load", animateContactSection);
 
+// ===============================
+// HERO FADE-IN SEQUENCE
+// ===============================
+window.addEventListener("load", () => {
+  const heroLogo = document.querySelector(".hero-logo");
+  const heroText = document.querySelector(".hero-subtext");
+
+  if (!heroLogo || !heroText) return;
+
+  // Logo fades in after 1s
+  setTimeout(() => {
+    heroLogo.classList.add("show");
+  }, 1000);
+
+  // Text fades in after logo
+  setTimeout(() => {
+    heroText.classList.add("show");
+  }, 1800);
+});
