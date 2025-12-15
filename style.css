@@ -955,10 +955,13 @@ h2 {
 
 #contact {
   position: relative;
-  min-height: 80vh;
-  padding: 120px 0;
+  min-height: 100vh;        /* MATCH ALL OTHER SECTIONS */
+  padding: 6rem 2rem;       /* same padding as others */
   color: white;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Background Video */
@@ -1066,5 +1069,6 @@ h2 {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
+
 
 
