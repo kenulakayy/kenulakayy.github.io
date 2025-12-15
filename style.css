@@ -1062,20 +1062,48 @@ h2 {
 .icon {
   width: 36px;
   height: 36px;
+
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+
   mask-size: contain;
   mask-repeat: no-repeat;
+  mask-position: center;
+
   background-color: white;
   transition: 0.3s ease;
 }
 
 /* ICON SOURCES (mask-image) */
-.instagram { mask-image: url("icons/instagram.svg"); }
-.whatsapp  { mask-image: url("icons/whatsapp.svg"); }
-.youtube   { mask-image: url("icons/youtube.svg"); }
-.spotify   { mask-image: url("icons/spotify.svg"); }
-.apple     { mask-image: url("icons/apple-music.svg"); }
-.tiktok    { mask-image: url("icons/tiktok.svg"); }
-.linkedin  { mask-image: url("icons/linkedin.svg"); }
+.instagram {
+  -webkit-mask-image: url("icons/instagram.svg");
+  mask-image: url("icons/instagram.svg");
+}
+.whatsapp {
+  -webkit-mask-image: url("icons/whatsapp.svg");
+  mask-image: url("icons/whatsapp.svg");
+}
+.youtube {
+  -webkit-mask-image: url("icons/youtube.svg");
+  mask-image: url("icons/youtube.svg");
+}
+.spotify {
+  -webkit-mask-image: url("icons/spotify.svg");
+  mask-image: url("icons/spotify.svg");
+}
+.apple {
+  -webkit-mask-image: url("icons/apple-music.svg");
+  mask-image: url("icons/apple-music.svg");
+}
+.tiktok {
+  -webkit-mask-image: url("icons/tiktok.svg");
+  mask-image: url("icons/tiktok.svg");
+}
+.linkedin {
+  -webkit-mask-image: url("icons/linkedin.svg");
+  mask-image: url("icons/linkedin.svg");
+}
 
 /* Hover colors */
 .instagram:hover { background-color: #E1306C; }
@@ -1091,6 +1119,7 @@ h2 {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
+
 
 
 
