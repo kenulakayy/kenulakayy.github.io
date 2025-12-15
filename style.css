@@ -102,6 +102,28 @@ nav {
   margin-bottom: 1rem;
 }
 
+.hero-logo {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero-logo.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-subtext {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero-subtext.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Scroll Down Arrow */
 .scroll-down {
   position: absolute;
@@ -1069,6 +1091,7 @@ h2 {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
+
 
 
 
