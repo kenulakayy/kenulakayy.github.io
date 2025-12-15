@@ -142,7 +142,7 @@ window.addEventListener("scroll", () => {
   let current = "";
 
   sections.forEach(section => {
-    const sectionTop = section.offsetTop - 100; // offset for navbar height
+    const sectionTop = section.offsetTop - 80; // offset for navbar height
     const sectionHeight = section.clientHeight;
     if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
       current = section.getAttribute("id");
@@ -653,3 +653,4 @@ function animateContactSection() {
 
 window.addEventListener("scroll", animateContactSection);
 window.addEventListener("load", animateContactSection);
+
