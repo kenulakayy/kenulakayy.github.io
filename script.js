@@ -136,26 +136,36 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Highlight active navbar link
 // ===============================
 const sections = document.querySelectorAll("section");
-const navLinksList = document.querySelectorAll(".nav-links a");
+const navLinks = document.querySelectorAll(".nav-links a");
+const header = document.querySelector("header");
 
-window.addEventListener("scroll", () => {
-  let current = "";
+function setActiveLink() {
+  const scrollPos = window.scrollY + header.offsetHeight + (window.innerHeight / 3);
 
   sections.forEach(section => {
-    const sectionTop = section.offsetTop - 80; // offset for navbar height
-    const sectionHeight = section.clientHeight;
-    if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
-      current = section.getAttribute("id");
-    }
-  });
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    const sectionId = section.getAttribute("id");
 
-  navLinksList.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
+    if (
+      scrollPos >= sectionTop &&
+      scrollPos < sectionTop + sectionHeight
+    ) {
+      navLinks.forEach(link => link.classList.remove("active"));
+
+      const activeLink = document.querySelector(
+        `.nav-links a[href="#${sectionId}"]`
+      );
+
+      if (activeLink) {
+        activeLink.classList.add("active");
+      }
     }
   });
-});
+}
+
+window.addEventListener("scroll", setActiveLink);
+window.addEventListener("load", setActiveLink);
 
 // ===============================
 // About Section Animation + Subtle Parallax (plays once)
@@ -673,3 +683,4 @@ window.addEventListener("load", () => {
     heroText.classList.add("show");
   }, 1800);
 });
+
