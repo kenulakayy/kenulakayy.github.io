@@ -135,37 +135,35 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // ===============================
 // Highlight active navbar link
 // ===============================
-const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-links a");
-const header = document.querySelector("header");
 
-function setActiveLink() {
-  const scrollPos = window.scrollY + header.offsetHeight + (window.innerHeight / 3);
+const sectionMap = [
+  { id: "home", link: "HOME" },
+  { id: "about", link: "ABOUT" },
+  { id: "studio-projects", link: "STUDIO PROJECTS" },
+  { id: "creative-projects", link: "CREATIVE PROJECTS" },
+  { id: "contact", link: "CONTACT" }
+];
 
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-    const sectionId = section.getAttribute("id");
+window.addEventListener("scroll", () => {
+  const scrollPos = window.scrollY + window.innerHeight / 2;
 
-    if (
-      scrollPos >= sectionTop &&
-      scrollPos < sectionTop + sectionHeight
-    ) {
-      navLinks.forEach(link => link.classList.remove("active"));
+  let currentSection = sectionMap[0].id;
 
-      const activeLink = document.querySelector(
-        `.nav-links a[href="#${sectionId}"]`
-      );
-
-      if (activeLink) {
-        activeLink.classList.add("active");
-      }
+  sectionMap.forEach(section => {
+    const el = document.getElementById(section.id);
+    if (el && scrollPos >= el.offsetTop) {
+      currentSection = section.id;
     }
   });
-}
 
-window.addEventListener("scroll", setActiveLink);
-window.addEventListener("load", setActiveLink);
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === `#${currentSection}`) {
+      link.classList.add("active");
+    }
+  });
+});
 
 // ===============================
 // About Section Animation + Subtle Parallax (plays once)
@@ -683,5 +681,6 @@ window.addEventListener("load", () => {
     heroText.classList.add("show");
   }, 1800);
 });
+
 
 
