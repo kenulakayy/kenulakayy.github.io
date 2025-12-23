@@ -1126,9 +1126,15 @@ h2 {
   text-align: center;
   font-size: 0.85rem;
   color: #999;
-  background: transparent;
+  background: transparent !important;
+  position: relative;
+  z-index: 2;
 }
 
 .site-footer p {
   margin: 0;
+}
+
+.site-footer span {
+  color: #FFBB2B;
 }
