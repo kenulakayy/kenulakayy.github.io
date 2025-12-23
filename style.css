@@ -208,10 +208,6 @@ h2 {
   text-decoration: none;
 }
 
-.contact-links a:hover {
-  color: #00adee;
-}
-
 /* Mobile */
 @media (max-width: 768px) {
   .nav-links {
@@ -1119,6 +1115,7 @@ h2 {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
+
 
 
 
