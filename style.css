@@ -370,6 +370,7 @@ h2 {
   opacity: 0.25;
   z-index: -1;
   transform: translateY(0);
+  transform: scale(1.15);
   transition: transform 0.2s ease-out;
 }
 
@@ -1140,6 +1141,7 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
 
 
