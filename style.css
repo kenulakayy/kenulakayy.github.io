@@ -1129,7 +1129,7 @@ h2 {
   background: transparent !important;
   position: relative;
   z-index: 3;
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .site-footer p {
@@ -1139,4 +1139,5 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
