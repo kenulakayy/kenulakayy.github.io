@@ -984,7 +984,6 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
 }
 
 /* Background Video */
@@ -1139,6 +1138,7 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
 
 
