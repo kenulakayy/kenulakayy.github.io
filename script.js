@@ -128,7 +128,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       const headerHeight = document.querySelector("header").offsetHeight;
       
       window.scrollTo({
-        top: rect.top + scrollTop - headerHeight - 10, // dynamic header height + small buffer
+        top: rect.top + scrollTop - headerHeight - 20, // dynamic header height + small buffer
         behavior: "smooth"
       });
     }
@@ -686,6 +686,7 @@ window.addEventListener("load", () => {
     heroText.classList.add("show");
   }, 1800);
 });
+
 
 
 
