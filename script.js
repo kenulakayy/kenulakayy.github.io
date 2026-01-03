@@ -146,14 +146,16 @@ const sectionMap = [
 ];
 
 window.addEventListener("scroll", () => {
-  const scrollPos = window.scrollY + window.innerHeight / 2;
-
-  let currentSection = sectionMap[0].id;
-
+  let currentSection = "home";
+  
   sectionMap.forEach(section => {
     const el = document.getElementById(section.id);
-    if (el && scrollPos >= el.offsetTop) {
-      currentSection = section.id;
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      // Section is "current" if its top is above the middle of the viewport
+      if (rect.top <= window.innerHeight / 2) {
+        currentSection = section.id;
+      }
     }
   });
 
@@ -681,6 +683,7 @@ window.addEventListener("load", () => {
     heroText.classList.add("show");
   }, 1800);
 });
+
 
 
 
