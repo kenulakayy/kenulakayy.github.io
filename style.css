@@ -1129,6 +1129,7 @@ h2 {
   background: transparent !important;
   position: relative;
   z-index: 3;
+  transform: translateY(20px); /* try 10–40px */
 }
 
 .site-footer p {
@@ -1138,6 +1139,7 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
 
 
