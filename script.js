@@ -124,14 +124,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(href);
 
     if (target) {
+      const rect = target.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
       window.scrollTo({
-        top: target.offsetTop - 80, // offset for navbar height
+        top: rect.top + scrollTop - 80, // offset for navbar height
         behavior: "smooth"
       });
     }
   });
 });
-
 // ===============================
 // Highlight active navbar link
 // ===============================
@@ -683,6 +685,7 @@ window.addEventListener("load", () => {
     heroText.classList.add("show");
   }, 1800);
 });
+
 
 
 
