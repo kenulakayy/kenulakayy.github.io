@@ -162,6 +162,7 @@ nav {
 section {
   padding: 6rem 2rem;
   min-height: 100vh;
+  scroll-margin-top: 10vh;
 }
 
 h2 {
@@ -1139,3 +1140,4 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
