@@ -125,10 +125,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if (target) {
       const rect = target.getBoundingClientRect();
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const headerHeight = document.querySelector("header").offsetHeight;
+      
+      // Use viewport-based offset for consistent positioning across screens
+      const offset = Math.max(80, window.innerHeight * 0.1); // 10% of viewport or minimum 80px
       
       window.scrollTo({
-        top: rect.top + scrollTop - headerHeight - 20, // dynamic header height + small buffer
+        top: rect.top + scrollTop - offset,
         behavior: "smooth"
       });
     }
@@ -686,6 +688,7 @@ window.addEventListener("load", () => {
     heroText.classList.add("show");
   }, 1800);
 });
+
 
 
 
