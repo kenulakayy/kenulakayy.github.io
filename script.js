@@ -123,16 +123,28 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(href);
 
     if (target) {
-      const rect = target.getBoundingClientRect();
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       
-      // Use 10% of viewport height or minimum 80px for consistent positioning
-      const offset = Math.max(80, window.innerHeight * 0.1);
-      
-      window.scrollTo({
-        top: rect.top + scrollTop - offset,
-        behavior: "smooth"
-      });
+      // Special handling for Contact section: scroll to show footer
+      if (href === "#contact") {
+        // Scroll so the bottom of the Contact section aligns with bottom of viewport
+        const sectionBottom = target.getBoundingClientRect().bottom + scrollTop;
+        const scrollTarget = sectionBottom - window.innerHeight;
+        
+        window.scrollTo({
+          top: Math.max(0, scrollTarget),
+          behavior: "smooth"
+        });
+      } else {
+        // Standard behavior for other sections
+        const rect = target.getBoundingClientRect();
+        const offset = Math.max(80, window.innerHeight * 0.1);
+        
+        window.scrollTo({
+          top: rect.top + scrollTop - offset,
+          behavior: "smooth"
+        });
+      }
     }
   });
 });
@@ -688,6 +700,7 @@ window.addEventListener("load", () => {
     heroText.classList.add("show");
   }, 1800);
 });
+
 
 
 
