@@ -111,7 +111,7 @@ arrow.addEventListener("click", function () {
 });
 
 // ===============================
-// Smooth Scroll for Links (SAFE FIX)
+// Smooth Scroll for Links
 // ===============================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", function (e) {
@@ -126,8 +126,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       const rect = target.getBoundingClientRect();
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       
-      // Use viewport-based offset for consistent positioning across screens
-      const offset = Math.max(80, window.innerHeight * 0.1); // 10% of viewport or minimum 80px
+      // Use 10% of viewport height or minimum 80px for consistent positioning
+      const offset = Math.max(80, window.innerHeight * 0.1);
       
       window.scrollTo({
         top: rect.top + scrollTop - offset,
@@ -688,6 +688,7 @@ window.addEventListener("load", () => {
     heroText.classList.add("show");
   }, 1800);
 });
+
 
 
 
