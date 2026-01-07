@@ -1142,9 +1142,10 @@ h2 {
 }
 
 #creative-projects .projects-content {
-  padding-top: 2rem; /* Adjust this value as needed (e.g., 3rem, 4rem) */
+  padding-top: 3rem; /* Adjust this value as needed (e.g., 3rem, 4rem) */
 }
 
 #studio-projects .projects-content {
-  padding-top: 2rem; /* Adjust this value as needed (e.g., 3rem, 4rem) */
+  padding-top: 5rem; /* Adjust this value as needed (e.g., 3rem, 4rem) */
 }
+
