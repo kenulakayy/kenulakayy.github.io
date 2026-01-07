@@ -1141,14 +1141,10 @@ h2 {
   color: #FFBB2B;
 }
 
-#creative-projects {
-  padding-top: 20rem; /* Adjust this value as needed (e.g., 3rem, 4rem) */
-}
-
 #studio-projects {
-  padding-top: 10rem; /* Adjust this value as needed (e.g., 3rem, 4rem) */
+  padding-top: 12rem !important;
 }
 
-
-
-
+#creative-projects {
+  padding-top: 12rem !important;
+}
