@@ -1143,11 +1143,10 @@ h2 {
   color: #FFBB2B;
 }
 
-#studio-projects {
-  padding-top: 12rem !important;
-}
-
+#studio-projects,
 #creative-projects {
-  padding-top: 12rem !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
