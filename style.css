@@ -659,10 +659,6 @@ h2 {
 /*    CREATIVE PROJECTS SECTION  */
 /* ============================= */
 
-#creative-projects {
-  margin-top: -10rem
-}
-
 /* Section heading */
 #creative-projects h2 {
   font-size: 6rem;
@@ -927,6 +923,7 @@ h2 {
 #studio-projects,
 #contact {
   min-height: 100vh;
+  max-height: 100vh;  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1147,6 +1144,7 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
 
 
