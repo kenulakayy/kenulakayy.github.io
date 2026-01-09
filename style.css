@@ -162,7 +162,10 @@ nav {
 section {
   padding: 6rem 2rem;
   min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
   scroll-margin-top: 10vh;
+  overflow: hidden;
 }
 
 h2 {
@@ -1142,3 +1145,4 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
