@@ -385,7 +385,6 @@ h2 {
 #studio-projects h2 {
   font-size: 6rem;
   margin-bottom: 2rem;
-  margin-top: 8rem; /* Adjust this value */
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   text-align: center;
@@ -664,7 +663,6 @@ h2 {
 #creative-projects h2 {
   font-size: 6rem;
   margin-bottom: 2rem;
-  margin-top: 8rem; /* Adjust this value */
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   text-align: center;
@@ -1145,4 +1143,5 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
