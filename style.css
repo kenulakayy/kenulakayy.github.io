@@ -726,6 +726,16 @@ h2 {
   z-index: 1;
 }
 
+/* === Reduce overall grid scale for Creative Projects (matches Studio) === */
+#creative-projects .project-slide {
+  transform: scale(0.85);
+  transform-origin: center top;
+}
+
+#creative-projects .projects-slider {
+  min-height: 600px;
+}
+
 /* Responsive */
 @media (max-width: 1200px) {
   #creative-projects .project-slide,
@@ -1144,6 +1154,7 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
 
 
