@@ -659,6 +659,10 @@ h2 {
 /*    CREATIVE PROJECTS SECTION  */
 /* ============================= */
 
+#creative-projects {
+  margin-top: -2rem
+}
+
 /* Section heading */
 #creative-projects h2 {
   font-size: 6rem;
@@ -1143,5 +1147,6 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
 
