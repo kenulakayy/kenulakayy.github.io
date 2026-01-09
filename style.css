@@ -1142,11 +1142,3 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
-
-#studio-projects,
-#creative-projects {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
