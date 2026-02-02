@@ -645,7 +645,15 @@ h2 {
   transform: translateY(0);
 }
 
-/* Scale for Studio Projects now handled in global viewport-responsive section below */
+/* === Reduce overall grid scale for Studio Projects === */
+#studio-projects .project-slide {
+  transform: scale(0.85);           /* makes grid 10% smaller overall */
+  transform-origin: center top;    /* keeps grid centered and shrinks upward */
+}
+
+#studio-projects .projects-slider {
+  min-height: 600px; /* reduce from 700px so dots stay visible */
+}
 
 /* ============================= */
 /*    CREATIVE PROJECTS SECTION  */
@@ -913,10 +921,8 @@ h2 {
 #home,
 #about,
 #studio-projects,
-#creative-projects,
 #contact {
   min-height: 100vh;
-  height: 100vh;
   max-height: 100vh;  
   display: flex;
   flex-direction: column;
@@ -924,16 +930,14 @@ h2 {
   align-items: center;
   padding: 6rem 2rem;
   position: relative;
-  overflow: hidden;
 }
 
 /* keep inner grids centered properly */
 #studio-projects .slider-wrapper,
-#creative-projects .slider-wrapper {
-  flex: 0 0 auto;
+#creative-projects .grid {
+  flex: 1;
   width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -946,50 +950,30 @@ h2 {
   #creative-projects,
   #contact {
     min-height: auto;
-    height: auto;
-    max-height: none;
-    overflow: visible;
     padding: 5rem 1.5rem;
   }
 }
 
-/* === Viewport-responsive scaling for project grids === */
-/* Scale down more aggressively at wider viewports */
+/* --- Fix Creative Projects height & centering issue --- */
+#creative-projects {
+  display: block;           /* overrides global flex */
+  min-height: auto;         /* allow it to grow naturally */
+  padding: 6rem 2rem;       /* keep your spacing */
+}
 
-/* Default scale for both sections */
-#studio-projects .project-slide,
+#creative-projects .slider-wrapper {
+  align-items: stretch;     /* make inner grid fill width */
+  justify-content: flex-start; /* align top rather than center */
+}
+
+/* === Reduce overall grid scale for Creative Projects === */
 #creative-projects .project-slide {
-  transform: scale(0.9);
-  transform-origin: center center;
+  transform: scale(0.85);           /* makes grid 10% smaller overall */
+  transform-origin: center top;    /* keeps grid centered and shrinks upward */
 }
 
-/* Medium-large screens: scale down a bit more */
-@media (min-width: 1200px) {
-  #studio-projects .project-slide,
-  #creative-projects .project-slide {
-    transform: scale(0.82);
-  }
-}
-
-/* Very wide screens: scale down even more */
-@media (min-width: 1600px) {
-  #studio-projects .project-slide,
-  #creative-projects .project-slide {
-    transform: scale(0.75);
-  }
-}
-
-/* Ultra-wide screens */
-@media (min-width: 1920px) {
-  #studio-projects .project-slide,
-  #creative-projects .project-slide {
-    transform: scale(0.68);
-  }
-}
-
-#studio-projects .projects-slider,
 #creative-projects .projects-slider {
-  min-height: 550px;
+  min-height: 600px; /* reduce from 700px so dots stay visible */
 }
 
 /* =============================== */
@@ -1160,4 +1144,3 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
-
