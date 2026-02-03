@@ -363,13 +363,18 @@ h2 {
 
 .projects-bg {
   position: absolute;
-  inset: -20%;                 /* KEY: oversize all sides */
-  background-image: url("images/ST_BG.jpg");
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%; /* extra height for parallax */
+  background-image: url("images/ST_BG_2.jpg"); /* your BG image */
   background-size: cover;
   background-position: center;
-  will-change: transform;
+  background-attachment: fixed;
+  opacity: 0.25;
   z-index: -1;
   transform: translateY(0);
+  transition: transform 0.2s ease-out;
 }
 
 /* ============================= */
@@ -641,15 +646,13 @@ h2 {
 }
 
 /* === Reduce overall grid scale for Studio Projects === */
-#studio-projects .project-slide,
-#creative-projects .project-slide {
-  transform: scale(0.82);
-  transform-origin: center top;
+#studio-projects .project-slide {
+  transform: scale(0.85);           /* makes grid 10% smaller overall */
+  transform-origin: center top;    /* keeps grid centered and shrinks upward */
 }
 
-#studio-projects .projects-slider,
-#creative-projects .projects-slider {
-  min-height: 560px;
+#studio-projects .projects-slider {
+  min-height: 600px; /* reduce from 700px so dots stay visible */
 }
 
 /* ============================= */
@@ -923,7 +926,7 @@ h2 {
   max-height: 100vh;  
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   padding: 6rem 2rem;
   position: relative;
@@ -949,6 +952,28 @@ h2 {
     min-height: auto;
     padding: 5rem 1.5rem;
   }
+}
+
+/* --- Fix Creative Projects height & centering issue --- */
+#creative-projects {
+  display: block;           /* overrides global flex */
+  min-height: auto;         /* allow it to grow naturally */
+  padding: 6rem 2rem;       /* keep your spacing */
+}
+
+#creative-projects .slider-wrapper {
+  align-items: stretch;     /* make inner grid fill width */
+  justify-content: flex-start; /* align top rather than center */
+}
+
+/* === Reduce overall grid scale for Creative Projects === */
+#creative-projects .project-slide {
+  transform: scale(0.85);           /* makes grid 10% smaller overall */
+  transform-origin: center top;    /* keeps grid centered and shrinks upward */
+}
+
+#creative-projects .projects-slider {
+  min-height: 600px; /* reduce from 700px so dots stay visible */
 }
 
 /* =============================== */
@@ -1119,6 +1144,3 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
-
-
-
