@@ -371,7 +371,8 @@ h2 {
   opacity: 0.25;
   z-index: -1;
   transform: translateY(0);
-  transition: transform 0.2s ease-out;
+  transform: scale(1.2);
+  transition: transform 0.6s ease;
 }
 
 /* ============================= */
@@ -1141,6 +1142,7 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
 
 
