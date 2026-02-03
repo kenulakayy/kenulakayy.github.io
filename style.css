@@ -647,8 +647,9 @@ h2 {
   transform-origin: center top;
 }
 
-#studio-projects .projects-slider {
-  min-height: 600px; /* reduce from 700px so dots stay visible */
+#studio-projects .projects-slider,
+#creative-projects .projects-slider {
+  min-height: 560px;
 }
 
 /* ============================= */
@@ -950,28 +951,6 @@ h2 {
   }
 }
 
-/* --- Fix Creative Projects height & centering issue --- */
-#creative-projects {
-  display: block;           /* overrides global flex */
-  min-height: auto;         /* allow it to grow naturally */
-  padding: 6rem 2rem;       /* keep your spacing */
-}
-
-#creative-projects .slider-wrapper {
-  align-items: stretch;     /* make inner grid fill width */
-  justify-content: flex-start; /* align top rather than center */
-}
-
-/* === Reduce overall grid scale for Creative Projects === */
-#creative-projects .project-slide {
-  transform: scale(0.85);           /* makes grid 10% smaller overall */
-  transform-origin: center top;    /* keeps grid centered and shrinks upward */
-}
-
-#creative-projects .projects-slider {
-  min-height: 600px; /* reduce from 700px so dots stay visible */
-}
-
 /* =============================== */
 /* CONTACT SECTION */
 /* =============================== */
@@ -1140,5 +1119,6 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
 
