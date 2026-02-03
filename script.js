@@ -636,11 +636,24 @@ window.addEventListener("load", fadeInProjectCards);
 // ===========================================
 // PROJECT SECTIONS PARALLAX BACKGROUND
 // ===========================================
-const projBg = document.querySelector(".projects-bg-wrapper .projects-bg");
+const projectsSection = document.querySelector(".projects-bg-wrapper");
+const projBg = document.querySelector(".projects-bg");
 
 function updateProjectsParallax() {
+  if (!projectsSection || !projBg) return;
+
   const scrollY = window.scrollY;
-  projBg.style.transform = `translateY(${scrollY * 0.08}px)`; 
+  const sectionTop = projectsSection.offsetTop;
+  const sectionHeight = projectsSection.offsetHeight;
+
+  // Only move while section is visible
+  if (
+    scrollY + window.innerHeight > sectionTop &&
+    scrollY < sectionTop + sectionHeight
+  ) {
+    const offset = (scrollY - sectionTop) * 0.12; // subtle like About
+    projBg.style.transform = `translateY(${offset}px) scale(1.2)`;
+  }
 }
 
 window.addEventListener("scroll", updateProjectsParallax);
@@ -688,6 +701,7 @@ window.addEventListener("load", () => {
     heroText.classList.add("show");
   }, 1800);
 });
+
 
 
 
