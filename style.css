@@ -641,9 +641,10 @@ h2 {
 }
 
 /* === Reduce overall grid scale for Studio Projects === */
-#studio-projects .project-slide {
-  transform: scale(0.85);           /* makes grid 10% smaller overall */
-  transform-origin: center top;    /* keeps grid centered and shrinks upward */
+#studio-projects .project-slide,
+#creative-projects .project-slide {
+  transform: scale(0.82);
+  transform-origin: center top;
 }
 
 #studio-projects .projects-slider {
@@ -921,7 +922,7 @@ h2 {
   max-height: 100vh;  
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: 6rem 2rem;
   position: relative;
@@ -1139,4 +1140,5 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
