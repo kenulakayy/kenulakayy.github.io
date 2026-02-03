@@ -640,7 +640,7 @@ const projBg = document.querySelector(".projects-bg-wrapper .projects-bg");
 
 function updateProjectsParallax() {
   const scrollY = window.scrollY;
-  projBg.style.transform = `translateY(${scrollY * 0.2}px)`; 
+  projBg.style.transform = `translateY(${scrollY * 0.08}px)`; 
 }
 
 window.addEventListener("scroll", updateProjectsParallax);
@@ -688,6 +688,7 @@ window.addEventListener("load", () => {
     heroText.classList.add("show");
   }, 1800);
 });
+
 
 
 
