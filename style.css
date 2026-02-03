@@ -363,14 +363,11 @@ h2 {
 
 .projects-bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 200%; /* extra height for parallax */
+  inset: -20%;                 /* KEY: oversize all sides */
   background-image: url("images/ST_BG_2.jpg"); /* your BG image */
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  will-change: transform;
   opacity: 0.25;
   z-index: -1;
   transform: translateY(0);
@@ -1144,3 +1141,4 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
