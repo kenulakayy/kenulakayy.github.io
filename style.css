@@ -919,6 +919,7 @@ h2 {
 #home,
 #about,
 #studio-projects,
+#creative-projects,
 #contact {
   min-height: 100vh;
   max-height: 100vh;  
@@ -1142,6 +1143,7 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
 
 
