@@ -828,7 +828,7 @@ h2 {
 /* Dots */
 #creative-projects .slider-dots {
   position: relative;
-  margin-top: -7rem;
+  margin-top: -4.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -912,6 +912,10 @@ h2 {
   pointer-events: none;
 }
 
+#creative-projects .projects-slider {
+  min-height: 600px;   /* SAME AS STUDIO */
+}
+
 /* ============================= */
 /* GLOBAL CONSISTENT SECTION HEIGHT */
 /* ============================= */
@@ -967,7 +971,7 @@ h2 {
 
 /* === Reduce overall grid scale for Creative Projects === */
 #creative-projects .project-slide {
-  transform: scale(0.85);           /* makes grid 10% smaller overall */
+  transform: scale(0.82);           /* makes grid 10% smaller overall */
   transform-origin: center top;    /* keeps grid centered and shrinks upward */
 }
 
@@ -1143,6 +1147,7 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
 
 
