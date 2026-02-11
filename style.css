@@ -833,13 +833,6 @@ h2 {
   z-index: 30;
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-/* Dots fade-in animation */
-#creative-projects .slider-dots {
-  opacity: 0;
-  transform: translateY(10px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
@@ -959,6 +952,7 @@ h2 {
 #creative-projects .slider-wrapper {
   align-items: stretch;     /* make inner grid fill width */
   justify-content: flex-start; /* align top rather than center */
+  transform: translateY(40px); /* adjust 20–60px as needed */
 }
 
 /* === Reduce overall grid scale for Creative Projects === */
@@ -1139,6 +1133,7 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
 
 
