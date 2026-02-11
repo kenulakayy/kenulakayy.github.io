@@ -953,7 +953,7 @@ h2 {
 #creative-projects {
   display: block;           /* overrides global flex */
   min-height: auto;         /* allow it to grow naturally */
-  padding: 14rem;       /* keep your spacing */
+  padding: 6rem 2rem;       /* keep your spacing */
 }
 
 #creative-projects .slider-wrapper {
@@ -1139,6 +1139,7 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
 
 
