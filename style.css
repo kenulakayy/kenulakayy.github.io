@@ -825,7 +825,7 @@ h2 {
 /* Dots */
 #creative-projects .slider-dots {
   position: relative;
-  margin-top: -0.5rem;
+  margin-top: -3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1133,6 +1133,7 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
 
 
