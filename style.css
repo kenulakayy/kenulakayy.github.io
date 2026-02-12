@@ -661,7 +661,6 @@ h2 {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   text-align: center;
-  padding-top: 2rem;
 }
 
 /* Heading animation */
@@ -686,6 +685,7 @@ h2 {
   max-width: 95%;
   margin: 0 auto;
   overflow: visible;
+  transform: translateY(35px);
 }
 
 /* Slider */
@@ -1128,5 +1128,6 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
 
