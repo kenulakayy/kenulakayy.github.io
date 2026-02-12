@@ -685,7 +685,7 @@ h2 {
   max-width: 95%;
   margin: 0 auto;
   overflow: visible;
-  transform: translateY(35px);
+  transform: translateY(40px);
   padding-top: 8rem; /* increase from 6rem */
 }
 
@@ -1129,6 +1129,7 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
 
 
