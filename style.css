@@ -661,6 +661,7 @@ h2 {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   text-align: center;
+  padding-top: 2rem;
 }
 
 /* Heading animation */
@@ -1127,4 +1128,5 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
