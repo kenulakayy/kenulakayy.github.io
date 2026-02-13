@@ -798,10 +798,12 @@ h2 {
 #creative-projects .project-card .overlay p {
   color: white;
   font-size: 1.2rem;
+  font-weight: 400;
 }
 
 #creative-projects .project-card .overlay span {
   font-size: 0.9rem;
+  font-weight: 300;
   opacity: 0.8;
 }
 
@@ -819,6 +821,7 @@ h2 {
 }
 
 #creative-projects .project-card.view-more p {
+  font-size: 1.3rem;
   color: #FFBB2B;
   font-weight: 700;
 }
@@ -826,7 +829,7 @@ h2 {
 /* Dots */
 #creative-projects .slider-dots {
   position: relative;
-  margin-top: -8rem;
+  margin-top: -7rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1128,6 +1131,7 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
 
 
