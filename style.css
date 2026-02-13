@@ -657,7 +657,7 @@ h2 {
 /* Section heading */
 #creative-projects h2 {
   font-size: 6rem;
-  margin-bottom: -4rem;
+  margin-bottom: -3rem;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   text-align: center;
@@ -826,7 +826,7 @@ h2 {
 /* Dots */
 #creative-projects .slider-dots {
   position: relative;
-  margin-top: -10rem;
+  margin-top: -8rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1128,6 +1128,7 @@ h2 {
 .site-footer span {
   color: #FFBB2B;
 }
+
 
 
 
