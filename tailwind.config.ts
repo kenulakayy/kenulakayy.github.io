@@ -13,7 +13,15 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        display: ["Poppins", "sans-serif"],
+        mono: ["'JetBrains Mono'", "monospace"],
+        helvetica: ["'Helvetica Neue'", "Helvetica", "Arial", "sans-serif"],
+      },
       colors: {
+        brand: {
+          gold: "hsl(var(--brand-gold))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
