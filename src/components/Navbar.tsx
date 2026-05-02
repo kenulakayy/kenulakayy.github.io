@@ -45,7 +45,7 @@ const Navbar = () => {
       <nav className="flex items-center justify-between px-6 md:px-8 pt-3 md:pt-4 pb-3">
         <a href="#home" onClick={(e) => handleClick(e, "home")} className="block">
           <img
-            src="https://kenulakayy.github.io/images/KENULA%20KANDANAARACHCHI-03.webp"
+            src="/images/KENULA KANDANAARACHCHI-03.webp"
             alt="Kenula Kandanaarachchi logo"
             className="h-7 md:h-10 w-auto"
             loading="eager"
