@@ -61,8 +61,8 @@ const About = () => {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           ref={bgRef}
-          src="https://kenulakayy.github.io/images/ABOUT-COVER_PAGE-1920.webp"
-          srcSet="https://kenulakayy.github.io/images/ABOUT-COVER_PAGE-1920.webp 1920w, https://kenulakayy.github.io/images/ABOUT-COVER_PAGE-2880.webp 2880w"
+          src="/images/ABOUT-COVER_PAGE-1920.webp"
+          srcSet="/images/ABOUT-COVER_PAGE-1920.webp 1920w, /images/ABOUT-COVER_PAGE-2880.webp 2880w"
           alt="About background"
           className="w-full h-full object-cover scale-[1.2] will-change-transform transition-transform duration-700"
           loading="eager"

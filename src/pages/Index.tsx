@@ -36,8 +36,8 @@ const Index = () => {
         <div className="absolute -inset-[20%] -z-10 overflow-hidden opacity-25">
           <img
             ref={bgRef}
-            src="https://kenulakayy.github.io/images/ST_BG-1920.webp"
-            srcSet="https://kenulakayy.github.io/images/ST_BG-1920.webp 1920w, https://kenulakayy.github.io/images/ST_BG-2880.webp 2880w"
+            src="/images/ST_BG-1920.webp"
+            srcSet="/images/ST_BG-1920.webp 1920w, /images/ST_BG-2880.webp 2880w"
             alt=""
             aria-hidden="true"
             className="w-full h-full object-cover scale-[1.2] will-change-transform blur-[2px] brightness-90"

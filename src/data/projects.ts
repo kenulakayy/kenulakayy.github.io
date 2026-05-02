@@ -8,8 +8,8 @@ export type Project = {
   artist: string;
 };
 
-const ART = "https://kenulakayy.github.io/Album_Arts";
-const CRE = "https://kenulakayy.github.io/Creative_Projects";
+const ART = "/Album_Arts";
+const CRE = "/Creative_Projects";
 
 const sp = (slug: string): Pick<Project, "src" | "src800" | "src1600"> => ({
   src: `${ART}/${slug}-1200.webp`,
@@ -93,7 +93,7 @@ export const creativeSlides: Project[][] = [
     { ...cp("DEAR_2023"), href: "https://www.instagram.com/p/C1UIuM_orna/", alt: "Dear 2023", title: "Dear 2023", artist: "Short Vlog" },
     { ...cp("BALI_RECAP"), href: "https://www.instagram.com/p/Cv2MKRahCG3/", alt: "Bali Recap", title: "12th Bali International Choir Festival 2023 (Recap)", artist: "Short Vlog" },
     { ...cp("NOVULETI"), href: "https://www.behance.net/gallery/165727601/Novuleti-Logo-Design-and-Branding", alt: "Novuleti", title: "Novuleti", artist: "Logo Design & Branding" },
-    { src: `${CRE}/PLACES_TO_VISIT_IN_SRI%20LANKA-1200.webp`, src800: `${CRE}/PLACES_TO_VISIT_IN_SRI%20LANKA-800.webp`, src1600: `${CRE}/PLACES_TO_VISIT_IN_SRI%20LANKA-1600.webp`, href: "https://www.instagram.com/p/Cn6Jcd1oW_E/", alt: "Places to Visit in Sri Lanka", title: "Places to Visit in Sri Lanka (Colombo Series)", artist: "Creative Posters" },
+    { src: `${CRE}/PLACES_TO_VISIT_IN_SRI LANKA-1200.webp`, src800: `${CRE}/PLACES_TO_VISIT_IN_SRI LANKA-800.webp`, src1600: `${CRE}/PLACES_TO_VISIT_IN_SRI LANKA-1600.webp`, href: "https://www.instagram.com/p/Cn6Jcd1oW_E/", alt: "Places to Visit in Sri Lanka", title: "Places to Visit in Sri Lanka (Colombo Series)", artist: "Creative Posters" },
     { ...cp("2022_RECAP"), href: "https://www.instagram.com/p/CmzALtLBekd/", alt: "2022 Recap", title: "2022 Recap", artist: "Short Vlog" },
   ],
   [

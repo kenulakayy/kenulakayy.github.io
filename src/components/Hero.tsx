@@ -36,21 +36,21 @@ const Hero = () => {
         loop
         playsInline
         preload="metadata"
-        poster="https://kenulakayy.github.io/images/WEBSITE_HOME_VIDEO_POSTER.webp"
+        poster="/images/WEBSITE_HOME_VIDEO_POSTER.webp"
       >
         <source
-          src="https://kenulakayy.github.io/videos/WEBSITE_HOME_VIDEO_1080p.webm"
+          src="/videos/WEBSITE_HOME_VIDEO_1080p.webm"
           type="video/webm"
         />
         <source
-          src="https://kenulakayy.github.io/videos/WEBSITE_HOME_VIDEO.mp4"
+          src="/videos/WEBSITE_HOME_VIDEO.mp4"
           type="video/mp4"
         />
       </video>
       <div className="absolute inset-0 bg-black/20" />
       <div className="relative z-10 text-center px-4">
         <img
-          src="https://kenulakayy.github.io/images/BEDROOM%20ARTWORK-03-02.webp"
+          src="/images/BEDROOM ARTWORK-03-02.webp"
           alt="Kenula Kandanaarachchi — Bedroom EP"
           className={`mx-auto max-w-[180px] md:max-w-[250px] h-auto mb-4 transition-all duration-700 ease-out ${
             logoIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
