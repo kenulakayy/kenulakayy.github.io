@@ -43,8 +43,8 @@ const Contact = () => {
           aria-label={s.name}
           className="icon-mask"
           style={{
-            WebkitMaskImage: `url(https://kenulakayy.github.io/icons/${s.name}.svg)`,
-            maskImage: `url(https://kenulakayy.github.io/icons/${s.name}.svg)`,
+            WebkitMaskImage: `url(/icons/${s.name}.svg)`,
+            maskImage: `url(/icons/${s.name}.svg)`,
           }}
           onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = s.color)}
           onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "")}
@@ -67,10 +67,10 @@ const Contact = () => {
           loop
           playsInline
           preload="metadata"
-          poster="https://kenulakayy.github.io/images/CONTACT_BG_FINAL_2_POSTER.webp"
+          poster="/images/CONTACT_BG_FINAL_2_POSTER.webp"
         >
-          <source src="https://kenulakayy.github.io/videos/CONTACT_BG_FINAL_2.webm" type="video/webm" />
-          <source src="https://kenulakayy.github.io/videos/CONTACT_BG_FINAL_2.mp4" type="video/mp4" />
+          <source src="/videos/CONTACT_BG_FINAL_2.webm" type="video/webm" />
+          <source src="/videos/CONTACT_BG_FINAL_2.mp4" type="video/mp4" />
         </video>
       </div>
 
