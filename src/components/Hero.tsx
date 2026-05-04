@@ -56,13 +56,16 @@ const Hero = () => {
             logoIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
           }`}
         />
-        <p
-          className={`font-mono-body text-sm md:text-base tracking-widest transition-all duration-700 ease-out ${
+        <a
+          href="https://open.spotify.com/album/YOUR_EP_LINK"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`inline-block font-mono-body text-sm md:text-base tracking-widest transition-all duration-700 ease-out border border-white/60 px-6 py-2.5 rounded-full hover:bg-white/15 hover:border-white hover:scale-105 active:scale-95 ${
             textIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
           }`}
         >
           EP OUT NOW
-        </p>
+        </a>
       </div>
 
       <a

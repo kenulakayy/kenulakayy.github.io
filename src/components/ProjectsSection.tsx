@@ -149,7 +149,7 @@ const ProjectsSection = ({ id, title, slides, cardAspect = "1 / 1" }: Props) => 
                           sizes="(max-width: 768px) 100vw, 25vw"
                           alt={p.alt}
                           loading="lazy"
-                          className="project-img-inner w-full h-full object-cover transition-transform duration-500 group-[]:hover:scale-105"
+                          className="project-img-inner w-full h-full object-cover transition-transform duration-500 hover:scale-[1.05]"
                         />
                       </div>
                     )}
