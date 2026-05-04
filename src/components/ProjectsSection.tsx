@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import type { Project } from "@/data/projects";
 
 type Props = {
@@ -89,8 +89,30 @@ const ProjectsSection = ({ id, title, slides, cardAspect = "1 / 1" }: Props) => 
   }, []);
 
   const goTo = (i: number) => { setCurrent(i); resetAuto(); };
-  const next = () => { setCurrent((c) => Math.min(c + 1, slides.length - 1)); resetAuto(); };
-  const prev = () => { setCurrent((c) => Math.max(c - 1, 0)); resetAuto(); };
+  const next = useCallback(() => { setCurrent((c) => Math.min(c + 1, slides.length - 1)); resetAuto(); }, [slides.length]);
+  const prev = useCallback(() => { setCurrent((c) => Math.max(c - 1, 0)); resetAuto(); }, []);
+
+  // Touch/swipe support
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  }, []);
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    const dy = e.changedTouches[0].clientY - touchStartY.current;
+    touchStartX.current = null;
+    touchStartY.current = null;
+    // Only trigger if horizontal swipe is dominant and > 50px
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      if (dx < 0) next();
+      else prev();
+    }
+  }, [next, prev]);
 
   return (
     <section
@@ -118,6 +140,8 @@ const ProjectsSection = ({ id, title, slides, cardAspect = "1 / 1" }: Props) => 
           hoverRef.current = false;
           resetAuto();
         }}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
       >
         <div className="relative">
           {slides.map((slide, sIdx) => (
@@ -149,7 +173,7 @@ const ProjectsSection = ({ id, title, slides, cardAspect = "1 / 1" }: Props) => 
                           sizes="(max-width: 768px) 100vw, 25vw"
                           alt={p.alt}
                           loading="lazy"
-                          className="project-img-inner w-full h-full object-cover transition-transform duration-500 group-[]:hover:scale-105"
+                          className="project-img-inner w-full h-full object-cover transition-transform duration-500 hover:scale-[1.05]"
                         />
                       </div>
                     )}
