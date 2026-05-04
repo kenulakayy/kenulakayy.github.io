@@ -57,9 +57,9 @@ const Contact = () => {
     <section
       ref={ref}
       id="contact"
-      className="relative min-h-screen flex items-center justify-center px-5 py-24 overflow-hidden"
+      className="relative z-0 min-h-screen flex items-center justify-center px-5 py-24 overflow-hidden"
     >
-      <div className="absolute inset-0 -z-10 overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <video
           className="w-full h-full object-cover brightness-[0.35]"
           autoPlay
@@ -74,7 +74,7 @@ const Contact = () => {
         </video>
       </div>
 
-      <div className="relative text-center max-w-[700px] mx-auto px-5">
+      <div className="relative z-10 text-center max-w-[700px] mx-auto px-5">
         {items.map((node, i) => (
           <div
             key={i}

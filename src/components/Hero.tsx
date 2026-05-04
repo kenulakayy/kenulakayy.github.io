@@ -27,10 +27,10 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative h-screen min-h-[100svh] flex items-center justify-center overflow-hidden"
+      className="relative z-0 h-screen min-h-[100svh] flex items-center justify-center overflow-hidden"
     >
       <video
-        className="absolute inset-0 w-full h-full object-cover -z-10"
+        className="absolute inset-0 z-0 w-full h-full object-cover"
         autoPlay
         muted
         loop
@@ -47,7 +47,7 @@ const Hero = () => {
           type="video/webm"
         />
       </video>
-      <div className="absolute inset-0 bg-black/20" />
+      <div className="absolute inset-0 z-[1] bg-black/20" />
       <div className="relative z-10 text-center px-4">
         <img
           src="/images/BEDROOM ARTWORK-03-02.webp"
