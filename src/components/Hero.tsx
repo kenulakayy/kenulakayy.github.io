@@ -39,12 +39,12 @@ const Hero = () => {
         poster="/images/WEBSITE_HOME_VIDEO_POSTER.webp"
       >
         <source
-          src="/videos/WEBSITE_HOME_VIDEO_1080p.webm"
-          type="video/webm"
-        />
-        <source
           src="/videos/WEBSITE_HOME_VIDEO.mp4"
           type="video/mp4"
+        />
+        <source
+          src="/videos/WEBSITE_HOME_VIDEO_1080p.webm"
+          type="video/webm"
         />
       </video>
       <div className="absolute inset-0 bg-black/20" />

@@ -69,8 +69,8 @@ const Contact = () => {
           preload="metadata"
           poster="/images/CONTACT_BG_FINAL_2_POSTER.webp"
         >
-          <source src="/videos/CONTACT_BG_FINAL_2.webm" type="video/webm" />
           <source src="/videos/CONTACT_BG_FINAL_2.mp4" type="video/mp4" />
+          <source src="/videos/CONTACT_BG_FINAL_2.webm" type="video/webm" />
         </video>
       </div>
 
