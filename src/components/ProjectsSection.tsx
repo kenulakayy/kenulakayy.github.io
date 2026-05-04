@@ -140,6 +140,8 @@ const ProjectsSection = ({ id, title, slides, cardAspect = "1 / 1" }: Props) => 
           hoverRef.current = false;
           resetAuto();
         }}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
       >
         <div className="relative">
           {slides.map((slide, sIdx) => (
