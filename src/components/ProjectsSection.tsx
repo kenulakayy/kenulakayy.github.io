@@ -148,7 +148,7 @@ const ProjectsSection = ({ id, title, slides, cardAspect = "1 / 1" }: Props) => 
             <div
               key={sIdx}
               className={`grid gap-3 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 transition-opacity duration-700 ${
-                sIdx === current ? "opacity-100 relative" : "opacity-0 absolute inset-0 pointer-events-none"
+                sIdx === current ? "opacity-100 relative z-10" : "opacity-0 absolute inset-0 pointer-events-none z-0"
               }`}
               aria-hidden={sIdx !== current}
             >
