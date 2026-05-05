@@ -212,7 +212,7 @@ const ProjectsSection = ({ id, title, slides, cardAspect = "1 / 1" }: Props) => 
           aria-label="Next slide"
           onClick={next}
           disabled={current === slides.length - 1}
-          className="hidden md:block absolute top-1/2 -translate-y-1/2 -right-8 lg:-right-10 text-3xl text-foreground opacity-0 group-hover:opacity-100 disabled:opacity-30 disabled:pointer-events-none transition-all duration-300 hover:text-brand-gold hover:scale-110"
+          className="hidden md:block absolute top-1/2 -translate-y-1/2 -right-8 lg:-right-10 text-3xl text-foreground opacity-0 group-hover/slider:opacity-100 disabled:opacity-30 disabled:pointer-events-none transition-all duration-300 hover:text-brand-gold hover:scale-110"
         >
           ❯
         </button>
