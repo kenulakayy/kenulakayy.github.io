@@ -160,7 +160,7 @@ const ProjectsSection = ({ id, title, slides, cardAspect = "1 / 1" }: Props) => 
                     href={p.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`project-card project-card-anim ${sIdx === current ? "show" : ""} relative block overflow-hidden rounded-lg cursor-pointer ${
+                    className={`project-card project-card-anim ${sIdx === current ? "show" : ""} group relative block overflow-hidden rounded-lg cursor-pointer ${
                       isViewMore ? "bg-secondary" : ""
                     }`}
                     style={{ aspectRatio: cardAspect, transitionDelay: sIdx === current ? `${i * 100}ms` : "0ms" }}
@@ -173,13 +173,13 @@ const ProjectsSection = ({ id, title, slides, cardAspect = "1 / 1" }: Props) => 
                           sizes="(max-width: 768px) 100vw, 25vw"
                           alt={p.alt}
                           loading="lazy"
-                          className="project-img-inner w-full h-full object-cover transition-transform duration-500 hover:scale-[1.05]"
+                          className="project-img-inner w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
                         />
                       </div>
                     )}
                     <div
-                      className={`project-card-overlay absolute inset-0 flex items-center justify-center text-center transition-all duration-300 ${
-                        isViewMore ? "bg-black/70 opacity-100" : "bg-black/20 opacity-0 hover:opacity-100 hover:bg-black/60"
+                      className={`project-card-overlay absolute inset-0 flex items-center justify-center text-center transition-all duration-300 pointer-events-none ${
+                        isViewMore ? "bg-black/70 opacity-100 pointer-events-auto" : "bg-black/20 opacity-0 group-hover:opacity-100 group-hover:bg-black/60 group-hover:pointer-events-auto"
                       }`}
                     >
                       <p className={`px-3 ${isViewMore ? "text-brand-gold text-xl font-bold" : "text-foreground text-base md:text-lg"}`}>
