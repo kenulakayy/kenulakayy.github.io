@@ -130,7 +130,7 @@ const ProjectsSection = ({ id, title, slides, cardAspect = "1 / 1" }: Props) => 
 
       <div
         ref={wrapperRef}
-        className="relative max-w-[95%] mx-auto group"
+        className="relative max-w-[95%] mx-auto group/slider"
         onMouseEnter={() => {
           hoverRef.current = true;
           if (intervalRef.current) { clearInterval(intervalRef.current); intervalRef.current = null; }
