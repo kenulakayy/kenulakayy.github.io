@@ -65,7 +65,7 @@ const About = () => {
           srcSet="/images/ABOUT-COVER_PAGE-1920.webp 1920w, /images/ABOUT-COVER_PAGE-2880.webp 2880w"
           alt="About background"
           className="w-full h-full object-cover scale-[1.2] will-change-transform transition-transform duration-700"
-          loading="eager"
+          loading="lazy"
           decoding="async"
         />
       </div>
