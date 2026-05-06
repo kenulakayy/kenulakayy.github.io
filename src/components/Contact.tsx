@@ -25,14 +25,14 @@ const Contact = () => {
     <p key="t" className="contact-text mt-5 text-base md:text-lg">
       Feel free to reach out for collaborations, projects, or anything music-related.
     </p>,
-    <div key="links" className="contact-links mt-6 flex flex-col gap-2.5">
+    <address key="links" className="contact-links mt-6 flex flex-col gap-2.5 not-italic">
       <a href="mailto:kenulak@icloud.com" className="text-foreground hover:text-brand-gold transition-colors text-base md:text-lg">
         kenulak@icloud.com
       </a>
       <a href="tel:+94770185211" className="text-foreground hover:text-brand-gold transition-colors text-base md:text-lg">
         +94 77 018 5211
       </a>
-    </div>,
+    </address>,
     <div key="social" className="social-icons mt-8 flex justify-center gap-4 md:gap-[18px]">
       {SOCIALS.map((s) => (
         <a
