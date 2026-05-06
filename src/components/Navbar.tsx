@@ -42,7 +42,7 @@ const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
-      <nav className="flex items-center justify-between px-6 md:px-8 pt-3 md:pt-4 pb-3">
+      <nav aria-label="Main navigation" className="flex items-center justify-between px-6 md:px-8 pt-3 md:pt-4 pb-3">
         <a href="#home" onClick={(e) => handleClick(e, "home")} className="block">
           <img
             src="/images/KENULA KANDANAARACHCHI-03.webp"

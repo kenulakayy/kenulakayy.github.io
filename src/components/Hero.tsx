@@ -35,7 +35,7 @@ const Hero = () => {
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="auto"
         poster="/images/WEBSITE_HOME_VIDEO_POSTER.webp"
       >
         <source
