@@ -29,8 +29,8 @@ const Contact = () => {
       <a href="mailto:kenulak@icloud.com" className="text-foreground hover:text-brand-gold transition-colors text-base md:text-lg">
         kenulak@icloud.com
       </a>
-      <a href="tel:+94770185211" className="text-foreground hover:text-brand-gold transition-colors text-base md:text-lg">
-        +94 77 018 5211
+      <a href="tel:+61452485211" className="text-foreground hover:text-brand-gold transition-colors text-base md:text-lg">
+        +61 452 485 211
       </a>
     </address>,
     <div key="social" className="social-icons mt-8 flex justify-center gap-4 md:gap-[18px]">
