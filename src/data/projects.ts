@@ -80,6 +80,11 @@ export const songwritingSlides: Project[][] = [
     { ...sp("FALL_APART_LIKE_OTHERS_DO"), href: "https://youtu.be/YZS2cZX5PZ0", alt: "Fall Apart Like Others Do", title: "Fall Apart Like Others Do", artist: "Kenula Kandanaarachchi" },
     { ...sp("PICTURE_PERFECT"), href: "https://youtu.be/DiHNbDJnPoY", alt: "Picture Perfect", title: "Picture Perfect", artist: "Kenula Kandanaarachchi" },
   ],
+  [
+    { ...sp("IF_THIS_IS_GOODBYE"), href: "https://www.youtube.com/watch?v=A2PJqQXX_2A", alt: "If This Is Goodbye", title: "If This Is Goodbye", artist: "Kenula Kandanaarachchi" },
+    { ...sp("ALL_I_EVER_SEE_IS_YOU"), href: "https://www.youtube.com/watch?v=cGwQl8uVQmQ", alt: "All I Ever See Is You", title: "All I Ever See Is You", artist: "Kenula Kandanaarachchi" },
+    { ...sp("SATURDAY_NIGHT"), href: "https://www.youtube.com/watch?v=qVNyUQmVNFI", alt: "Saturday Night", title: "Saturday Night (U & I)", artist: "Kenula Kandanaarachchi" },
+  ],
 ];
 
 export const SOCIALS = [
