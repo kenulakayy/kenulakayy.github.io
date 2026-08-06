@@ -20,6 +20,7 @@ const sp = (slug: string): Pick<Project, "src" | "src800" | "src1600"> => ({
 
 export const productionSlides: Project[][] = [
   [
+    { ...sp("AMARSHA_LITTLE_LIFE"), href: "https://youtu.be/pcJ_pbSQJo8?si=jZGNQFDnPew1leIm", alt: "Little Life - Amarsha Tissera", title: "Little Life", artist: "Amarsha Tissera" },
     { ...sp("DONARUWINI_SIHIWEIUNUHUMA"), href: "https://www.youtube.com/watch?v=9oSUN_EiVoY", alt: "Sihiwei Unuhuma - Dona Ruwini", title: "Sihiwei Unuhuma (සිහිවෙයි උනුහුම)", artist: "Dona Ruwini" },
     { ...sp("AMARSHA_SEETHAMARUTHE"), href: "https://www.youtube.com/watch?v=Snuss4_Zs90", alt: "Amarsha Tissera - Seetha Maruthe (Cover)", title: "Seetha Maruthe (Cover)", artist: "Amarsha Tissera" },
     { ...sp("AMARSHA_PRIYAWEE"), href: "https://www.instagram.com/p/DQKGMHijIdT/", alt: "Amarsha Tissera - Priyawee (Cover)", title: "Priyawee (Cover)", artist: "Amarsha Tissera" },
@@ -27,9 +28,9 @@ export const productionSlides: Project[][] = [
     { ...sp("NADINE_GOODNESS_OF_GOD"), href: "https://www.youtube.com/watch?v=YS7hz0ufupk", alt: "Nadine - Goodness of God (Cover)", title: "Goodness of God (Cover)", artist: "Nadine" },
     { ...sp("AMARSHA_MAL_PAN_PODAK"), href: "https://www.instagram.com/p/DMpoZyWswo3/", alt: "Amarsha Tissera - Mal Pan Podak (Cover)", title: "Mal Pan Podak (Cover)", artist: "Amarsha Tissera" },
     { ...sp("AMARSHA_PAALUWE_SATHUTA"), href: "https://www.instagram.com/p/DMUVOKHNM0s/", alt: "Amarsha Tissera - Paaluwe Sathuta (Cover)", title: "Paaluwe Sathuta (Cover)", artist: "Amarsha Tissera" },
-    { ...sp("RUMALKI_THANI_MANASAKA"), href: "https://www.youtube.com/watch?v=P3j0_LuZBWg", alt: "Rumalki Raveesha - Thani Manasaka (Cover)", title: "Thani Manasaka (Cover)", artist: "Rumalki Raveesha" },
   ],
   [
+    { ...sp("RUMALKI_THANI_MANASAKA"), href: "https://www.youtube.com/watch?v=P3j0_LuZBWg", alt: "Rumalki Raveesha - Thani Manasaka (Cover)", title: "Thani Manasaka (Cover)", artist: "Rumalki Raveesha" },
     { ...sp("AMARSHA_SANSARAYE"), href: "https://www.instagram.com/p/DJbxK8TsYFI/", alt: "Amarsha Tissera - Sansaraye (Cover)", title: "Sansaraye (Cover)", artist: "Amarsha Tissera" },
     { ...sp("RUMALKI_DANGAKARA_HANDAKARI"), href: "https://www.instagram.com/p/DG5SH1ev1Fr/", alt: "Rumalki Raveesha - Dangakara Hadakari (Cover)", title: "Dangakara Hadakari (Cover)", artist: "Rumalki Raveesha" },
     { ...sp("AMARSHA_JEEWITHE_THARUNA_KALE"), href: "https://www.instagram.com/p/DGQVdH5sZlc/", alt: "Amarsha Tissera - Jeewithe Tharuna Kale (Cover)", title: "Jeewithe Tharuna Kale (Cover)", artist: "Amarsha Tissera" },
@@ -37,9 +38,9 @@ export const productionSlides: Project[][] = [
     { ...sp("AMARSHA_MIHIRAWIYE"), href: "https://www.youtube.com/shorts/XlEE2H0rABk", alt: "Mihiraviyeh (Cover)", title: "Mihiraviyeh (Cover)", artist: "Amarsha Tissera" },
     { ...sp("ECHOES_OF_US"), href: "https://www.youtube.com/watch?v=u-RbnKfEqfM", alt: "Echoes of Us (Short Film)", title: "Echoes of Us (Short Film)", artist: "Last Bench Movies" },
     { ...sp("AMARSHA_ASIPIYA_SALANA"), href: "https://www.youtube.com/watch?v=CLxDbtnFYWI", alt: "Asipiya Salana (Cover)", title: "Asipiya Salana (Cover)", artist: "Amarsha Tissera" },
-    { ...sp("AMARSHA_HANTHANEY"), href: "https://www.youtube.com/watch?v=0uTXkuQrvTw", alt: "Hanthaney (Cover)", title: "Hanthaney (Cover)", artist: "Amarsha Tissera x Yashvin Senanayake" },
   ],
   [
+    { ...sp("AMARSHA_HANTHANEY"), href: "https://www.youtube.com/watch?v=0uTXkuQrvTw", alt: "Hanthaney (Cover)", title: "Hanthaney (Cover)", artist: "Amarsha Tissera x Yashvin Senanayake" },
     { ...sp("AMARSHA_BIRDSOFAFEATHER"), href: "https://www.youtube.com/watch?v=GGmb2E5V9VI", alt: "BIRDS OF A FEATHER (Cover)", title: "BIRDS OF A FEATHER (Cover)", artist: "Amarsha Tissera" },
     { ...sp("THANUKI_DIVE_COVER"), href: "https://www.youtube.com/watch?v=mDjHya2Vjc0", alt: "Dive (Cover)", title: "Dive (Cover)", artist: "Thanuki Goonesinghe" },
     { ...sp("AMARSHA_PLEASE_PLEASE_PLEASE"), href: "https://www.youtube.com/watch?v=7arHqsnm9ko", alt: "Please Please Please (Cover)", title: "Please Please Please (Cover)", artist: "Amarsha Tissera" },
@@ -52,16 +53,19 @@ export const productionSlides: Project[][] = [
 
 export const recordingSlides: Project[][] = [
   [
+    { ...sp("AMARSHA_ASIPIYA_SALANA_LIVE"), href: "https://www.youtube.com/watch?v=CsqLyfmm3fU", alt: "ASIPIYA SALANA (LIVE COVER)", title: "ASIPYA SALANA | LIVE COVER | from an Evening with Amarsha", artist: "Amarsha Tissera" },    
+    { ...sp("AMARSHA_THUN_THERAWILLAK_LIVE"), href: "https://www.youtube.com/watch?v=5kxI5pppMDY", alt: "THUN THERAVILLAK | LIVE |", title: "THUN THERAVILLAK | LIVE | from an Evening with Amarsha", artist: "Amarsha Tissera" },  
     { ...sp("STEFFANDIAZ_DONTLETGO"), href: "https://song.link/s/5fZtM9I9nYigD5GBWyvCGw", alt: "Steffan Diaz - Don't Let Go", title: "Don't Let Go", artist: "Steffan Diaz" },
+    { ...sp("RANUDI_SHOW_ME_LOVE"), href: "https://www.youtube.com/watch?v=IC6zPS3UAzw", alt: "Ranudi - Pa Salamba Sala x Show Me Love x Premi Aravindayak Mashup ", title: "Pa Salamba Sala x Show Me Love x Premi Aravindayak Mashup", artist: "Ranudee ft. Funkbots" },
     { ...sp("AMARSHA_ANURAGEN"), href: "https://www.youtube.com/watch?v=dasDzNOu4PE", alt: "Amarsha Tissera - Anuragen (Cover)", title: "Anuragen (Cover)", artist: "Amarsha Tissera" },
     { ...sp("INFINITY_PAATA_PAATA_LOKAYAK"), href: "https://song.link/y/GPnMIuKgB18", alt: "INFINITY - Paata Paata Lokayak", title: "Paata Paata Lokayak", artist: "INFINITY" },
     { ...sp("BLIND_SCHOOL_APE_DAKMA"), href: "https://www.youtube.com/watch?v=t_DUDmobQgE", alt: "Apé Dakma - Unseen Expressions", title: "අපේ දැක්ම Unseen Expressions", artist: "The School for the Blind Ratmalana" },
     { ...sp("NUWAN_PAPARE_JAZZ"), href: "https://www.youtube.com/watch?v=Evap-ZZc87Y", alt: "Horns with Nuwan - Papara Jazz", title: "Papara Jazz | පපර ජෑස්", artist: "Horns with Nuwan" },
+  ],
+  [
     { ...sp("PATTA_HISTORY_POLITCS"), href: "https://youtube.com/playlist?list=PLHCzepx_gjsb80nX0EVVEt56pDHpDssVe", alt: "Patta History", title: "Sri Lanka's Politics — a History of Power in Paradise", artist: "Patta History" },
     { ...sp("AND_THEN_THERE_WERE_NONE"), href: "https://www.youtube.com/watch?v=mLkYtWjqIC8", alt: "10 Little Soldier Boys", title: "10 Little Soldier Boys (And Then There Were None)", artist: "Cold Theatre Seven" },
     { ...sp("AMARSHA_STICK_SEASON"), href: "https://www.youtube.com/watch?v=QSKkhmNAGaI", alt: "Stick Season (Live Cover)", title: "Stick Season (Live Cover)", artist: "Amarsha Tissera" },
-  ],
-  [
     { ...sp("CARLLIN_HALLELUJAH"), href: "https://www.youtube.com/watch?v=26aE1nnDCZk", alt: "Hallelujah (Cover)", title: "Hallelujah (Cover)", artist: "Amarsha Tissera & Carllin Perera" },
     { ...sp("SSA_GROWNUP_CHRISTMAS_LIST"), href: "https://www.youtube.com/watch?v=BhYsfa_qYps", alt: "Grown Up Christmas List", title: "Grown Up Christmas List (Cover)", artist: "Soul Sounds Academy Children's Choir" },
     { ...sp("SSA_THE_CHRISTMAS_SONG"), href: "https://www.youtube.com/watch?v=imm10K3-5nE", alt: "Christmas Song", title: "Christmas Song (Cover)", artist: "Soul Sounds Academy Intermediate Choir" },
