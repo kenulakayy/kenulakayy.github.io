@@ -47,12 +47,6 @@ export const productionSlides: Project[][] = [
     { ...sp("DON_SWAPNA_KUMARI"), href: "https://www.youtube.com/watch?v=myBLik-btCE", alt: "Swapna Kumari", title: "Swapna Kumari", artist: "Dona Ruwini" },
     { ...sp("CLOSE_TO_ME"), href: "https://song.link/s/5SKcfchRN8miUir3IqKYWQ", alt: "close to me", title: "close to me", artist: "Vinuk" },
     { ...sp("SUBHATH_TITLI"), href: "https://www.instagram.com/p/CpY_lSBI5zE/", alt: "Titli", title: "Titli", artist: "Subhath Sanjula" },
-    { ...sp("IF_THIS_IS_GOODBYE"), href: "https://www.youtube.com/watch?v=A2PJqQXX_2A", alt: "If This Is Goodbye", title: "If This Is Goodbye", artist: "Kenula Kandanaarachchi" },
-  ],
-  [
-    { ...sp("ALL_I_EVER_SEE_IS_YOU"), href: "https://www.youtube.com/watch?v=cGwQl8uVQmQ", alt: "All I Ever See Is You", title: "All I Ever See Is You", artist: "Kenula Kandanaarachchi" },
-    { ...sp("SATURDAY_NIGHT"), href: "https://www.youtube.com/watch?v=qVNyUQmVNFI", alt: "Saturday Night", title: "Saturday Night (U & I)", artist: "Kenula Kandanaarachchi" },
-    { href: "https://docs.google.com/spreadsheets/d/1rfe-AVFp1on6dUTb6cWEVkP8vVrvX-R3m_GP_Y6LzFc/edit?usp=sharing", src: "", alt: "View More", title: "View More", artist: "" },
   ],
 ];
 
