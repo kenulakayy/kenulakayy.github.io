@@ -9,7 +9,6 @@ export type Project = {
 };
 
 const ART = "/Album_Arts";
-const CRE = "/Creative_Projects";
 
 const sp = (slug: string): Pick<Project, "src" | "src800" | "src1600"> => ({
   src: `${ART}/${slug}-1200.webp`,
@@ -17,11 +16,7 @@ const sp = (slug: string): Pick<Project, "src" | "src800" | "src1600"> => ({
   src1600: `${ART}/${slug}-1600.webp`,
 });
 
-const cp = (slug: string): Pick<Project, "src" | "src800" | "src1600"> => ({
-  src: `${CRE}/${slug}-1200.webp`,
-  src800: `${CRE}/${slug}-800.webp`,
-  src1600: `${CRE}/${slug}-1600.webp`,
-});
+
 
 export const productionSlides: Project[][] = [
   [
