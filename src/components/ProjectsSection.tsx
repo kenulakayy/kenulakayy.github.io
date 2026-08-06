@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import type { Project } from "@/data/projects";
 
 type Props = {
-  id: "studio-projects" | "creative-projects";
+  id: string;
   title: string;
   slides: Project[][];
   cardAspect?: string;

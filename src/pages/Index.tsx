@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import ProjectsSection from "@/components/ProjectsSection";
 import Contact from "@/components/Contact";
-import { studioSlides, creativeSlides } from "@/data/projects";
+import { productionSlides, recordingSlides, songwritingSlides } from "@/data/projects";
 
 const Index = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -46,10 +46,12 @@ const Index = () => {
           />
         </div>
 
-        <div className="relative z-10">
-          <ProjectsSection id="studio-projects" title="STUDIO PROJECTS" slides={studioSlides} cardAspect="1 / 1" />
-          <ProjectsSection id="creative-projects" title="CREATIVE PROJECTS" slides={creativeSlides} cardAspect="1 / 1.1" />
+        <div className="relative z-10" id="studio-projects">
+          <ProjectsSection id="production-projects" title="PRODUCTION PROJECTS" slides={productionSlides} cardAspect="1 / 1" />
+          <ProjectsSection id="recording-projects" title="RECORDING PROJECTS" slides={recordingSlides} cardAspect="1 / 1" />
+          <ProjectsSection id="songwriting-projects" title="SONGWRITING / COMPOSING" slides={songwritingSlides} cardAspect="1 / 1" />
         </div>
+
       </div>
 
       <Contact />
