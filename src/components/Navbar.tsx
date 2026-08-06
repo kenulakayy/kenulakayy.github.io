@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 const SECTIONS = [
   { id: "home", label: "HOME" },
   { id: "studio-projects", label: "STUDIO PROJECTS" },
-  { id: "creative-projects", label: "CREATIVE PROJECTS" },
   { id: "about", label: "ABOUT" },
   { id: "contact", label: "CONTACT" },
 ];
+
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
