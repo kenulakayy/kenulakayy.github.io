@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import ProjectsSection from "@/components/ProjectsSection";
 import Contact from "@/components/Contact";
-import { studioSlides, creativeSlides } from "@/data/projects";
+import { productionSlides, recordingSlides, songwritingSlides } from "@/data/projects";
 
 const Index = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
