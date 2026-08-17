@@ -1,15 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
 const PARAGRAPHS = [
-  "At 11, Kenula was all about EDM. By 14, he discovered his heart had other plans—music production became his world, and he's been crafting sounds ever since.",
-  "What began with inspiration from artists like Ed Sheeran, FINNEAS, Billie Eilish, Jacob Collier, Lauv has grown into something uniquely his own…",
-  "From YouTube originals and covers in 2020 to \"Now That You Know\" in 2023, and most recently the \"Bedroom\" EP in August 2025—each release proves he's not here to play it safe.",
-  "Here's the thing about Kenula: he's obsessed with quality…",
-  "But strip away the technical skills and genre-hopping—what really drives him is that moment when someone connects with the music he's produced on a soul level.",
-  "Kenula doesn't do comfort zones. He's constantly chasing sounds he's never made before, always asking \"what if?\" instead of \"why not?\"",
-  "The mission stays the same: create music that makes people feel less alone…",
-  "Ready to see what happens when authentic meets ambitious? Kenula's story is just getting started.",
+  "Kenula started his journey in music at the very little age of 11, producing in the EDM genre until he decided to switch lanes later on and focus on genres like Pop, Singer/Songwriter, RnB and Indie.",
+  "Currently residing in Melbourne, Kenula holds years of industry experience working on a number of productions and recordings, with his main vision being creating something unique blending in the artist’s vision together. He has also been singing and writing originals and covers on YouTube since 2020, to releasing his debut single “Now That You Know” on streaming platforms in 2023 and with his most recent release being a 6 song EP “Bedroom” in 2025.",
+  "Getting inspiration from artists and producers like Ed Sheeran, FINNEAS, Mike Sabbath, Jeremy Zucker, Lauv, Lizzie McAlpine and Asha Banks, Kenula’s goal is to give the listener the right emotion and feel to the listener through his productions and compositions and he is excited to see where this journey in music takes him as he evolves in his career as a Music Producer, Audio Engineer and Singer/Songwriter.",
 ];
+
 
 const About = () => {
   const ref = useRef<HTMLElement>(null);
