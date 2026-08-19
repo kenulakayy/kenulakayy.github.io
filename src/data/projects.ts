@@ -93,7 +93,7 @@ export const songwritingSlides: Project[][] = [
 
 export const SOCIALS = [
   { name: "instagram", href: "https://www.instagram.com/kenulakandanaarachchi/", color: "#E1306C" },
-  { name: "whatsapp", href: "https://wa.me/94770185211", color: "#25D366" },
+  { name: "whatsapp", href: "https://wa.me/61452485211", color: "#25D366" },
   { name: "youtube", href: "https://www.youtube.com/@kenulakandanaarachchi", color: "#FF0000" },
   { name: "spotify", href: "https://open.spotify.com/artist/2xWVvHFNvUpK5hgcSAjgC4", color: "#1DB954" },
   { name: "apple-music", href: "https://music.apple.com/us/artist/kenula-kandanaarachchi/1709852107", color: "#FA233B" },
