@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
 const PARAGRAPHS = [
-  "Kenula started his journey in music at the very little age of 11, producing in the EDM genre until he decided to switch lanes later on and focus on genres like Pop, Singer/Songwriter, RnB and Indie.",
-  "Currently residing in Melbourne, Kenula holds years of industry experience working on a number of productions and recordings, with his main vision being creating something unique blending in the artist’s vision together. He has also been singing and writing originals and covers on YouTube since 2020, to releasing his debut single “Now That You Know” on streaming platforms in 2023 and with his most recent release being a 6 song EP “Bedroom” in 2025.",
-  "Getting inspiration from artists and producers like Ed Sheeran, FINNEAS, Mike Sabbath, Jeremy Zucker, Lauv, Lizzie McAlpine and Asha Banks, Kenula’s goal is to give the listener the right emotion and feel to the listener through his productions and compositions and he is excited to see where this journey in music takes him as he evolves in his career as a Music Producer, Audio Engineer and Singer/Songwriter.",
+  "Kenula began his musical journey at just 11 years old, initially producing EDM before eventually exploring new creative directions. He later shifted his focus towards Pop, Singer/Songwriter, R&B, and Indie, continuing to grow and experiment with different sounds.",
+  "Currently based in Melbourne, Kenula holds years of industry experience across a number of productions and recordings, with his main vision being to create something unique, while thoughtfully bringing together and complementing the artist’s own creative vision. He has also been singing and writing originals and covers on YouTube since 2020, before releasing his debut single “Now That You Know” on streaming platforms in 2023 and with his most recent release being the 6 song EP “Bedroom”, released in 2025.",
+  "Influenced by artists and producers such as Ed Sheeran, FINNEAS, Mike Sabbath, Jeremy Zucker, Lauv, Lizzie McAlpine and Asha Banks, Kenula focuses on evoking the right emotion through his productions and compositions. As he continues to evolve as a Music Producer, Audio Engineer and Singer/Songwriter, he is excited to see where his journey in music takes him.",
 ];
 
 
